@@ -1,8 +1,7 @@
 import 'dart:math';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'extra_info_constraints.dart';
-
+import 'package:flutter_in_action_2/widgets/extra_info_constraints.dart';
 
 typedef SliverFlexibleHeaderBuilder = Widget Function(
   BuildContext context,

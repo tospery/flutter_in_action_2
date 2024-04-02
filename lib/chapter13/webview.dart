@@ -33,9 +33,9 @@ class _WebViewTestState extends State<WebViewTest> {
       name: 'Toaster',
       onMessageReceived: (JavascriptMessage message) {
         // ignore: deprecated_member_use
-        Scaffold.of(context).showSnackBar(
-          SnackBar(content: Text(message.message)),
-        );
+        // Scaffold.of(context).showSnackBar(
+        //   SnackBar(content: Text(message.message)),
+        // );
       },
     );
   }
