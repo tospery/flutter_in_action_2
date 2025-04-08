@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_in_action_2/chapter02/counter_widget.dart'
+    deferred as counter_widget;
+
 void main() {
   runApp(const MyApp());
 }
@@ -14,7 +17,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter实战（第二版）'),
+      routes: routers,
     );
   }
 }
@@ -29,38 +33,76 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    var routeLists = routers.keys.toList();
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+      appBar: AppBar(title: Text(widget.title)),
+      body: ListView.builder(
+        itemBuilder: (context, index) {
+          return InkWell(
+            onTap: () {
+              Navigator.of(context).pushNamed(routeLists[index]);
+            },
+            child: Card(
+              child: Container(
+                alignment: Alignment.centerLeft,
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                height: 50,
+                child: Text(routers.keys.toList()[index]),
+              ),
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+          );
+        },
+        itemCount: routers.length,
       ),
     );
   }
 }
+
+class ContainerAsyncRouterPage extends StatelessWidget {
+  final Future libraryFuture;
+
+  final WidgetBuilder child;
+
+  const ContainerAsyncRouterPage(this.libraryFuture, this.child, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: libraryFuture,
+      builder: (c, s) {
+        if (s.connectionState == ConnectionState.done) {
+          if (s.hasError) {
+            return Scaffold(
+              appBar: AppBar(),
+              body: Container(
+                alignment: Alignment.center,
+                child: Text(
+                  'Error: ${s.error}',
+                  style: TextStyle(color: Colors.red),
+                ),
+              ),
+            );
+          }
+          return child.call(context);
+        }
+        return Scaffold(
+          appBar: AppBar(),
+          body: Container(
+            alignment: Alignment.center,
+            child: CircularProgressIndicator(),
+          ),
+        );
+      },
+    );
+  }
+}
+
+Map<String, WidgetBuilder> routers = {
+  "State生命周期": (context) {
+    return ContainerAsyncRouterPage(counter_widget.loadLibrary(), (context) {
+      return counter_widget.CounterWidget();
+    });
+  },
+};
