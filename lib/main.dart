@@ -6,6 +6,8 @@ import 'package:flutter_in_action_2/chapter02/get_state_object_route.dart'
     deferred as get_state_object_route;
 import 'package:flutter_in_action_2/chapter02/cupertino_test_route.dart'
     deferred as cupertino_test_route;
+import 'package:flutter_in_action_2/chapter02/router_test_route.dart'
+    deferred as router_test_route;
 
 void main() {
   runApp(const MyApp());
@@ -123,6 +125,11 @@ Map<String, WidgetBuilder> routers = {
       context,
     ) {
       return cupertino_test_route.CupertinoTestRoute();
+    });
+  },
+  "非命名路由的传值方式": (context) {
+    return ContainerAsyncRouterPage(router_test_route.loadLibrary(), (context) {
+      return router_test_route.RouterTestRoute();
     });
   },
 };
