@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_in_action_2/chapter02/counter_widget.dart'
-    deferred as counter_widget;
+import 'package:flutter_in_action_2/chapter02/state_lifecycle_test_route.dart'
+    deferred as state_lifecycle_test_route;
+import 'package:flutter_in_action_2/chapter02/get_state_object_route.dart'
+    deferred as get_state_object_route;
+import 'package:flutter_in_action_2/chapter02/cupertino_test_route.dart'
+    deferred as cupertino_test_route;
 
 void main() {
   runApp(const MyApp());
@@ -101,8 +105,24 @@ class ContainerAsyncRouterPage extends StatelessWidget {
 
 Map<String, WidgetBuilder> routers = {
   "State生命周期": (context) {
-    return ContainerAsyncRouterPage(counter_widget.loadLibrary(), (context) {
-      return counter_widget.CounterWidget();
+    return ContainerAsyncRouterPage(state_lifecycle_test_route.loadLibrary(), (
+      context,
+    ) {
+      return state_lifecycle_test_route.StateLifecycleTestRoute();
+    });
+  },
+  "在widget树中获取State对象": (context) {
+    return ContainerAsyncRouterPage(get_state_object_route.loadLibrary(), (
+      context,
+    ) {
+      return get_state_object_route.GetStateObjectRoute();
+    });
+  },
+  "一个简单的Cupertino组件": (context) {
+    return ContainerAsyncRouterPage(cupertino_test_route.loadLibrary(), (
+      context,
+    ) {
+      return cupertino_test_route.CupertinoTestRoute();
     });
   },
 };

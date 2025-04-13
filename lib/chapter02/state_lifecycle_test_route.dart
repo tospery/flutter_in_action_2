@@ -1,15 +1,16 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
 
-class CounterWidget extends StatefulWidget {
+class StateLifecycleTestRoute extends StatefulWidget {
   final int initValue;
-  const CounterWidget({super.key, this.initValue = 0});
+  const StateLifecycleTestRoute({super.key, this.initValue = 0});
 
   @override
-  State<CounterWidget> createState() => _CounterWidgetState();
+  State<StateLifecycleTestRoute> createState() =>
+      _StateLifecycleTestRouteState();
 }
 
-class _CounterWidgetState extends State<CounterWidget> {
+class _StateLifecycleTestRouteState extends State<StateLifecycleTestRoute> {
   int _counter = 0;
 
   @override
@@ -34,7 +35,7 @@ class _CounterWidgetState extends State<CounterWidget> {
   }
 
   @override
-  void didUpdateWidget(CounterWidget oldWidget) {
+  void didUpdateWidget(StateLifecycleTestRoute oldWidget) {
     super.didUpdateWidget(oldWidget);
     print("didUpdateWidget ");
   }
