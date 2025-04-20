@@ -8,6 +8,22 @@ import 'package:flutter_in_action_2/chapter02/cupertino_test_route.dart'
     deferred as cupertino_test_route;
 import 'package:flutter_in_action_2/chapter02/router_test_route.dart'
     deferred as router_test_route;
+import 'package:flutter_in_action_2/chapter03/text_route.dart'
+    deferred as text_route;
+import 'package:flutter_in_action_2/chapter03/button_route.dart'
+    deferred as button_route;
+import 'package:flutter_in_action_2/chapter03/image_and_icon_route.dart'
+    deferred as image_and_icon_route;
+import 'package:flutter_in_action_2/chapter03/icon_fonts_route.dart'
+    deferred as icon_fonts_route;
+import 'package:flutter_in_action_2/chapter03/switch_and_checkbox_route.dart'
+    deferred as switch_and_checkbox_route;
+import 'package:flutter_in_action_2/chapter03/focus_test_route.dart'
+    deferred as focus_test_route;
+import 'package:flutter_in_action_2/chapter03/form_test_route.dart'
+    deferred as form_test_route;
+import 'package:flutter_in_action_2/chapter03/progress_route.dart'
+    deferred as progress_route;
 
 void main() {
   runApp(const MyApp());
@@ -130,6 +146,50 @@ Map<String, WidgetBuilder> routers = {
   "非命名路由的传值方式": (context) {
     return ContainerAsyncRouterPage(router_test_route.loadLibrary(), (context) {
       return router_test_route.RouterTestRoute();
+    });
+  },
+  "文本及样式": (context) {
+    return ContainerAsyncRouterPage(text_route.loadLibrary(), (context) {
+      return text_route.TextRoute();
+    });
+  },
+  "按钮": (context) {
+    return ContainerAsyncRouterPage(button_route.loadLibrary(), (context) {
+      return button_route.ButtonRoute();
+    });
+  },
+  "图片": (context) {
+    return ContainerAsyncRouterPage(image_and_icon_route.loadLibrary(), (
+      context,
+    ) {
+      return image_and_icon_route.ImageAndIconRoute();
+    });
+  },
+  "ICON": (context) {
+    return ContainerAsyncRouterPage(icon_fonts_route.loadLibrary(), (context) {
+      return icon_fonts_route.IconFontsRoute();
+    });
+  },
+  "单选开关和复选框": (context) {
+    return ContainerAsyncRouterPage(switch_and_checkbox_route.loadLibrary(), (
+      context,
+    ) {
+      return switch_and_checkbox_route.SwitchAndCheckBoxRoute();
+    });
+  },
+  "TextField的焦点处理": (context) {
+    return ContainerAsyncRouterPage(focus_test_route.loadLibrary(), (context) {
+      return focus_test_route.FocusTestRoute();
+    });
+  },
+  "Form表单": (context) {
+    return ContainerAsyncRouterPage(form_test_route.loadLibrary(), (context) {
+      return form_test_route.FormTestRoute();
+    });
+  },
+  "进度指示器": (context) {
+    return ContainerAsyncRouterPage(progress_route.loadLibrary(), (context) {
+      return progress_route.ProgressRoute();
     });
   },
 };
