@@ -24,6 +24,20 @@ import 'package:flutter_in_action_2/chapter03/form_test_route.dart'
     deferred as form_test_route;
 import 'package:flutter_in_action_2/chapter03/progress_route.dart'
     deferred as progress_route;
+import 'package:flutter_in_action_2/chapter04/size_constraints_route.dart'
+    deferred as size_constraints_route;
+import 'package:flutter_in_action_2/chapter04/center_column_route.dart'
+    deferred as center_column_route;
+import 'package:flutter_in_action_2/chapter04/wrap_and_flow_route.dart'
+    deferred as wrap_and_flow_route;
+import 'package:flutter_in_action_2/chapter04/stack_route.dart'
+    deferred as stack_route;
+import 'package:flutter_in_action_2/chapter04/align_route.dart'
+    deferred as align_route;
+import 'package:flutter_in_action_2/chapter04/layout_builder_route.dart'
+    deferred as layout_builder_route;
+import 'package:flutter_in_action_2/chapter04/after_layout_route.dart'
+    deferred as after_layout_route;
 
 void main() {
   runApp(const MyApp());
@@ -190,6 +204,51 @@ Map<String, WidgetBuilder> routers = {
   "进度指示器": (context) {
     return ContainerAsyncRouterPage(progress_route.loadLibrary(), (context) {
       return progress_route.ProgressRoute();
+    });
+  },
+  "尺寸限制布局": (context) {
+    return ContainerAsyncRouterPage(size_constraints_route.loadLibrary(), (
+      context,
+    ) {
+      return size_constraints_route.SizeConstraintsRoute();
+    });
+  },
+  "线性布局": (context) {
+    return ContainerAsyncRouterPage(center_column_route.loadLibrary(), (
+      context,
+    ) {
+      return center_column_route.CenterColumnRoute();
+    });
+  },
+  "流式布局": (context) {
+    return ContainerAsyncRouterPage(wrap_and_flow_route.loadLibrary(), (
+      context,
+    ) {
+      return wrap_and_flow_route.WrapAndFlowRoute();
+    });
+  },
+  "层叠布局": (context) {
+    return ContainerAsyncRouterPage(stack_route.loadLibrary(), (context) {
+      return stack_route.StackRoute();
+    });
+  },
+  "对齐和相对定位": (context) {
+    return ContainerAsyncRouterPage(align_route.loadLibrary(), (context) {
+      return align_route.AlignRoute();
+    });
+  },
+  "自定义布局（LayoutBuilder）": (context) {
+    return ContainerAsyncRouterPage(layout_builder_route.loadLibrary(), (
+      context,
+    ) {
+      return layout_builder_route.LayoutBuilderRoute();
+    });
+  },
+  "自定义布局（AfterLayout）": (context) {
+    return ContainerAsyncRouterPage(after_layout_route.loadLibrary(), (
+      context,
+    ) {
+      return after_layout_route.AfterLayoutRoute();
     });
   },
 };
