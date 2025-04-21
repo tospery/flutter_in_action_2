@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/layout_log_print.dart';
 
 class LayoutBuilderRoute extends StatelessWidget {
   const LayoutBuilderRoute({super.key});
@@ -15,7 +16,7 @@ class LayoutBuilderRoute extends StatelessWidget {
         children: [
           SizedBox(width: 190, child: ResponsiveColumn(children: children)),
           ResponsiveColumn(children: children),
-          // const LayoutLogPrint(child: Text("flutter@wendux")),
+          LayoutLogPrint(child: Text("flutter@wendux")),
           //CustomSingleChildLayout
         ],
       ),
