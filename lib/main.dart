@@ -38,6 +38,20 @@ import 'package:flutter_in_action_2/chapter04/layout_builder_route.dart'
     deferred as layout_builder_route;
 import 'package:flutter_in_action_2/chapter04/after_layout_route.dart'
     deferred as after_layout_route;
+import 'package:flutter_in_action_2/chapter05/padding_test_route.dart'
+    deferred as padding_test_route;
+import 'package:flutter_in_action_2/chapter05/decorated_box_route.dart'
+    deferred as decorated_box_route;
+import 'package:flutter_in_action_2/chapter05/transform_route.dart'
+    deferred as transform_route;
+import 'package:flutter_in_action_2/chapter05/container_route.dart'
+    deferred as container_route;
+import 'package:flutter_in_action_2/chapter05/clip_route.dart'
+    deferred as clip_route;
+import 'package:flutter_in_action_2/chapter05/fitted_box_route.dart'
+    deferred as fitted_box_route;
+import 'package:flutter_in_action_2/chapter05/scaffold_route.dart'
+    deferred as scaffold_route;
 
 void main() {
   runApp(const MyApp());
@@ -249,6 +263,45 @@ Map<String, WidgetBuilder> routers = {
       context,
     ) {
       return after_layout_route.AfterLayoutRoute();
+    });
+  },
+  "Padding（边距容器）": (context) {
+    return ContainerAsyncRouterPage(padding_test_route.loadLibrary(), (
+      context,
+    ) {
+      return padding_test_route.PaddingTestRoute();
+    });
+  },
+  "DecoratedBox（装饰容器）": (context) {
+    return ContainerAsyncRouterPage(decorated_box_route.loadLibrary(), (
+      context,
+    ) {
+      return decorated_box_route.DecoratedBoxRoute();
+    });
+  },
+  "Transform（变换容器）": (context) {
+    return ContainerAsyncRouterPage(transform_route.loadLibrary(), (context) {
+      return transform_route.TransformRoute();
+    });
+  },
+  "Container（普通容器）": (context) {
+    return ContainerAsyncRouterPage(container_route.loadLibrary(), (context) {
+      return container_route.ContainerRoute();
+    });
+  },
+  "Clip（裁剪容器）": (context) {
+    return ContainerAsyncRouterPage(clip_route.loadLibrary(), (context) {
+      return clip_route.ClipRoute();
+    });
+  },
+  "FittedBox（适配容器）": (context) {
+    return ContainerAsyncRouterPage(fitted_box_route.loadLibrary(), (context) {
+      return fitted_box_route.FittedBoxRoute();
+    });
+  },
+  "Scaffold（脚手架）": (context) {
+    return ContainerAsyncRouterPage(scaffold_route.loadLibrary(), (context) {
+      return scaffold_route.ScaffoldRoute();
     });
   },
 };
