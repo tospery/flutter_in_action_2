@@ -52,6 +52,22 @@ import 'package:flutter_in_action_2/chapter05/fitted_box_route.dart'
     deferred as fitted_box_route;
 import 'package:flutter_in_action_2/chapter05/scaffold_route.dart'
     deferred as scaffold_route;
+import 'package:flutter_in_action_2/chapter06/single_child_scrollview_test_route.dart'
+    deferred as single_child_scrollview_test_route;
+import 'package:flutter_in_action_2/chapter06/fixed_extent_list.dart'
+    deferred as fixed_extent_list;
+import 'package:flutter_in_action_2/chapter06/infinite_listview.dart'
+    deferred as infinite_listview;
+import 'package:flutter_in_action_2/chapter06/scroll_notification_test_route.dart'
+    deferred as scroll_notification_test_route;
+import 'package:flutter_in_action_2/chapter06/animated_list_route.dart'
+    deferred as animated_list_route;
+import 'package:flutter_in_action_2/chapter06/infinite_gridview.dart'
+    deferred as infinite_gridview;
+import 'package:flutter_in_action_2/chapter06/pageview_test.dart'
+    deferred as pageview_test;
+import 'package:flutter_in_action_2/chapter06/keep_alive_test.dart'
+    deferred as keep_alive_test;
 
 void main() {
   runApp(const MyApp());
@@ -302,6 +318,54 @@ Map<String, WidgetBuilder> routers = {
   "Scaffold（脚手架）": (context) {
     return ContainerAsyncRouterPage(scaffold_route.loadLibrary(), (context) {
       return scaffold_route.ScaffoldRoute();
+    });
+  },
+  "SingleChildScrollView示例": (context) {
+    return ContainerAsyncRouterPage(
+      single_child_scrollview_test_route.loadLibrary(),
+      (context) {
+        return single_child_scrollview_test_route.SingleChildScrollViewTestRoute();
+      },
+    );
+  },
+  "ListView-固定高度": (context) {
+    return ContainerAsyncRouterPage(fixed_extent_list.loadLibrary(), (context) {
+      return fixed_extent_list.FixedExtentList();
+    });
+  },
+  "ListView-加载更多": (context) {
+    return ContainerAsyncRouterPage(infinite_listview.loadLibrary(), (context) {
+      return infinite_listview.InfiniteListView();
+    });
+  },
+  "ListView-滚动通知": (context) {
+    return ContainerAsyncRouterPage(
+      scroll_notification_test_route.loadLibrary(),
+      (context) {
+        return scroll_notification_test_route.ScrollNotificationTestRoute();
+      },
+    );
+  },
+  "AnimatedList": (context) {
+    return ContainerAsyncRouterPage(animated_list_route.loadLibrary(), (
+      context,
+    ) {
+      return animated_list_route.AnimatedListRoute();
+    });
+  },
+  "GridView-加载更多": (context) {
+    return ContainerAsyncRouterPage(infinite_gridview.loadLibrary(), (context) {
+      return infinite_gridview.InfiniteGridView();
+    });
+  },
+  "PageView": (context) {
+    return ContainerAsyncRouterPage(pageview_test.loadLibrary(), (context) {
+      return pageview_test.PageViewTest();
+    });
+  },
+  "ListView-缓存子项": (context) {
+    return ContainerAsyncRouterPage(keep_alive_test.loadLibrary(), (context) {
+      return keep_alive_test.KeepAliveTest();
     });
   },
 };

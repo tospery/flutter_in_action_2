@@ -1,0 +1,23 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_in_action_2/utils/layout_log_print.dart';
+
+class FixedExtentList extends StatelessWidget {
+  const FixedExtentList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("ListView-固定高度")),
+      body: ListView.builder(
+        // itemExtent: 56,
+        prototypeItem: ListTile(title: Text("1")),
+        itemBuilder: (context, index) {
+          return LayoutLogPrint(
+            tag: index,
+            child: ListTile(title: Text("$index")),
+          );
+        },
+      ),
+    );
+  }
+}
