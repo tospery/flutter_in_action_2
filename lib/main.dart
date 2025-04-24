@@ -68,6 +68,8 @@ import 'package:flutter_in_action_2/chapter06/pageview_test.dart'
     deferred as pageview_test;
 import 'package:flutter_in_action_2/chapter06/keep_alive_test.dart'
     deferred as keep_alive_test;
+import 'package:flutter_in_action_2/chapter06/tabview_route.dart'
+    deferred as tabview_route;
 
 void main() {
   runApp(const MyApp());
@@ -366,6 +368,11 @@ Map<String, WidgetBuilder> routers = {
   "ListView-缓存子项": (context) {
     return ContainerAsyncRouterPage(keep_alive_test.loadLibrary(), (context) {
       return keep_alive_test.KeepAliveTest();
+    });
+  },
+  "TabView示例": (context) {
+    return ContainerAsyncRouterPage(tabview_route.loadLibrary(), (context) {
+      return tabview_route.TabViewRoute();
     });
   },
 };
