@@ -70,6 +70,10 @@ import 'package:flutter_in_action_2/chapter06/keep_alive_test.dart'
     deferred as keep_alive_test;
 import 'package:flutter_in_action_2/chapter06/tabview_route.dart'
     deferred as tabview_route;
+import 'package:flutter_in_action_2/chapter06/custom_scrollview_test_route.dart'
+    deferred as custom_scrollview_test_route;
+import 'package:flutter_in_action_2/chapter06/persistent_header_route.dart'
+    deferred as persistent_header_route;
 
 void main() {
   runApp(const MyApp());
@@ -373,6 +377,21 @@ Map<String, WidgetBuilder> routers = {
   "TabView示例": (context) {
     return ContainerAsyncRouterPage(tabview_route.loadLibrary(), (context) {
       return tabview_route.TabViewRoute();
+    });
+  },
+  "CustomScrollView-普通示例": (context) {
+    return ContainerAsyncRouterPage(
+      custom_scrollview_test_route.loadLibrary(),
+      (context) {
+        return custom_scrollview_test_route.CustomScrollViewTestRoute();
+      },
+    );
+  },
+  "CustomScrollView-固定头部": (context) {
+    return ContainerAsyncRouterPage(persistent_header_route.loadLibrary(), (
+      context,
+    ) {
+      return persistent_header_route.PersistentHeaderRoute();
     });
   },
 };

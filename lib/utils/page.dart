@@ -25,6 +25,9 @@ class Page {
 
   Widget build(BuildContext context) {
     Widget widget = builder(context);
+    if (withScaffold) {
+      widget = Scaffold(appBar: AppBar(title: Text(title)), body: widget);
+    }
     // if (withScaffold) {
     //   widget = PageScaffold(
     //     title: title,
