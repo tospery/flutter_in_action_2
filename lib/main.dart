@@ -74,6 +74,18 @@ import 'package:flutter_in_action_2/chapter06/custom_scrollview_test_route.dart'
     deferred as custom_scrollview_test_route;
 import 'package:flutter_in_action_2/chapter06/persistent_header_route.dart'
     deferred as persistent_header_route;
+import 'package:flutter_in_action_2/chapter06/sliver_flexible_header_route.dart'
+    deferred as sliver_flexible_header_route;
+import 'package:flutter_in_action_2/chapter06/sliver_persistent_header_to_box_route.dart'
+    deferred as sliver_persistent_header_to_box_route;
+import 'package:flutter_in_action_2/chapter06/nested_scrollview_route.dart'
+    deferred as nested_scrollview_route;
+import 'package:flutter_in_action_2/chapter06/scrollview_configuration.dart'
+    deferred as scrollview_configuration;
+import 'package:flutter_in_action_2/chapter06/pullrefresh_test_route.dart'
+    deferred as pullrefresh_test_route;
+import 'package:flutter_in_action_2/chapter06/pullrefresh_box_route.dart'
+    deferred as pullrefresh_box_route;
 
 void main() {
   runApp(const MyApp());
@@ -392,6 +404,50 @@ Map<String, WidgetBuilder> routers = {
       context,
     ) {
       return persistent_header_route.PersistentHeaderRoute();
+    });
+  },
+  "自定义Sliver（一）SliverFlexibleHeader": (context) {
+    return ContainerAsyncRouterPage(
+      sliver_flexible_header_route.loadLibrary(),
+      (context) {
+        return sliver_flexible_header_route.SliverFlexibleHeaderRoute();
+      },
+    );
+  },
+  "自定义Sliver（一）SliverPersistentHeaderToBox": (context) {
+    return ContainerAsyncRouterPage(
+      sliver_persistent_header_to_box_route.loadLibrary(),
+      (context) {
+        return sliver_persistent_header_to_box_route.SliverPersistentHeaderToBoxRoute();
+      },
+    );
+  },
+  "NestedScrollView示例": (context) {
+    return ContainerAsyncRouterPage(nested_scrollview_route.loadLibrary(), (
+      context,
+    ) {
+      return nested_scrollview_route.NestedScrollViewRoute();
+    });
+  },
+  "ScrollView配置": (context) {
+    return ContainerAsyncRouterPage(scrollview_configuration.loadLibrary(), (
+      context,
+    ) {
+      return scrollview_configuration.ScrollViewConfiguration();
+    });
+  },
+  "下拉刷新（一）": (context) {
+    return ContainerAsyncRouterPage(pullrefresh_test_route.loadLibrary(), (
+      context,
+    ) {
+      return pullrefresh_test_route.PullRefreshTestRoute();
+    });
+  },
+  "下拉刷新（二）": (context) {
+    return ContainerAsyncRouterPage(pullrefresh_box_route.loadLibrary(), (
+      context,
+    ) {
+      return pullrefresh_box_route.PullRefreshBoxRoute();
     });
   },
 };
