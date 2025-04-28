@@ -1,453 +1,294 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_in_action_2/chapter02/state_lifecycle_test_route.dart'
-    deferred as state_lifecycle_test_route;
-import 'package:flutter_in_action_2/chapter02/get_state_object_route.dart'
-    deferred as get_state_object_route;
-import 'package:flutter_in_action_2/chapter02/cupertino_test_route.dart'
-    deferred as cupertino_test_route;
-import 'package:flutter_in_action_2/chapter02/router_test_route.dart'
-    deferred as router_test_route;
-import 'package:flutter_in_action_2/chapter03/text_route.dart'
-    deferred as text_route;
-import 'package:flutter_in_action_2/chapter03/button_route.dart'
-    deferred as button_route;
-import 'package:flutter_in_action_2/chapter03/image_and_icon_route.dart'
-    deferred as image_and_icon_route;
-import 'package:flutter_in_action_2/chapter03/icon_fonts_route.dart'
-    deferred as icon_fonts_route;
-import 'package:flutter_in_action_2/chapter03/switch_and_checkbox_route.dart'
-    deferred as switch_and_checkbox_route;
-import 'package:flutter_in_action_2/chapter03/focus_test_route.dart'
-    deferred as focus_test_route;
-import 'package:flutter_in_action_2/chapter03/form_test_route.dart'
-    deferred as form_test_route;
-import 'package:flutter_in_action_2/chapter03/progress_route.dart'
-    deferred as progress_route;
-import 'package:flutter_in_action_2/chapter04/size_constraints_route.dart'
-    deferred as size_constraints_route;
-import 'package:flutter_in_action_2/chapter04/center_column_route.dart'
-    deferred as center_column_route;
-import 'package:flutter_in_action_2/chapter04/wrap_and_flow_route.dart'
-    deferred as wrap_and_flow_route;
-import 'package:flutter_in_action_2/chapter04/stack_route.dart'
-    deferred as stack_route;
-import 'package:flutter_in_action_2/chapter04/align_route.dart'
-    deferred as align_route;
-import 'package:flutter_in_action_2/chapter04/layout_builder_route.dart'
-    deferred as layout_builder_route;
-import 'package:flutter_in_action_2/chapter04/after_layout_route.dart'
-    deferred as after_layout_route;
-import 'package:flutter_in_action_2/chapter05/padding_test_route.dart'
-    deferred as padding_test_route;
-import 'package:flutter_in_action_2/chapter05/decorated_box_route.dart'
-    deferred as decorated_box_route;
-import 'package:flutter_in_action_2/chapter05/transform_route.dart'
-    deferred as transform_route;
-import 'package:flutter_in_action_2/chapter05/container_route.dart'
-    deferred as container_route;
-import 'package:flutter_in_action_2/chapter05/clip_route.dart'
-    deferred as clip_route;
-import 'package:flutter_in_action_2/chapter05/fitted_box_route.dart'
-    deferred as fitted_box_route;
-import 'package:flutter_in_action_2/chapter05/scaffold_route.dart'
-    deferred as scaffold_route;
-import 'package:flutter_in_action_2/chapter06/single_child_scrollview_test_route.dart'
-    deferred as single_child_scrollview_test_route;
-import 'package:flutter_in_action_2/chapter06/fixed_extent_list.dart'
-    deferred as fixed_extent_list;
-import 'package:flutter_in_action_2/chapter06/infinite_listview.dart'
-    deferred as infinite_listview;
-import 'package:flutter_in_action_2/chapter06/scroll_notification_test_route.dart'
-    deferred as scroll_notification_test_route;
-import 'package:flutter_in_action_2/chapter06/animated_list_route.dart'
-    deferred as animated_list_route;
-import 'package:flutter_in_action_2/chapter06/infinite_gridview.dart'
-    deferred as infinite_gridview;
-import 'package:flutter_in_action_2/chapter06/pageview_test.dart'
-    deferred as pageview_test;
-import 'package:flutter_in_action_2/chapter06/keep_alive_test.dart'
-    deferred as keep_alive_test;
-import 'package:flutter_in_action_2/chapter06/tabview_route.dart'
-    deferred as tabview_route;
-import 'package:flutter_in_action_2/chapter06/custom_scrollview_test_route.dart'
-    deferred as custom_scrollview_test_route;
-import 'package:flutter_in_action_2/chapter06/persistent_header_route.dart'
-    deferred as persistent_header_route;
-import 'package:flutter_in_action_2/chapter06/sliver_flexible_header_route.dart'
-    deferred as sliver_flexible_header_route;
-import 'package:flutter_in_action_2/chapter06/sliver_persistent_header_to_box_route.dart'
-    deferred as sliver_persistent_header_to_box_route;
-import 'package:flutter_in_action_2/chapter06/nested_scrollview_route.dart'
-    deferred as nested_scrollview_route;
-import 'package:flutter_in_action_2/chapter06/scrollview_configuration.dart'
-    deferred as scrollview_configuration;
-import 'package:flutter_in_action_2/chapter06/pullrefresh_test_route.dart'
-    deferred as pullrefresh_test_route;
-import 'package:flutter_in_action_2/chapter06/pullrefresh_box_route.dart'
-    deferred as pullrefresh_box_route;
+import 'dart:async';
+import 'package:flutter/material.dart' hide Page;
+import 'package:webview_flutter/webview_flutter.dart';
+import 'common.dart';
+import 'routes.dart';
+import 'chapter14/draw_main.dart' as custom;
+import 'package:flukit/flukit.dart';
 
 void main() {
-  runApp(const MyApp());
+  // custom.main();
+  runZoned(
+    () => runApp(const MyApp()),
+    zoneSpecification: ZoneSpecification(
+      print: (Zone self, ZoneDelegate parent, Zone zone, String line) {
+        parent.print(zone, line);
+        // Intercept `print` function and redirect log.
+        logEmitter.value = LogInfo(false, line);
+      },
+      handleUncaughtError: (Zone self, ZoneDelegate parent, Zone zone,
+          Object error, StackTrace stackTrace) {
+        parent.print(zone, '${error.toString()} $stackTrace');
+        // Redirect error log event when error.
+        logEmitter.value = LogInfo(true, error.toString());
+      },
+    ),
+  );
+
+  var onError = FlutterError.onError;
+  FlutterError.onError = (FlutterErrorDetails details) {
+    onError?.call(details);
+    // Redirect error log event when error.
+    logEmitter.value = LogInfo(true, details.toString());
+  };
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
+
+  // This widget is the root of your application.
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        primarySwatch: Colors.blue,
+        //platform: TargetPlatform.android,
       ),
-      home: const MyHomePage(title: 'Flutter实战（第二版）'),
-      routes: routers,
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List<Widget> _generateItem(BuildContext context, List<Page> children) {
+    return children.map<Widget>((page) {
+      return ListTile(
+        title: Text(page.title),
+        trailing: const Icon(Icons.keyboard_arrow_right),
+        onTap: () => page.openPage(context),
+      );
+    }).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
-    var routeLists = routers.keys.toList();
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
-      body: ListView.builder(
-        itemBuilder: (context, index) {
-          return InkWell(
-            onTap: () {
-              Navigator.of(context).pushNamed(routeLists[index]);
-            },
-            child: Card(
-              child: Container(
-                alignment: Alignment.centerLeft,
-                margin: EdgeInsets.symmetric(horizontal: 10),
-                height: 50,
-                child: Text(routers.keys.toList()[index]),
-              ),
+        appBar: AppBar(
+          title: const Text('Flutter实战'),
+        ),
+        body: ListView(
+          children: <Widget>[
+            ExpansionTile(
+              title: const Text("第一个Flutter应用"),
+              children: _generateItem(context, [
+                Page("计数器", const CounterRoute(), withScaffold: false),
+                Page("路由传值", const RouterTestRoute()),
+                Page("State生命周期", const StateLifecycleTest()),
+                Page("子树中获取State对象", const GetStateObjectRoute(),
+                    withScaffold: false),
+                Page("Cupertino Demo", const CupertinoTestRoute(),
+                    withScaffold: false),
+              ]),
             ),
-          );
-        },
-        itemCount: routers.length,
-      ),
-    );
-  }
-}
-
-class ContainerAsyncRouterPage extends StatelessWidget {
-  final Future libraryFuture;
-
-  final WidgetBuilder child;
-
-  const ContainerAsyncRouterPage(this.libraryFuture, this.child, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: libraryFuture,
-      builder: (c, s) {
-        if (s.connectionState == ConnectionState.done) {
-          if (s.hasError) {
-            return Scaffold(
-              appBar: AppBar(),
-              body: Container(
-                alignment: Alignment.center,
-                child: Text(
-                  'Error: ${s.error}',
-                  style: TextStyle(color: Colors.red),
+            ExpansionTile(
+              title: const Text("基础组件"),
+              children: _generateItem(context, [
+                // PageInfo("Context测试",  ContextRoute(), withScaffold: false),
+                // PageInfo("Widget树中获取State对象",  RetrieveStateRoute(), withScaffold: false),
+                Page("文本、字体样式", const TextRoute()),
+                Page("按钮", const ButtonRoute()),
+                Page("图片伸缩", const ImageAndIconRoute()),
+                Page("ICON fonts", const IconFontsRoute()),
+                Page("单选开关和复选框", const SwitchAndCheckBoxRoute()),
+                Page("输入框", const FocusTestRoute(), showLog: false),
+                Page("Form", const FormTestRoute(), showLog: false),
+                Page("进度条", const ProgressRoute()),
+              ]),
+            ),
+            ExpansionTile(
+              title: const Text("布局类组件"),
+              children: _generateItem(context, [
+                Page(
+                  "约束",
+                  const SizeConstraintsRoute(),
+                  withScaffold: false,
                 ),
-              ),
-            );
-          }
-          return child.call(context);
-        }
-        return Scaffold(
-          appBar: AppBar(),
-          body: Container(
-            alignment: Alignment.center,
-            child: CircularProgressIndicator(),
-          ),
-        );
-      },
-    );
+                Page("Column居中", const CenterColumnRoute()),
+                Page("流式布局", const WrapAndFlowRoute()),
+                Page("层叠布局", const StackRoute()),
+                Page("表格布局", const TableRoute()),
+                Page("对齐及相对定位", const AlignRoute()),
+                Page("LayoutBuilder", const LayoutBuilderRoute(), padding: false),
+                Page("AfterLayout", const AfterLayoutRoute()),
+              ]),
+            ),
+            ExpansionTile(
+              title: const Text("容器类组件"),
+              children: _generateItem(context, [
+                Page("填充Padding", const PaddingTestRoute()),
+                Page("DecoratedBox", const DecoratedBoxRoute()),
+                Page("变换", const TransformRoute()),
+                Page("Container", const ContainerRoute()),
+                Page("FittedBox", const FittedBoxRoute()),
+                Page("剪裁", const ClipRoute()),
+                Page(
+                  "Scaffold、TabBar、底部导航",
+                  const ScaffoldRoute(),
+                  withScaffold: false,
+                ),
+              ]),
+            ),
+            ExpansionTile(
+              title: const Text("可滚动组件"),
+              children: _generateItem(context, [
+                Page(
+                  "SingleChildScrollView",
+                  const SingleChildScrollViewTestRoute(),
+                  padding: false,
+                ),
+                Page("InfiniteListView", const InfiniteListView(), padding: false),
+                Page("可滚动组件的通用配置", const ScrollViewConfiguration()),
+                Page("列表项固定高度列表", const FixedExtentList(), padding: false),
+                Page("AnimatedList", const AnimatedListRoute(), padding: false),
+                Page("InfiniteGridView", const InfiniteGridView(), padding: false),
+                Page("PageView", const PageViewTest(), padding: false),
+                Page("KeepAlive Test", const KeepAliveTest(), padding: false),
+                Page("TabBarView", const TabViewRoute()),
+                Page("滚动监听", const ScrollNotificationTestRoute(), padding: false),
+                Page(
+                  "CustomScrollView",
+                  const CustomScrollViewTestRoute(),
+                  padding: false,
+                  showLog: false,
+                ),
+                Page(
+                  "PersistentHeaderRoute",
+                  const PersistentHeaderRoute(),
+                  padding: false,
+                  showLog: false,
+                ),
+                Page("SliverPersistentHeaderToBox",
+                    const SliverPersistentHeaderToBoxRoute(),
+                    padding: false),
+                Page("SliverFlexibleHeader", const SliverFlexibleHeaderRoute(),
+                    padding: false),
+                Page("NestedScrollView", const NestedScrollViewRoute(),
+                    padding: false),
+                Page(
+                  "PullRefresh",
+                  const PullRefreshTestRoute(),
+                  padding: false,
+                ),
+                Page(
+                  "CustomPullRefresh",
+                  const PullRefreshBoxRoute(),
+                  padding: false,
+                ),
+                //PageInfo("pullrefresh",  PullRefreshRoute()),
+              ]),
+            ),
+            ExpansionTile(
+              title: const Text("功能性组件"),
+              children: _generateItem(context, [
+                Page("导航返回拦截", const WillPopScopeTestRoute()),
+                Page("数据共享(inheritedWidget)", const InheritedWidgetTestRoute()),
+                Page("跨组件状态管理(Provider)", const ProviderRoute()),
+                Page("颜色和MaterialColor", const ColorRoute(), withScaffold: false),
+                Page("主题-Theme", const ThemeTestRoute(), withScaffold: false),
+                Page("ValueListenableBuilder", const ValueListenableRoute(),
+                    withScaffold: false),
+                Page("FutureBuilder和StreamBuilder",
+                    const FutureAndStreamBuilderRoute()),
+                Page("对话框", const DialogTestRoute()),
+              ]),
+            ),
+            ExpansionTile(
+              title: const Text("事件处理与通知"),
+              children: _generateItem(context, [
+                Page("原生指针事件", const PointerRoute(), padding: false),
+                Page("手势识别", const GestureRoute(), padding: false),
+                Page("PointerDownListener", const PointerDownListenerRoute()),
+                Page("Stack 点击测试", const StackEventTest(),
+                    padding: false, showLog: false),
+                Page("通知(Notification)", const NotificationRoute()),
+                Page("事件冲突", const EventConflictTest()),
+              ]),
+            ),
+            ExpansionTile(
+              title: const Text("动画"),
+              children: _generateItem(context, [
+                Page("放大动画-原始版", const ScaleAnimationRoute()),
+                Page("放大动画-AnimatedWidget版", const ScaleAnimationRoute1()),
+                Page("放大动画-AnimatedBuilder版", const ScaleAnimationRoute2()),
+                Page("放大动画-GrowTransition版", const GrowTransitionRoute()),
+                Page("Hero动画", const HeroAnimationRoute(), padding: false),
+                Page("交织动画(Stagger Animation)", const StaggerRoute()),
+                Page(
+                    "动画切换组件(AnimatedSwitcher)", const AnimatedSwitcherCounterRoute()),
+                Page("动画切换组件高级用法", const AnimatedSwitcherRoute()),
+                Page("动画过渡组件", const AnimatedWidgetsTest()),
+              ]),
+            ),
+            ExpansionTile(
+              title: const Text("自定义组件"),
+              children: _generateItem(context, [
+                Page("GradientButton", const GradientButtonRoute()),
+                Page("Material APP", const ScaffoldRoute(), withScaffold: false),
+                Page("旋转容器：TurnBox", const TurnBoxRoute()),
+                Page("CustomPaint", const CustomPaintRoute()),
+                Page("自绘控件：圆形渐变进度条", const GradientCircularProgressRoute()),
+                Page("自绘带动画控件：CustomCheckBox", const CustomCheckboxTest()),
+                Page("自绘带动画控件：DoneWidget", const DoneWidgetTestRoute()),
+                Page("水印", const WatermarkRoute(),
+                    padding: false, showLog: false),
+              ]),
+            ),
+            ExpansionTile(
+              title: const Text("文件与网络"),
+              children: _generateItem(context, [
+                Page("文件操作", FileOperationRoute(), withScaffold: false),
+                Page("Http请求", HttpTestRoute()),
+                Page("WebSocket", WebSocketRoute(), withScaffold: false),
+                Page("Socket", const SocketRoute()),
+              ]),
+            ),
+            ExpansionTile(
+              title: const Text("其它"),
+              children: _generateItem(context, [
+                Page(
+                  "WebView",
+                  const WebViewTest(),
+                  padding: false,
+                  withScaffold: false,
+                  //showLog: false,
+                ),
+              ]),
+            ),
+            ExpansionTile(
+              title: const Text("Flutter原理"),
+              children: _generateItem(context, [
+                Page("图片加载原理与缓存", ImageInternalTestRoute()),
+                Page("CustomCenter", const MyCenterRoute()),
+                Page("LeftRightBox", const LeftRightBoxTestRoute()),
+                Page("约束详解", const ConstraintsTest(), withScaffold: false),
+                Page("AccurateSizedBox", const AccurateSizedBoxRoute()),
+                Page("StateChangeTest", const StateChangeTest()),
+                Page("RepaintBoundary", const RepaintBoundaryTest()),
+                Page("CompositingBits Test", const CustomRotatedBoxTest()),
+                Page("Paint原理", const PaintTest()),
+              ]),
+            ),
+
+            // ExpansionTile(
+            //   title: Text("包与插件"),
+            //   children: _generateItem(context, [
+            //     PageInfo("相机",  CameraExampleHome(),
+            //         withScaffold: false),
+            //     PageInfo(
+            //         "PlatformView示例（webview）",  PlatformViewRoute(),
+            //         padding: false),
+            //   ]),
+            // ),
+          ],
+        ));
   }
 }
-
-Map<String, WidgetBuilder> routers = {
-  "State生命周期": (context) {
-    return ContainerAsyncRouterPage(state_lifecycle_test_route.loadLibrary(), (
-      context,
-    ) {
-      return state_lifecycle_test_route.StateLifecycleTestRoute();
-    });
-  },
-  "在widget树中获取State对象": (context) {
-    return ContainerAsyncRouterPage(get_state_object_route.loadLibrary(), (
-      context,
-    ) {
-      return get_state_object_route.GetStateObjectRoute();
-    });
-  },
-  "一个简单的Cupertino组件": (context) {
-    return ContainerAsyncRouterPage(cupertino_test_route.loadLibrary(), (
-      context,
-    ) {
-      return cupertino_test_route.CupertinoTestRoute();
-    });
-  },
-  "非命名路由的传值方式": (context) {
-    return ContainerAsyncRouterPage(router_test_route.loadLibrary(), (context) {
-      return router_test_route.RouterTestRoute();
-    });
-  },
-  "文本及样式": (context) {
-    return ContainerAsyncRouterPage(text_route.loadLibrary(), (context) {
-      return text_route.TextRoute();
-    });
-  },
-  "按钮": (context) {
-    return ContainerAsyncRouterPage(button_route.loadLibrary(), (context) {
-      return button_route.ButtonRoute();
-    });
-  },
-  "图片": (context) {
-    return ContainerAsyncRouterPage(image_and_icon_route.loadLibrary(), (
-      context,
-    ) {
-      return image_and_icon_route.ImageAndIconRoute();
-    });
-  },
-  "ICON": (context) {
-    return ContainerAsyncRouterPage(icon_fonts_route.loadLibrary(), (context) {
-      return icon_fonts_route.IconFontsRoute();
-    });
-  },
-  "单选开关和复选框": (context) {
-    return ContainerAsyncRouterPage(switch_and_checkbox_route.loadLibrary(), (
-      context,
-    ) {
-      return switch_and_checkbox_route.SwitchAndCheckBoxRoute();
-    });
-  },
-  "TextField的焦点处理": (context) {
-    return ContainerAsyncRouterPage(focus_test_route.loadLibrary(), (context) {
-      return focus_test_route.FocusTestRoute();
-    });
-  },
-  "Form表单": (context) {
-    return ContainerAsyncRouterPage(form_test_route.loadLibrary(), (context) {
-      return form_test_route.FormTestRoute();
-    });
-  },
-  "进度指示器": (context) {
-    return ContainerAsyncRouterPage(progress_route.loadLibrary(), (context) {
-      return progress_route.ProgressRoute();
-    });
-  },
-  "尺寸限制布局": (context) {
-    return ContainerAsyncRouterPage(size_constraints_route.loadLibrary(), (
-      context,
-    ) {
-      return size_constraints_route.SizeConstraintsRoute();
-    });
-  },
-  "线性布局": (context) {
-    return ContainerAsyncRouterPage(center_column_route.loadLibrary(), (
-      context,
-    ) {
-      return center_column_route.CenterColumnRoute();
-    });
-  },
-  "流式布局": (context) {
-    return ContainerAsyncRouterPage(wrap_and_flow_route.loadLibrary(), (
-      context,
-    ) {
-      return wrap_and_flow_route.WrapAndFlowRoute();
-    });
-  },
-  "层叠布局": (context) {
-    return ContainerAsyncRouterPage(stack_route.loadLibrary(), (context) {
-      return stack_route.StackRoute();
-    });
-  },
-  "对齐和相对定位": (context) {
-    return ContainerAsyncRouterPage(align_route.loadLibrary(), (context) {
-      return align_route.AlignRoute();
-    });
-  },
-  "自定义布局（LayoutBuilder）": (context) {
-    return ContainerAsyncRouterPage(layout_builder_route.loadLibrary(), (
-      context,
-    ) {
-      return layout_builder_route.LayoutBuilderRoute();
-    });
-  },
-  "自定义布局（AfterLayout）": (context) {
-    return ContainerAsyncRouterPage(after_layout_route.loadLibrary(), (
-      context,
-    ) {
-      return after_layout_route.AfterLayoutRoute();
-    });
-  },
-  "Padding（边距容器）": (context) {
-    return ContainerAsyncRouterPage(padding_test_route.loadLibrary(), (
-      context,
-    ) {
-      return padding_test_route.PaddingTestRoute();
-    });
-  },
-  "DecoratedBox（装饰容器）": (context) {
-    return ContainerAsyncRouterPage(decorated_box_route.loadLibrary(), (
-      context,
-    ) {
-      return decorated_box_route.DecoratedBoxRoute();
-    });
-  },
-  "Transform（变换容器）": (context) {
-    return ContainerAsyncRouterPage(transform_route.loadLibrary(), (context) {
-      return transform_route.TransformRoute();
-    });
-  },
-  "Container（普通容器）": (context) {
-    return ContainerAsyncRouterPage(container_route.loadLibrary(), (context) {
-      return container_route.ContainerRoute();
-    });
-  },
-  "Clip（裁剪容器）": (context) {
-    return ContainerAsyncRouterPage(clip_route.loadLibrary(), (context) {
-      return clip_route.ClipRoute();
-    });
-  },
-  "FittedBox（适配容器）": (context) {
-    return ContainerAsyncRouterPage(fitted_box_route.loadLibrary(), (context) {
-      return fitted_box_route.FittedBoxRoute();
-    });
-  },
-  "Scaffold（脚手架）": (context) {
-    return ContainerAsyncRouterPage(scaffold_route.loadLibrary(), (context) {
-      return scaffold_route.ScaffoldRoute();
-    });
-  },
-  "SingleChildScrollView示例": (context) {
-    return ContainerAsyncRouterPage(
-      single_child_scrollview_test_route.loadLibrary(),
-      (context) {
-        return single_child_scrollview_test_route.SingleChildScrollViewTestRoute();
-      },
-    );
-  },
-  "ListView-固定高度": (context) {
-    return ContainerAsyncRouterPage(fixed_extent_list.loadLibrary(), (context) {
-      return fixed_extent_list.FixedExtentList();
-    });
-  },
-  "ListView-加载更多": (context) {
-    return ContainerAsyncRouterPage(infinite_listview.loadLibrary(), (context) {
-      return infinite_listview.InfiniteListView();
-    });
-  },
-  "ListView-滚动通知": (context) {
-    return ContainerAsyncRouterPage(
-      scroll_notification_test_route.loadLibrary(),
-      (context) {
-        return scroll_notification_test_route.ScrollNotificationTestRoute();
-      },
-    );
-  },
-  "AnimatedList": (context) {
-    return ContainerAsyncRouterPage(animated_list_route.loadLibrary(), (
-      context,
-    ) {
-      return animated_list_route.AnimatedListRoute();
-    });
-  },
-  "GridView-加载更多": (context) {
-    return ContainerAsyncRouterPage(infinite_gridview.loadLibrary(), (context) {
-      return infinite_gridview.InfiniteGridView();
-    });
-  },
-  "PageView": (context) {
-    return ContainerAsyncRouterPage(pageview_test.loadLibrary(), (context) {
-      return pageview_test.PageViewTest();
-    });
-  },
-  "ListView-缓存子项": (context) {
-    return ContainerAsyncRouterPage(keep_alive_test.loadLibrary(), (context) {
-      return keep_alive_test.KeepAliveTest();
-    });
-  },
-  "TabView示例": (context) {
-    return ContainerAsyncRouterPage(tabview_route.loadLibrary(), (context) {
-      return tabview_route.TabViewRoute();
-    });
-  },
-  "CustomScrollView-普通示例": (context) {
-    return ContainerAsyncRouterPage(
-      custom_scrollview_test_route.loadLibrary(),
-      (context) {
-        return custom_scrollview_test_route.CustomScrollViewTestRoute();
-      },
-    );
-  },
-  "CustomScrollView-固定头部": (context) {
-    return ContainerAsyncRouterPage(persistent_header_route.loadLibrary(), (
-      context,
-    ) {
-      return persistent_header_route.PersistentHeaderRoute();
-    });
-  },
-  "自定义Sliver（一）SliverFlexibleHeader": (context) {
-    return ContainerAsyncRouterPage(
-      sliver_flexible_header_route.loadLibrary(),
-      (context) {
-        return sliver_flexible_header_route.SliverFlexibleHeaderRoute();
-      },
-    );
-  },
-  "自定义Sliver（一）SliverPersistentHeaderToBox": (context) {
-    return ContainerAsyncRouterPage(
-      sliver_persistent_header_to_box_route.loadLibrary(),
-      (context) {
-        return sliver_persistent_header_to_box_route.SliverPersistentHeaderToBoxRoute();
-      },
-    );
-  },
-  "NestedScrollView示例": (context) {
-    return ContainerAsyncRouterPage(nested_scrollview_route.loadLibrary(), (
-      context,
-    ) {
-      return nested_scrollview_route.NestedScrollViewRoute();
-    });
-  },
-  "ScrollView配置": (context) {
-    return ContainerAsyncRouterPage(scrollview_configuration.loadLibrary(), (
-      context,
-    ) {
-      return scrollview_configuration.ScrollViewConfiguration();
-    });
-  },
-  "下拉刷新（一）": (context) {
-    return ContainerAsyncRouterPage(pullrefresh_test_route.loadLibrary(), (
-      context,
-    ) {
-      return pullrefresh_test_route.PullRefreshTestRoute();
-    });
-  },
-  "下拉刷新（二）": (context) {
-    return ContainerAsyncRouterPage(pullrefresh_box_route.loadLibrary(), (
-      context,
-    ) {
-      return pullrefresh_box_route.PullRefreshBoxRoute();
-    });
-  },
-};
