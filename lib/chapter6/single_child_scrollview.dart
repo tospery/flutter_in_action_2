@@ -13,14 +13,12 @@ class SingleChildScrollViewTestRoute extends StatelessWidget {
         child: Center(
           child: Column(
             //动态创建一个List<Widget>
-            children: str
-                .split("")
-                //每一个字母都用一个Text显示,字体大小为原来的两倍
-                .map((c) => Text(
-                      c,
-                      textScaleFactor: 2.0,
-                    ))
-                .toList(),
+            children:
+                str
+                    .split("")
+                    //每一个字母都用一个Text显示,字体大小为原来的两倍
+                    .map((c) => Text(c, textScaler: TextScaler.linear(2)))
+                    .toList(),
           ),
         ),
       ),

@@ -18,11 +18,8 @@ class DoneWidget extends LeafRenderObjectWidget {
 
   @override
   RenderObject createRenderObject(BuildContext context) {
-    return RenderDoneObject(
-      strokeWidth,
-      color,
-      outline,
-    )..animationStatus = AnimationStatus.forward; // 创建时执行正向动画
+    return RenderDoneObject(strokeWidth, color, outline)
+      ..animationStatus = AnimationStatus.forward; // 创建时执行正向动画
   }
 
   @override
@@ -41,11 +38,7 @@ class RenderDoneObject extends RenderBox with RenderObjectAnimationMixin {
 
   ValueChanged<bool>? onChanged;
 
-  RenderDoneObject(
-    this.strokeWidth,
-    this.color,
-    this.outline,
-  );
+  RenderDoneObject(this.strokeWidth, this.color, this.outline);
 
   // 动画执行时间为 300ms
   @override
@@ -55,13 +48,18 @@ class RenderDoneObject extends RenderBox with RenderObjectAnimationMixin {
   void doPaint(PaintingContext context, Offset offset) {
     // 可以对动画运用曲线
     Curve curve = Curves.easeIn;
-    final _progress = curve.transform(progress);
+    final myProgress = curve.transform(progress);
 
     Rect rect = offset & size;
-    final paint = Paint()
-      ..isAntiAlias = true
-      ..style = outline ? PaintingStyle.stroke : PaintingStyle.fill //填充
-      ..color = color;
+    final paint =
+        Paint()
+          ..isAntiAlias = true
+          ..style =
+              outline
+                  ? PaintingStyle.stroke
+                  : PaintingStyle
+                      .fill //填充
+          ..color = color;
 
     if (outline) {
       paint.strokeWidth = strokeWidth;
@@ -78,8 +76,10 @@ class RenderDoneObject extends RenderBox with RenderObjectAnimationMixin {
 
     final path = Path();
 
-    Offset firstOffset =
-        Offset(rect.left + rect.width / 6, rect.top + rect.height / 2.1);
+    Offset firstOffset = Offset(
+      rect.left + rect.width / 6,
+      rect.top + rect.height / 2.1,
+    );
 
     final secondOffset = Offset(
       rect.left + rect.width / 2.5,
@@ -90,14 +90,11 @@ class RenderDoneObject extends RenderBox with RenderObjectAnimationMixin {
 
     const adjustProgress = .6;
     //画 "勾"
-    if (_progress < adjustProgress) {
+    if (myProgress < adjustProgress) {
       //第一个点到第二个点的连线做动画(第二个点不停的变)
-      Offset _secondOffset = Offset.lerp(
-        firstOffset,
-        secondOffset,
-        _progress / adjustProgress,
-      )!;
-      path.lineTo(_secondOffset.dx, _secondOffset.dy);
+      Offset secondOffset0 =
+          Offset.lerp(firstOffset, secondOffset, myProgress / adjustProgress)!;
+      path.lineTo(secondOffset0.dx, secondOffset0.dy);
     } else {
       //链接第一个点和第二个点
       path.lineTo(secondOffset.dx, secondOffset.dy);
@@ -106,12 +103,13 @@ class RenderDoneObject extends RenderBox with RenderObjectAnimationMixin {
         rect.right - rect.width / 5,
         rect.top + rect.height / 3.5,
       );
-      Offset _lastOffset = Offset.lerp(
-        secondOffset,
-        lastOffset,
-        (progress - adjustProgress) / (1 - adjustProgress),
-      )!;
-      path.lineTo(_lastOffset.dx, _lastOffset.dy);
+      Offset lastOffset0 =
+          Offset.lerp(
+            secondOffset,
+            lastOffset,
+            (progress - adjustProgress) / (1 - adjustProgress),
+          )!;
+      path.lineTo(lastOffset0.dx, lastOffset0.dy);
     }
     context.canvas.drawPath(path, paint..style = PaintingStyle.stroke);
   }

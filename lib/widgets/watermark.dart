@@ -192,16 +192,16 @@ class TextWaterMarkPainter extends WaterMarkPainter {
   @override
   Size paintUnit(Canvas canvas, double devicePixelRatio) {
     //根据屏幕 devicePixelRatio 对文本样式中长度相关的一些值乘以devicePixelRatio
-    final _textStyle = _handleTextStyle(devicePixelRatio);
-    final _padding = padding * devicePixelRatio;
+    final textStyle = _handleTextStyle(devicePixelRatio);
+    final padding0 = padding * devicePixelRatio;
 
     //构建文本画笔
     TextPainter painter = TextPainter(
       textDirection: TextDirection.ltr,
-      textScaleFactor: devicePixelRatio,
+      textScaler: TextScaler.linear(devicePixelRatio),
     );
     //添加文本和样式
-    painter.text = TextSpan(text: text, style: _textStyle);
+    painter.text = TextSpan(text: text, style: textStyle);
     //对文本进行布局
     painter.layout();
 
@@ -224,28 +224,28 @@ class TextWaterMarkPainter extends WaterMarkPainter {
     final adjustHeight = textHeight * cos;
 
     if (orgSin >= 0) {
-      canvas.translate(adjustWidth + _padding.left, _padding.top);
+      canvas.translate(adjustWidth + padding0.left, padding0.top);
     } else {
-      canvas.translate(_padding.left, height + _padding.top);
+      canvas.translate(padding0.left, height + padding0.top);
     }
     canvas.rotate(radians);
     // 绘制文本
     painter.paint(canvas, Offset.zero);
 
     return Size(
-      width + adjustWidth + _padding.horizontal,
-      height + adjustHeight + _padding.vertical,
+      width + adjustWidth + padding0.horizontal,
+      height + adjustHeight + padding0.vertical,
     );
   }
 
   TextStyle _handleTextStyle(double devicePixelRatio) {
     var style = textStyle;
-    double _scale(attr) => attr == null ? 1.0 : devicePixelRatio;
+    double scale(attr) => attr == null ? 1.0 : devicePixelRatio;
     return style.apply(
-      decorationThicknessFactor: _scale(style.decorationThickness),
-      letterSpacingFactor: _scale(style.letterSpacing),
-      wordSpacingFactor: _scale(style.wordSpacing),
-      heightFactor: _scale(style.height),
+      decorationThicknessFactor: scale(style.decorationThickness),
+      letterSpacingFactor: scale(style.letterSpacing),
+      wordSpacingFactor: scale(style.wordSpacing),
+      heightFactor: scale(style.height),
     );
   }
 

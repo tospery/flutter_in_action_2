@@ -6,13 +6,23 @@ class NestedScrollViewRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListPage(children: [
-      Page('嵌套 ListView', const NestedListView(), withScaffold: false),
-      Page('Snap 效果的AppBar(bug版)', const SnapAppBarWithBug(), withScaffold: false),
-      Page('Snap 效果的AppBar（无bug）', const SnapAppBar2(), withScaffold: false),
-      Page('嵌套 TabBarView', const NestedTabBarView1(), withScaffold: false),
-      Page('复杂的嵌套 TabBarView', const NestedTabBarView2(), withScaffold: false),
-    ]);
+    return ListPage(
+      children: [
+        Page('嵌套 ListView', const NestedListView(), withScaffold: false),
+        Page(
+          'Snap 效果的AppBar(bug版)',
+          const SnapAppBarWithBug(),
+          withScaffold: false,
+        ),
+        Page('Snap 效果的AppBar（无bug）', const SnapAppBar2(), withScaffold: false),
+        Page('嵌套 TabBarView', const NestedTabBarView1(), withScaffold: false),
+        Page(
+          '复杂的嵌套 TabBarView',
+          const NestedTabBarView2(),
+          withScaffold: false,
+        ),
+      ],
+    );
   }
 }
 
@@ -64,20 +74,17 @@ class SnapAppBarWithBug extends StatelessWidget {
               snap: true,
               expandedHeight: 200,
               flexibleSpace: FlexibleSpaceBar(
-                background: Image.asset(
-                  "./imgs/sea.png",
-                  fit: BoxFit.cover,
-                ),
+                background: Image.asset("./imgs/sea.png", fit: BoxFit.cover),
               ),
               forceElevated: innerBoxIsScrolled,
-            )
+            ),
           ];
         },
-        body: Builder(builder: (BuildContext context) {
-          return CustomScrollView(
-            slivers: <Widget>[buildSliverList(100)],
-          );
-        }),
+        body: Builder(
+          builder: (BuildContext context) {
+            return CustomScrollView(slivers: <Widget>[buildSliverList(100)]);
+          },
+        ),
       ),
     );
   }
@@ -115,24 +122,23 @@ class _SnapAppBar2State extends State<SnapAppBar2> {
                 // pinned: true,  // 放开注释，然后看日志
                 expandedHeight: 200,
                 flexibleSpace: FlexibleSpaceBar(
-                  background: Image.asset(
-                    "./imgs/sea.png",
-                    fit: BoxFit.cover,
-                  ),
+                  background: Image.asset("./imgs/sea.png", fit: BoxFit.cover),
                 ),
                 forceElevated: innerBoxIsScrolled,
               ),
             ),
           ];
         },
-        body: LayoutBuilder(builder: (BuildContext context, cons) {
-          return CustomScrollView(
-            slivers: <Widget>[
-              SliverOverlapInjector(handle: handle),
-              buildSliverList(100)
-            ],
-          );
-        }),
+        body: LayoutBuilder(
+          builder: (BuildContext context, cons) {
+            return CustomScrollView(
+              slivers: <Widget>[
+                SliverOverlapInjector(handle: handle),
+                buildSliverList(100),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
@@ -150,10 +156,10 @@ class NestedTabBarView1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _tabs = <String>['猜你喜欢', '今日特价', '发现更多'];
+    final tabs = <String>['猜你喜欢', '今日特价', '发现更多'];
     // 构建 tabBar
     return DefaultTabController(
-      length: _tabs.length, // This is the number of tabs.
+      length: tabs.length, // This is the number of tabs.
       child: Scaffold(
         body: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -172,7 +178,6 @@ class NestedTabBarView1 extends StatelessWidget {
               //     ),
               //   ),
               // ),
-
               SliverAppBar(
                 title: const Text('商城'),
                 // floating: true,
@@ -180,31 +185,32 @@ class NestedTabBarView1 extends StatelessWidget {
                 pinned: true,
                 forceElevated: true,
                 bottom: TabBar(
-                  tabs: _tabs.map((String name) => Tab(text: name)).toList(),
+                  tabs: tabs.map((String name) => Tab(text: name)).toList(),
                 ),
               ),
             ];
           },
           body: TabBarView(
-            children: _tabs.map((String name) {
-              return Builder(
-                builder: (BuildContext context) {
-                  return CustomScrollView(
-                    key: PageStorageKey<String>(name),
-                    slivers: <Widget>[
-                      // SliverOverlapInjector(
-                      //   handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
-                      //       context),
-                      // ),
-                      SliverPadding(
-                        padding: const EdgeInsets.all(8.0),
-                        sliver: buildSliverList(50),
-                      ),
-                    ],
+            children:
+                tabs.map((String name) {
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return CustomScrollView(
+                        key: PageStorageKey<String>(name),
+                        slivers: <Widget>[
+                          // SliverOverlapInjector(
+                          //   handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
+                          //       context),
+                          // ),
+                          SliverPadding(
+                            padding: const EdgeInsets.all(8.0),
+                            sliver: buildSliverList(50),
+                          ),
+                        ],
+                      );
+                    },
                   );
-                },
-              );
-            }).toList(),
+                }).toList(),
           ),
         ),
       ),
@@ -217,16 +223,18 @@ class NestedTabBarView2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _tabs = <String>['猜你喜欢', '今日特价', '发现更多'];
+    final tabs = <String>['猜你喜欢', '今日特价', '发现更多'];
     // 构建 tabBar
     return DefaultTabController(
-      length: _tabs.length, // This is the number of tabs.
+      length: tabs.length, // This is the number of tabs.
       child: Theme(
         data: Theme.of(context).copyWith(brightness: Brightness.dark),
         child: Scaffold(
           body: NestedScrollView(
-            headerSliverBuilder:
-                (BuildContext context, bool innerBoxIsScrolled) {
+            headerSliverBuilder: (
+              BuildContext context,
+              bool innerBoxIsScrolled,
+            ) {
               return <Widget>[
                 const SliverAppBar(
                   title: Text('Floating Nested SliverAppBar'),
@@ -240,14 +248,18 @@ class NestedTabBarView2 extends StatelessWidget {
                   delegate: SliverHeaderDelegate.builder(
                     maxHeight: 56,
                     minHeight: 56,
-                    builder: (BuildContext context, double shrinkOffset,
-                        bool overlapsContent) {
+                    builder: (
+                      BuildContext context,
+                      double shrinkOffset,
+                      bool overlapsContent,
+                    ) {
                       return Material(
                         child: Container(
-                          color: overlapsContent
-                              ? Colors.white
-                              : Theme.of(context).canvasColor,
-                          child: buildTabBar(_tabs),
+                          color:
+                              overlapsContent
+                                  ? Colors.white
+                                  : Theme.of(context).canvasColor,
+                          child: buildTabBar(tabs),
                         ),
                         elevation: overlapsContent ? 4 : 0,
                         shadowColor: Theme.of(context).appBarTheme.shadowColor,
@@ -258,22 +270,23 @@ class NestedTabBarView2 extends StatelessWidget {
               ];
             },
             body: TabBarView(
-              children: _tabs.map((String name) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return CustomScrollView(
-                      key: PageStorageKey<String>(name),
-                      physics: const ClampingScrollPhysics(),
-                      slivers: <Widget>[
-                        SliverPadding(
-                          padding: const EdgeInsets.all(8.0),
-                          sliver: buildSliverList(30),
-                        ),
-                      ],
+              children:
+                  tabs.map((String name) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return CustomScrollView(
+                          key: PageStorageKey<String>(name),
+                          physics: const ClampingScrollPhysics(),
+                          slivers: <Widget>[
+                            SliverPadding(
+                              padding: const EdgeInsets.all(8.0),
+                              sliver: buildSliverList(30),
+                            ),
+                          ],
+                        );
+                      },
                     );
-                  },
-                );
-              }).toList(),
+                  }).toList(),
             ),
           ),
         ),

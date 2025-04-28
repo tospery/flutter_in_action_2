@@ -9,8 +9,6 @@
 # packages, and plugins designed to encourage good coding practices.
 analyzer:
   errors:
-    no_leading_underscores_for_local_identifiers: ignore
-    deprecated_member_use: ignore
     use_super_parameters: ignore
     unused_import: ignore
     library_private_types_in_public_api: ignore
@@ -30,6 +28,7 @@ analyzer:
     prefer_generic_function_type_aliases: ignore
     prefer_final_fields: ignore
     prefer_collection_literals: ignore
+    deprecated_member_use: ignore
 include: package:flutter_lints/flutter.yaml
 
 linter:

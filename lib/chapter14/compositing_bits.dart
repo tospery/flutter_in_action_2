@@ -3,7 +3,6 @@ import 'dart:math' as math;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 
-
 class CustomRotatedBoxTest extends StatelessWidget {
   const CustomRotatedBoxTest({Key? key}) : super(key: key);
 
@@ -20,16 +19,12 @@ class CustomRotatedBoxTest extends StatelessWidget {
     //   ),
     // );
 
-
     return const Center(
-      child:  RepaintBoundary(
-        child: Text(
-          "A",
-          textScaleFactor: 5,
-        ),
+      child: RepaintBoundary(
+        child: Text("A", textScaler: TextScaler.linear(5)),
       ),
     );
-    
+
     // return const Center(
     //   child: const RotatedBox(
     //     quarterTurns: 2,
@@ -47,7 +42,8 @@ class CustomRotatedBoxTest extends StatelessWidget {
 }
 
 class CustomRotatedBox extends SingleChildRenderObjectWidget {
-  const CustomRotatedBox({Key? key, Widget? child}) : super(key: key, child: child);
+  const CustomRotatedBox({Key? key, Widget? child})
+    : super(key: key, child: child);
 
   @override
   RenderObject createRenderObject(BuildContext context) {
@@ -135,10 +131,11 @@ class CustomRenderRotatedBox extends RenderBox
       child!.layout(constraints, parentUsesSize: true);
       size = child!.size;
       //根据子组件大小计算出旋转矩阵
-      _paintTransform = Matrix4.identity()
-        ..translate(size.width / 2.0, size.height / 2.0)
-        ..rotateZ(math.pi / 2)
-        ..translate(-child!.size.width / 2.0, -child!.size.height / 2.0);
+      _paintTransform =
+          Matrix4.identity()
+            ..translate(size.width / 2.0, size.height / 2.0)
+            ..rotateZ(math.pi / 2)
+            ..translate(-child!.size.width / 2.0, -child!.size.height / 2.0);
     } else {
       size = constraints.smallest;
     }
@@ -152,19 +149,19 @@ class CustomRenderRotatedBox extends RenderBox
     context.paintChild(child!, offset);
   }
 
-
   //子树中递归查找是否存在绘制边界
   needCompositing() {
     bool result = false;
-    _visit(RenderObject child) {
+    visit(RenderObject child) {
       if (child.isRepaintBoundary) {
         result = true;
-        return ;
+        return;
       } else {
-        child.visitChildren(_visit);
+        child.visitChildren(visit);
       }
     }
-    visitChildren(_visit);
+
+    visitChildren(visit);
     return result;
   }
 
@@ -182,7 +179,6 @@ class CustomRenderRotatedBox extends RenderBox
       _transformLayer.layer = null;
     }
   }
-
 
   @override
   void dispose() {

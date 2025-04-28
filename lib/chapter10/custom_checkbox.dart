@@ -75,9 +75,14 @@ class RenderCustomCheckbox extends RenderBox {
   //背景动画时长占比（背景动画要在前40%的时间内执行完毕，之后执行打勾动画）
   final double bgAnimationInterval = .4;
 
-  RenderCustomCheckbox(this.strokeWidth, this.strokeColor, this.fillColor,
-      this.value, this.radius, this.onChanged)
-      : progress = value ? 1 : 0;
+  RenderCustomCheckbox(
+    this.strokeWidth,
+    this.strokeColor,
+    this.fillColor,
+    this.value,
+    this.radius,
+    this.onChanged,
+  ) : progress = value ? 1 : 0;
 
   @override
   void paint(PaintingContext context, Offset offset) {
@@ -91,23 +96,27 @@ class RenderCustomCheckbox extends RenderBox {
 
   void _drawBackground(PaintingContext context, Rect rect) {
     Color color = value ? fillColor : Colors.grey;
-    var paint = Paint()
-      ..isAntiAlias = true
-      ..style = PaintingStyle.fill //填充
-      ..strokeWidth
-      ..color = color;
+    var paint =
+        Paint()
+          ..isAntiAlias = true
+          ..style =
+              PaintingStyle
+                  .fill //填充
+          ..strokeWidth
+          ..color = color;
 
     final outer = RRect.fromRectXY(rect, radius, radius);
     var rects = [
       rect.inflate(-strokeWidth),
-      Rect.fromCenter(center: rect.center, width: 0, height: 0)
+      Rect.fromCenter(center: rect.center, width: 0, height: 0),
     ];
 
-    var rectProgress = Rect.lerp(
-      rects[0],
-      rects[1],
-      min(progress, bgAnimationInterval) / bgAnimationInterval,
-    )!;
+    var rectProgress =
+        Rect.lerp(
+          rects[0],
+          rects[1],
+          min(progress, bgAnimationInterval) / bgAnimationInterval,
+        )!;
 
     final inner = RRect.fromRectXY(rectProgress, 0, 0);
     // 画背景
@@ -126,22 +135,25 @@ class RenderCustomCheckbox extends RenderBox {
         rect.top + rect.height / 4,
       );
 
-      Offset _lastOffset = Offset.lerp(
-        secondOffset,
-        lastOffset,
-        (progress - bgAnimationInterval) / (1 - bgAnimationInterval),
-      )!;
+      Offset lastOffset0 =
+          Offset.lerp(
+            secondOffset,
+            lastOffset,
+            (progress - bgAnimationInterval) / (1 - bgAnimationInterval),
+          )!;
 
-      final path = Path()
-        ..moveTo(rect.left + rect.width / 7, rect.top + rect.height / 2)
-        ..lineTo(secondOffset.dx, secondOffset.dy)
-        ..lineTo(_lastOffset.dx, _lastOffset.dy);
+      final path =
+          Path()
+            ..moveTo(rect.left + rect.width / 7, rect.top + rect.height / 2)
+            ..lineTo(secondOffset.dx, secondOffset.dy)
+            ..lineTo(lastOffset0.dx, lastOffset0.dy);
 
-      final paint = Paint()
-        ..isAntiAlias = true
-        ..style = PaintingStyle.stroke
-        ..color = strokeColor
-        ..strokeWidth = strokeWidth;
+      final paint =
+          Paint()
+            ..isAntiAlias = true
+            ..style = PaintingStyle.stroke
+            ..color = strokeColor
+            ..strokeWidth = strokeWidth;
 
       context.canvas.drawPath(path, paint..style = PaintingStyle.stroke);
     }
@@ -152,7 +164,8 @@ class RenderCustomCheckbox extends RenderBox {
       // 需要在Flutter 当前frame 结束之前再执行，因为不能在绘制过程中又将组件标记为需要重绘
       SchedulerBinding.instance.addPostFrameCallback((Duration timeStamp) {
         if (_lastTimeStamp != null) {
-          double delta = (timeStamp.inMilliseconds - _lastTimeStamp!) /
+          double delta =
+              (timeStamp.inMilliseconds - _lastTimeStamp!) /
               duration.inMilliseconds;
           // 如果是反向动画，则 progress值要逐渐减小
           if (_animationStatus == AnimationStatus.reverse) {
@@ -194,7 +207,7 @@ class RenderCustomCheckbox extends RenderBox {
       pointerId = event.pointer;
     } else if (pointerId == event.pointer) {
       // 判断手指抬起时是在组件范围内的话才触发onChange
-      if(size.contains(event.localPosition)) {
+      if (size.contains(event.localPosition)) {
         onChanged?.call(!value);
       }
     }
