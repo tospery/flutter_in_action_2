@@ -1,0 +1,40 @@
+import 'package:flukit/flukit.dart';
+import 'package:flutter/material.dart';
+
+class GradientButtonRoute extends StatefulWidget {
+  const GradientButtonRoute({Key? key}) : super(key: key);
+
+  @override
+  _GradientButtonRouteState createState() => _GradientButtonRouteState();
+}
+
+class _GradientButtonRouteState extends State<GradientButtonRoute> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        GradientButton(
+          colors: const [Colors.orange, Colors.red],
+          child: const Text("Submit"),
+          onPressed: onTap,
+        ),
+        GradientButton(
+          colors: [Colors.lightGreen, Colors.green.shade700],
+          child: const Text("Submit"),
+          onPressed: onTap,
+        ),
+        GradientButton(
+          //borderRadius: const BorderRadius.all(Radius.circular(5)),
+          colors: [Colors.lightBlue.shade300, Colors.blueAccent],
+          child: const Text("Submit"),
+          onPressed: onTap,
+        ),
+      ],
+    );
+  }
+
+  onTap() {
+    print("button click");
+  }
+}
