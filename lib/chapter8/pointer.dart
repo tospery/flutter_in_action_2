@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart' hide Page;
-import 'package:flutter_in_action_2/page_scaffold.dart';
+import 'package:hi_core/hi_core.dart';
 import '../common.dart';
 
 class PointerRoute extends StatelessWidget {

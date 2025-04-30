@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_in_action_2/layout_log_print.dart';
+import 'package:hi_core/hi_core.dart';
 import '../common.dart';
 
 class ResponsiveColumn extends StatelessWidget {

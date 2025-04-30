@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_in_action_2/after_layout.dart';
+import 'package:hi_core/hi_core.dart';
 
 /// Scale the child from [minScale] to  [maxScale].
 ///

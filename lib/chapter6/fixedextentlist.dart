@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_in_action_2/layout_log_print.dart';
 import 'package:flutter_in_action_2/routes.dart';
+import 'package:hi_core/hi_core.dart';
 
 class FixedExtentList extends StatelessWidget {
   const FixedExtentList({Key? key}) : super(key: key);
