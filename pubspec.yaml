@@ -10,15 +10,6 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
-  english_words: ^4.0.0
-  image_picker: ^0.8.2
-  camera: 0.11.0+2
-  video_player: ^2.1.10
-  path_provider: ^2.0.2
-  web_socket_channel: ^2.1.0
-  webview_flutter: ^4.11.0
-  flukit:
-    path: ./sdk/flukit-3.0.1
 
 dev_dependencies:
   flutter_test:
