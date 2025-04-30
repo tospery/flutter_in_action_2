@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flukit/flukit.dart';
+import 'package:flutter_in_action_2/log_panel.dart';
 
 final logEmitter = ValueNotifier<LogInfo?>(null);
 

@@ -169,13 +169,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.9.3+4"
-  flukit:
-    dependency: "direct main"
-    description:
-      path: "../flukit/package_src"
-      relative: true
-    source: path
-    version: "3.0.1"
   flutter:
     dependency: "direct main"
     description: flutter

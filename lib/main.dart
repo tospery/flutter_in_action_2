@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart' hide Page;
+import 'package:flutter_in_action_2/log_panel.dart';
 import 'package:flutter_in_action_2/page_scaffold.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'common.dart';
 import 'routes.dart';
 import 'chapter14/draw_main.dart' as custom;
-import 'package:flukit/flukit.dart';
 
 void main() {
   // custom.main();

@@ -1,8 +1,7 @@
 import 'dart:ui';
-
-import 'package:flukit/flukit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_in_action_2/page_scaffold.dart';
+import 'package:flutter_in_action_2/widgets/index.dart';
 import '../routes.dart';
 import 'dart:math' as math;
 
