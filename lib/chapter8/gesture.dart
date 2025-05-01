@@ -1,21 +1,20 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart' hide Page;
-import 'package:hi_core/hi_core.dart';
-import '../common.dart';
+import 'package:hi_case/hi_case.dart';
 
 class GestureRoute extends StatelessWidget {
   const GestureRoute({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListPage(
+    return CaseList(
       children: [
-        Page('点击、双击、长按', const GestureTest()),
-        Page('拖动、滑动', _Drag()),
-        Page('单一方向拖动', _DragVertical()),
-        Page('缩放', const _Scale()),
-        Page('GestureRecognizer', const _GestureRecognizer()),
-        Page('手势冲突', _BothDirectionTest()),
+        Case('点击、双击、长按', const GestureTest()),
+        Case('拖动、滑动', _Drag()),
+        Case('单一方向拖动', _DragVertical()),
+        Case('缩放', const _Scale()),
+        Case('GestureRecognizer', const _GestureRecognizer()),
+        Case('手势冲突', _BothDirectionTest()),
       ],
     );
   }

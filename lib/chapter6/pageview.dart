@@ -1,8 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_in_action_2/widgets/index.dart';
-import 'package:hi_core/hi_core.dart';
-import '../routes.dart';
+import 'package:hi_case/hi_case.dart';
 import 'dart:math' as math;
 
 class PageViewTest extends StatefulWidget {
@@ -146,7 +145,7 @@ class _PageViewTestState extends State<PageViewTest> {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return PageScaffold(
+                          return CasePage(
                             title: 'xx',
                             body: const Center(child: Text('xx')),
                           );

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart' hide Page;
-import 'package:hi_core/hi_core.dart';
-import '../common.dart';
+import 'package:hi_case/hi_case.dart';
 
 class PointerRoute extends StatelessWidget {
   const PointerRoute({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListPage(children: [Page('显示移动偏移', const PointerMoveIndicator())]);
+    return CaseList(children: [Case('显示移动偏移', const PointerMoveIndicator())]);
   }
 }
 

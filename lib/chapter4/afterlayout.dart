@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hi_core/hi_core.dart';
-import '../common.dart';
+import 'package:hi_case/hi_case.dart';
 
 class AfterLayoutRoute extends StatefulWidget {
   const AfterLayoutRoute({Key? key}) : super(key: key);

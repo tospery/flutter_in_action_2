@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart' hide Page;
 import 'package:flutter_in_action_2/widgets/index.dart';
-import 'package:hi_core/hi_core.dart';
+import 'package:hi_case/hi_case.dart';
 import '../common.dart';
 
 class NestedScrollViewRoute extends StatelessWidget {
@@ -8,17 +8,17 @@ class NestedScrollViewRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListPage(
+    return CaseList(
       children: [
-        Page('嵌套 ListView', const NestedListView(), withScaffold: false),
-        Page(
+        Case('嵌套 ListView', const NestedListView(), withScaffold: false),
+        Case(
           'Snap 效果的AppBar(bug版)',
           const SnapAppBarWithBug(),
           withScaffold: false,
         ),
-        Page('Snap 效果的AppBar（无bug）', const SnapAppBar2(), withScaffold: false),
-        Page('嵌套 TabBarView', const NestedTabBarView1(), withScaffold: false),
-        Page(
+        Case('Snap 效果的AppBar（无bug）', const SnapAppBar2(), withScaffold: false),
+        Case('嵌套 TabBarView', const NestedTabBarView1(), withScaffold: false),
+        Case(
           '复杂的嵌套 TabBarView',
           const NestedTabBarView2(),
           withScaffold: false,

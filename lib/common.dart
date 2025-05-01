@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:hi_core/hi_core.dart';
+import 'package:hi_case/hi_case.dart';
 
 final logEmitter = ValueNotifier<LogInfo?>(null);
 

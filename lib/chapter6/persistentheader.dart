@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart' hide Page;
 import 'package:flutter_in_action_2/widgets/index.dart';
-import 'package:hi_core/hi_core.dart';
+import 'package:hi_case/hi_case.dart';
 import '../common.dart';
 
 class PersistentHeaderRoute extends StatelessWidget {
@@ -8,10 +8,10 @@ class PersistentHeaderRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListPage(
+    return CaseList(
       children: [
-        Page('SliverPersistentHeader示例1', wSample1(), padding: false),
-        Page(
+        Case('SliverPersistentHeader示例1', wSample1(), padding: false),
+        Case(
           'SliverPersistentHeader示例2',
           wSample2(context),
           withScaffold: false,

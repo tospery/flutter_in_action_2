@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart' hide Page;
-import 'package:hi_core/hi_core.dart';
-import '../common.dart';
+import 'package:hi_case/hi_case.dart';
 
 class HeroAnimationRoute extends StatelessWidget {
   const HeroAnimationRoute({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListPage(
+    return CaseList(
       children: [
-        Page('自实现Hero动画', const CustomHeroAnimation()),
-        Page('Flutter Hero动画', const HeroAnimationRouteA()),
+        Case('自实现Hero动画', const CustomHeroAnimation()),
+        Case('Flutter Hero动画', const HeroAnimationRouteA()),
       ],
     );
   }

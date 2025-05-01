@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart' hide Page;
-import 'package:hi_core/hi_core.dart';
+import 'package:hi_case/hi_case.dart';
 import '../common.dart';
 
 class CustomScrollViewTestRoute extends StatelessWidget {
@@ -7,12 +7,12 @@ class CustomScrollViewTestRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListPage(
+    return CaseList(
       children: [
-        Page('两个ListView', buildTwoListView()),
-        Page('合并两个list', buildTwoSliverList()),
-        Page('SliverAppBar', buildSliverAppBar(), withScaffold: false),
-        Page('顶部是PageView', buildWithPageView()),
+        Case('两个ListView', buildTwoListView()),
+        Case('合并两个list', buildTwoSliverList()),
+        Case('SliverAppBar', buildSliverAppBar(), withScaffold: false),
+        Case('顶部是PageView', buildWithPageView()),
       ],
     );
   }

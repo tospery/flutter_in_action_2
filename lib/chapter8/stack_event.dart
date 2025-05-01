@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart' hide Page;
 import 'package:flutter_in_action_2/widgets/index.dart';
-import 'package:hi_core/hi_core.dart';
-import '../common.dart';
+import 'package:hi_case/hi_case.dart';
 
 class StackEventTest extends StatelessWidget {
   const StackEventTest({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListPage(
+    return CaseList(
       children: [
-        Page('事件共享', const StickerTest()),
-        Page('水印', const _WaterMarkTest(), padding: false),
-        Page(
+        Case('事件共享', const StickerTest()),
+        Case('水印', const _WaterMarkTest(), padding: false),
+        Case(
           'HitTestBehaviorTest',
           const HitTestBehaviorTest(),
           padding: false,
         ),
-        Page('所有子节点都可以响应事件', const AllChildrenCanResponseEvent()),
-        Page('手势', const GestureHitTestBlockerTest()),
+        Case('所有子节点都可以响应事件', const AllChildrenCanResponseEvent()),
+        Case('手势', const GestureHitTestBlockerTest()),
       ],
     );
   }

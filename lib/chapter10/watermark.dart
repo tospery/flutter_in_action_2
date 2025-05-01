@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart' hide Page;
 import 'package:flutter_in_action_2/widgets/index.dart';
-import 'package:hi_core/hi_core.dart';
+import 'package:hi_case/hi_case.dart';
 import '../common.dart';
 
 class WatermarkRoute extends StatelessWidget {
@@ -8,19 +8,19 @@ class WatermarkRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListPage(
+    return CaseList(
       children: [
-        Page('测量文本宽高', wTextPainterTest(), showLog: true),
-        Page('文本水印', wTextWaterMark(context), padding: false),
-        Page('交错文本水印', wStaggerTextWaterMark(), padding: false),
-        Page('水印指定偏移', wTextWaterMarkWithOffset(), padding: false),
-        Page(
+        Case('测量文本宽高', wTextPainterTest(), showLog: true),
+        Case('文本水印', wTextWaterMark(context), padding: false),
+        Case('交错文本水印', wStaggerTextWaterMark(), padding: false),
+        Case('水印指定偏移', wTextWaterMarkWithOffset(), padding: false),
+        Case(
           'UnconstrainedBox,水印偏移后会溢出',
           wTextWaterMarkWithUnconstrainedBox(),
           padding: false,
         ),
-        Page('水印偏移-FittedBox', wTextWaterMarkWithFittedBox(), padding: false),
-        Page(
+        Case('水印偏移-FittedBox', wTextWaterMarkWithFittedBox(), padding: false),
+        Case(
           '水印指定-OverflowBox',
           wTextWaterMarkWithOverflowBox(),
           padding: false,

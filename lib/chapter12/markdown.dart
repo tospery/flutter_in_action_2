@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart' hide Page;
 import 'package:flutter_in_action_2/widgets/index.dart';
-import 'package:hi_core/hi_core.dart';
-import 'package:webview_flutter/webview_flutter.dart';
-import '../common.dart';
+import 'package:hi_case/hi_case.dart';
 
 class MarkdownRoute extends StatefulWidget {
   const MarkdownRoute({Key? key}) : super(key: key);
@@ -87,11 +85,11 @@ class _MarkdownRouteState extends State<MarkdownRoute> {
   }
 
   viewImage(context, String url) {
-    Page(
+    Case(
       '查看图片',
       ScaleView(child: Image.network(url), parentScrollableAxis: null),
       showLog: false,
       padding: false,
-    ).openPage(context);
+    ).openCase(context);
   }
 }

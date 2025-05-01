@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart' hide Page;
 import 'package:flutter_in_action_2/widgets/index.dart';
-import 'package:hi_core/hi_core.dart';
-import '../common.dart';
+import 'package:hi_case/hi_case.dart';
 
 class TabViewRoute extends StatelessWidget {
   const TabViewRoute({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListPage(
+    return CaseList(
       children: [
-        Page('TabBarView', const TabViewRoute1(), withScaffold: false),
-        Page(
+        Case('TabBarView', const TabViewRoute1(), withScaffold: false),
+        Case(
           'DefaultTabController',
           const TabViewRoute2(),
           withScaffold: false,
