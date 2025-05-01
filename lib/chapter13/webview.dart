@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewTest extends StatefulWidget {
   const WebViewTest({super.key});
@@ -9,8 +8,6 @@ class WebViewTest extends StatefulWidget {
 }
 
 class _WebViewTestState extends State<WebViewTest> {
-  late WebViewController _controller;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

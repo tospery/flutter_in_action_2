@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'dart:math' as math;
 
 class ScrollViewConfiguration extends StatefulWidget {
   const ScrollViewConfiguration({super.key});

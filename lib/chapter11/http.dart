@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 class HttpTestRoute extends StatefulWidget {
+  const HttpTestRoute({super.key});
+
   @override
   _HttpTestRouteState createState() => _HttpTestRouteState();
 }
@@ -24,7 +26,7 @@ class _HttpTestRouteState extends State<HttpTestRoute> {
           Container(
             width: MediaQuery.of(context).size.width - 50.0,
             child: Text(_text.replaceAll(RegExp(r"\s"), "")),
-          )
+          ),
         ],
       ),
     );
@@ -39,8 +41,9 @@ class _HttpTestRouteState extends State<HttpTestRoute> {
       //创建一个HttpClient
       HttpClient httpClient = HttpClient();
       //打开Http连接
-      HttpClientRequest request =
-          await httpClient.getUrl(Uri.parse("https://www.baidu.com"));
+      HttpClientRequest request = await httpClient.getUrl(
+        Uri.parse("https://www.baidu.com"),
+      );
       //使用iPhone的UA
       request.headers.add(
         "user-agent",

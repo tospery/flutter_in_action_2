@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart' hide Page;
 import 'package:flutter_in_action_2/widgets/index.dart';
 import 'package:hi_case/hi_case.dart';
-import '../common.dart';
 
 class WatermarkRoute extends StatelessWidget {
   const WatermarkRoute({super.key});

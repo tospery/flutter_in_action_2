@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
 
 class CustomCenter1 extends SingleChildRenderObjectWidget {
   const CustomCenter1({super.key, required Widget super.child});

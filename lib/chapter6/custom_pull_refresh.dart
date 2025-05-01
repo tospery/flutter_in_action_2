@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_in_action_2/widgets/pull_refresh.dart';
-import '../common.dart';
 
 class PullRefreshBoxRoute extends StatefulWidget {
   const PullRefreshBoxRoute({super.key});

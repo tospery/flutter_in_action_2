@@ -9,7 +9,6 @@ class ScaffoldRoute extends StatefulWidget {
 
 class _ScaffoldRouteState extends State<ScaffoldRoute>
     with SingleTickerProviderStateMixin {
-  int _selectedIndex = 1;
   late TabController _tabController;
   List tabs = ["新闻", "历史", "图片"];
 
@@ -73,12 +72,6 @@ class _ScaffoldRouteState extends State<ScaffoldRoute>
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
   }
 
   void _onAdd() {}

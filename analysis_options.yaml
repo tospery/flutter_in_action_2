@@ -19,10 +19,6 @@ analyzer:
     sort_child_properties_last: ignore
     unnecessary_const: ignore
     unnecessary_import: ignore
-    unused_element: ignore
-    unused_field: ignore
-    unused_import: ignore
-    use_key_in_widget_constructors: ignore
 include: package:flutter_lints/flutter.yaml
 
 linter:

@@ -10,17 +10,11 @@ class MarkdownRoute extends StatefulWidget {
 }
 
 class _MarkdownRouteState extends State<MarkdownRoute> {
-  late Future<String> _codeFuture;
   bool _isLight = true;
   bool _showLineNumber = true;
 
-  Future<String> _loadCode() async {
-    return DefaultAssetBundle.of(context).loadString('assets/test.md');
-  }
-
   @override
   void initState() {
-    _codeFuture = _loadCode();
     super.initState();
   }
 
