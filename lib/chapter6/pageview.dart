@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_in_action_2/widgets/index.dart';
 import 'package:hi_case/hi_case.dart';
@@ -48,7 +47,7 @@ class _PageViewTestState extends State<PageViewTest> {
   }
 
   Widget buildConfigPage(context) {
-    var size = MediaQueryData.fromWindow(window).size;
+    var size = MediaQueryData.fromView(View.of(context)).size;
     // return LayoutBuilder(builder: (context,constraints){
     //   print(constraints);
     //   return Text("");
@@ -263,7 +262,7 @@ class _PageState extends State<Page> {
   }
 
   Widget buildNumber() {
-    return Center(child: Text(widget.text, textScaleFactor: 5));
+    return Center(child: Text(widget.text, textScaler: TextScaler.linear(5)));
   }
 
   //

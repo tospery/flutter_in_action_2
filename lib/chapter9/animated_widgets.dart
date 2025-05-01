@@ -109,7 +109,7 @@ class _AnimatedWidgetsTestState extends State<AnimatedWidgetsTest> {
                 duration: duration,
                 child: TextButton(
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.blue),
+                    backgroundColor: WidgetStateProperty.all(Colors.blue),
                   ),
                   onPressed: () {
                     setState(() {

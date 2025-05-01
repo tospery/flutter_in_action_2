@@ -56,7 +56,7 @@ class _TabViewRoute1State extends State<TabViewRoute1>
               return KeepAliveWrapper(
                 child: Container(
                   alignment: Alignment.center,
-                  child: Text(e, textScaleFactor: 5),
+                  child: Text(e, textScaler: TextScaler.linear(5)),
                 ),
               );
             }).toList(),
@@ -92,7 +92,7 @@ class TabViewRoute2 extends StatelessWidget {
                 return KeepAliveWrapper(
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text(e, textScaleFactor: 5),
+                    child: Text(e, textScaler: TextScaler.linear(5)),
                   ),
                 );
               }).toList(),

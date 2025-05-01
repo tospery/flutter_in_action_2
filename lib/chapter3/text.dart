@@ -34,7 +34,7 @@ class _TextRouteState extends State<TextRoute> {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
-          const Text("Hello world", textScaleFactor: 1.5),
+          const Text("Hello world", textScaler: TextScaler.linear(1.5)),
           Text(
             "Hello world " * 6, //字符串重复六次
             textAlign: TextAlign.center,

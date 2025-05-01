@@ -19,7 +19,9 @@ class CustomRotatedBoxTest extends StatelessWidget {
     // );
 
     return const Center(
-      child: RepaintBoundary(child: Text("A", textScaleFactor: 5)),
+      child: RepaintBoundary(
+        child: Text("A", textScaler: TextScaler.linear(5)),
+      ),
     );
 
     // return const Center(
