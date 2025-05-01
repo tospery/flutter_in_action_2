@@ -112,9 +112,9 @@ class SliverPullRefreshIndicator extends StatefulWidget {
     double width = min(22, pulledExtent);
     if (refreshState == RefreshIndicatorMode.refresh) {
       widget = SizedBox(
-        child: const CircularProgressIndicator(strokeWidth: 2),
         width: width,
         height: width,
+        child: const CircularProgressIndicator(strokeWidth: 2),
       );
     } else {
       widget = Transform.rotate(

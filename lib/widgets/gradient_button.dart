@@ -59,6 +59,8 @@ class GradientButton extends StatelessWidget {
               child: DefaultTextStyle(
                 style: const TextStyle(fontWeight: FontWeight.bold),
                 child: Center(
+                  widthFactor: 1,
+                  heightFactor: 1,
                   child: DefaultTextStyle(
                     style: theme.textTheme.labelMedium!.copyWith(
                       color:
@@ -68,8 +70,6 @@ class GradientButton extends StatelessWidget {
                     ),
                     child: child,
                   ),
-                  widthFactor: 1,
-                  heightFactor: 1,
                 ),
               ),
             ),

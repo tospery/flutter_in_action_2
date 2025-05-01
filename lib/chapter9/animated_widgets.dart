@@ -89,6 +89,8 @@ class _AnimatedWidgetsTestState extends State<AnimatedWidgetsTest> {
                 ),
               ),
               AnimatedDefaultTextStyle(
+                style: _style,
+                duration: duration,
                 child: GestureDetector(
                   child: const Text("hello world"),
                   onTap: () {
@@ -101,8 +103,6 @@ class _AnimatedWidgetsTestState extends State<AnimatedWidgetsTest> {
                     });
                   },
                 ),
-                style: _style,
-                duration: duration,
               ),
               AnimatedOpacity(
                 opacity: _opacity,

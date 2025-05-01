@@ -24,12 +24,12 @@ class SliverPersistentHeaderToBoxRoute extends StatelessWidget {
     // 我们要从主题中获取一些颜色
     var theme = Theme.of(context);
     return Material(
+      elevation: fixed ? 4 : 0,
+      shadowColor: theme.appBarTheme.shadowColor,
       child: Container(
         color: fixed ? Colors.white : theme.canvasColor,
         child: wTitle('Title 1'),
       ),
-      elevation: fixed ? 4 : 0,
-      shadowColor: theme.appBarTheme.shadowColor,
     );
   }
 

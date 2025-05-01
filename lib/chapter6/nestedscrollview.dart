@@ -256,6 +256,8 @@ class NestedTabBarView2 extends StatelessWidget {
                       bool overlapsContent,
                     ) {
                       return Material(
+                        elevation: overlapsContent ? 4 : 0,
+                        shadowColor: Theme.of(context).appBarTheme.shadowColor,
                         child: Container(
                           color:
                               overlapsContent
@@ -263,8 +265,6 @@ class NestedTabBarView2 extends StatelessWidget {
                                   : Theme.of(context).canvasColor,
                           child: buildTabBar(_tabs),
                         ),
-                        elevation: overlapsContent ? 4 : 0,
-                        shadowColor: Theme.of(context).appBarTheme.shadowColor,
                       );
                     },
                   ),

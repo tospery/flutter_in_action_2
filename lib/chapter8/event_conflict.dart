@@ -75,7 +75,6 @@ RawGestureDetector customGestureDetector({
   Widget? child,
 }) {
   return RawGestureDetector(
-    child: child,
     gestures: {
       CustomTapGestureRecognizer:
           GestureRecognizerFactoryWithHandlers<CustomTapGestureRecognizer>(
@@ -86,5 +85,6 @@ RawGestureDetector customGestureDetector({
             },
           ),
     },
+    child: child,
   );
 }

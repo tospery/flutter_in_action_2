@@ -16,19 +16,19 @@ class _GradientButtonRouteState extends State<GradientButtonRoute> {
       children: <Widget>[
         GradientButton(
           colors: const [Colors.orange, Colors.red],
-          child: const Text("Submit"),
           onPressed: onTap,
+          child: const Text("Submit"),
         ),
         GradientButton(
           colors: [Colors.lightGreen, Colors.green.shade700],
-          child: const Text("Submit"),
           onPressed: onTap,
+          child: const Text("Submit"),
         ),
         GradientButton(
           //borderRadius: const BorderRadius.all(Radius.circular(5)),
           colors: [Colors.lightBlue.shade300, Colors.blueAccent],
-          child: const Text("Submit"),
           onPressed: onTap,
+          child: const Text("Submit"),
         ),
       ],
     );

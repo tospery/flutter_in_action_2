@@ -81,7 +81,7 @@ class _MarkdownRouteState extends State<MarkdownRoute> {
   viewImage(context, String url) {
     Case(
       '查看图片',
-      ScaleView(child: Image.network(url), parentScrollableAxis: null),
+      ScaleView(parentScrollableAxis: null, child: Image.network(url)),
       showLog: false,
       padding: false,
     ).openCase(context);

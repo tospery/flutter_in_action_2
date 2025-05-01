@@ -30,10 +30,7 @@ class WatermarkRoute extends StatelessWidget {
 
   Widget wTextPainterTest() {
     // 我们想提前知道 Text 组件的大小
-    Text text = const Text(
-      'flutter@wendux',
-      style: const TextStyle(fontSize: 18),
-    );
+    Text text = const Text('flutter@wendux', style: TextStyle(fontSize: 18));
     // 使用 TextPainter 来测量
     TextPainter painter = TextPainter(textDirection: TextDirection.ltr);
     // 将 Text 组件文本和样式透传给TextPainter

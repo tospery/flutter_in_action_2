@@ -51,8 +51,8 @@ class _GrowTransitionRouteState extends State<GrowTransitionRoute>
   @override
   Widget build(BuildContext context) {
     return GrowTransition(
-      child: Image.asset("imgs/avatar.png"),
       animation: animation,
+      child: Image.asset("imgs/avatar.png"),
     );
   }
 

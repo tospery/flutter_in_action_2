@@ -20,8 +20,8 @@ class _HttpTestRouteState extends State<HttpTestRoute> {
       child: Column(
         children: <Widget>[
           ElevatedButton(
-            child: Text("获取百度首页"),
             onPressed: _loading ? null : request,
+            child: Text("获取百度首页"),
           ),
           Container(
             width: MediaQuery.of(context).size.width - 50.0,

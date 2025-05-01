@@ -21,7 +21,7 @@ class _AnimatedSwitcherCounterRouteState
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 400),
             transitionBuilder: (Widget child, Animation<double> animation) {
-              return ScaleTransition(child: child, scale: animation);
+              return ScaleTransition(scale: animation, child: child);
             },
             child: Text(
               '$_count',

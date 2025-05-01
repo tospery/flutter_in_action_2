@@ -36,9 +36,9 @@ class PullRefreshTestRoute extends StatelessWidget {
     double width = min(25, pulledExtent);
     if (refreshState == RefreshIndicatorMode.refresh) {
       widget = SizedBox(
-        child: const CircularProgressIndicator(strokeWidth: 2),
         width: width,
         height: width,
+        child: const CircularProgressIndicator(strokeWidth: 2),
       );
     } else {
       widget = Transform.rotate(

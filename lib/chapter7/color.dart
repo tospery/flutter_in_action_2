@@ -69,6 +69,7 @@ class NavBar extends StatelessWidget {
           BoxShadow(color: Colors.black26, offset: Offset(0, 3), blurRadius: 3),
         ],
       ),
+      alignment: Alignment.center,
       child: Text(
         title,
         style: TextStyle(
@@ -76,7 +77,6 @@ class NavBar extends StatelessWidget {
           color: color.computeLuminance() < 0.5 ? Colors.white : Colors.black,
         ),
       ),
-      alignment: Alignment.center,
     );
   }
 }
