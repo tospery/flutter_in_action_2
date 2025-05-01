@@ -11,7 +11,6 @@ class PaintTest extends StatefulWidget {
 }
 
 class _PaintTestState extends State<PaintTest> {
-
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -21,7 +20,7 @@ class _PaintTestState extends State<PaintTest> {
           const ChessWidget(),
           ElevatedButton(
             onPressed: () {
-              setState(() => null);
+              setState(() {});
             },
             child: const Text("setState"),
           ),
@@ -69,7 +68,6 @@ class RenderChess extends RenderBox {
       ..picture = recorder.endRecording();
   }
 
-
   @override
   void paint(PaintingContext context, Offset offset) {
     Rect rect = offset & size;
@@ -91,4 +89,3 @@ class RenderChess extends RenderBox {
     super.dispose();
   }
 }
-

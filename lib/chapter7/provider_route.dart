@@ -12,7 +12,6 @@ class ProviderRoute extends StatefulWidget {
 class _ProviderRouteState extends State<ProviderRoute> {
   @override
   void didUpdateWidget(ProviderRoute oldWidget) {
-    // TODO: implement didUpdateWidget
     super.didUpdateWidget(oldWidget);
     print("xxx");
   }
@@ -22,29 +21,34 @@ class _ProviderRouteState extends State<ProviderRoute> {
     return Center(
       child: ChangeNotifierProvider<CartModel>(
         data: CartModel(),
-        child: Builder(builder: (context) {
-          return Column(
-            children: <Widget>[
-              Consumer<CartModel>(
-                builder: (BuildContext context, cart) =>
-                    Text("总价: ${cart!.totalPrice}"),
-              ),
-              Builder(builder: (context) {
-                print("ElevatedButton build");
-                return ElevatedButton(
-                  child: const Text("添加商品"),
-                  onPressed: () {
-                    var cart = ChangeNotifierProvider.of<CartModel>(
-                      context,
-                      listen: false,
+        child: Builder(
+          builder: (context) {
+            return Column(
+              children: <Widget>[
+                Consumer<CartModel>(
+                  builder:
+                      (BuildContext context, cart) =>
+                          Text("总价: ${cart!.totalPrice}"),
+                ),
+                Builder(
+                  builder: (context) {
+                    print("ElevatedButton build");
+                    return ElevatedButton(
+                      child: const Text("添加商品"),
+                      onPressed: () {
+                        var cart = ChangeNotifierProvider.of<CartModel>(
+                          context,
+                          listen: false,
+                        );
+                        cart!.add(Item(20.0, 1));
+                      },
                     );
-                    cart!.add(Item(20.0, 1));
                   },
-                );
-              })
-            ],
-          );
-        }),
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

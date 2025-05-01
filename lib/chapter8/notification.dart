@@ -24,7 +24,7 @@ class NotificationRouteState extends State<NotificationRoute> {
       child: NotificationListener<MyNotification>(
         onNotification: (notification) {
           setState(() {
-            _msg += notification.msg + "  ";
+            _msg += "${notification.msg}  ";
           });
           return false;
         },
@@ -32,10 +32,10 @@ class NotificationRouteState extends State<NotificationRoute> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-//           ElevatedButton(
-//           onPressed: () => MyNotification("Hi").dispatch(context),
-//           child: Text("Send Notification"),
-//          ),
+              //           ElevatedButton(
+              //           onPressed: () => MyNotification("Hi").dispatch(context),
+              //           child: Text("Send Notification"),
+              //          ),
               Builder(
                 builder: (context) {
                   return ElevatedButton(
@@ -45,7 +45,7 @@ class NotificationRouteState extends State<NotificationRoute> {
                   );
                 },
               ),
-              Text(_msg)
+              Text(_msg),
             ],
           ),
         ),
