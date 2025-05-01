@@ -4,7 +4,7 @@ class AnimatedSwitcherCounterRoute extends StatefulWidget {
   const AnimatedSwitcherCounterRoute({super.key});
 
   @override
-  _AnimatedSwitcherCounterRouteState createState() =>
+  State<AnimatedSwitcherCounterRoute> createState() =>
       _AnimatedSwitcherCounterRouteState();
 }
 

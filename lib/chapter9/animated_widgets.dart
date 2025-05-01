@@ -4,7 +4,7 @@ class AnimatedWidgetsTest extends StatefulWidget {
   const AnimatedWidgetsTest({super.key});
 
   @override
-  _AnimatedWidgetsTestState createState() => _AnimatedWidgetsTestState();
+  State<AnimatedWidgetsTest> createState() => _AnimatedWidgetsTestState();
 }
 
 class _AnimatedWidgetsTestState extends State<AnimatedWidgetsTest> {
@@ -174,7 +174,7 @@ class AnimatedDecoratedBox1 extends StatefulWidget {
   final Duration? reverseDuration;
 
   @override
-  _AnimatedDecoratedBox1State createState() => _AnimatedDecoratedBox1State();
+  State<AnimatedDecoratedBox1> createState() => _AnimatedDecoratedBox1State();
 }
 
 class _AnimatedDecoratedBox1State extends State<AnimatedDecoratedBox1>
@@ -255,7 +255,7 @@ class AnimatedDecoratedBox extends ImplicitlyAnimatedWidget {
   final Widget child;
 
   @override
-  _AnimatedDecoratedBoxState createState() {
+  AnimatedWidgetBaseState<AnimatedDecoratedBox> createState() {
     return _AnimatedDecoratedBoxState();
   }
 }

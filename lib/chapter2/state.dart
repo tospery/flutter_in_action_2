@@ -15,7 +15,7 @@ class CounterWidget extends StatefulWidget {
   final int initValue;
 
   @override
-  _CounterWidgetState createState() => _CounterWidgetState();
+  State<CounterWidget> createState() => _CounterWidgetState();
 }
 
 class _CounterWidgetState extends State<CounterWidget> {

@@ -5,7 +5,7 @@ class WebSocketRoute extends StatefulWidget {
   const WebSocketRoute({super.key});
 
   @override
-  _WebSocketRouteState createState() => _WebSocketRouteState();
+  State<WebSocketRoute> createState() => _WebSocketRouteState();
 }
 
 class _WebSocketRouteState extends State<WebSocketRoute> {

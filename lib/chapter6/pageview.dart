@@ -8,7 +8,7 @@ class PageViewTest extends StatefulWidget {
   const PageViewTest({super.key});
 
   @override
-  _PageViewTestState createState() => _PageViewTestState();
+  State<PageViewTest> createState() => _PageViewTestState();
 }
 
 class _PageViewTestState extends State<PageViewTest> {
@@ -240,7 +240,7 @@ class Page extends StatefulWidget {
   final int buildType;
 
   @override
-  _PageState createState() => _PageState();
+  State<Page> createState() => _PageState();
 }
 
 class _PageState extends State<Page> {

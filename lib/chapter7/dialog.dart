@@ -7,7 +7,7 @@ class DialogTestRoute extends StatefulWidget {
   const DialogTestRoute({super.key});
 
   @override
-  _DialogTestRouteState createState() => _DialogTestRouteState();
+  State<DialogTestRoute> createState() => _DialogTestRouteState();
 }
 
 class _DialogTestRouteState extends State<DialogTestRoute> {
@@ -555,7 +555,7 @@ class DialogCheckbox extends StatefulWidget {
   final bool? value;
 
   @override
-  _DialogCheckboxState createState() => _DialogCheckboxState();
+  State<DialogCheckbox> createState() => _DialogCheckboxState();
 }
 
 class _DialogCheckboxState extends State<DialogCheckbox> {

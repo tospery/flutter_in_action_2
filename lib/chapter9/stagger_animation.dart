@@ -4,7 +4,7 @@ class StaggerRoute extends StatefulWidget {
   const StaggerRoute({super.key});
 
   @override
-  _StaggerRouteState createState() => _StaggerRouteState();
+  State<StaggerRoute> createState() => _StaggerRouteState();
 }
 
 class _StaggerRouteState extends State<StaggerRoute>

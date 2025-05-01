@@ -24,7 +24,7 @@ class GestureTest extends StatefulWidget {
   const GestureTest({super.key});
 
   @override
-  _GestureTestState createState() => _GestureTestState();
+  State<GestureTest> createState() => _GestureTestState();
 }
 
 class _GestureTestState extends State<GestureTest> {

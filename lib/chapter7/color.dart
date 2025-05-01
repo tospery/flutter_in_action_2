@@ -4,7 +4,7 @@ class ColorRoute extends StatefulWidget {
   const ColorRoute({super.key});
 
   @override
-  _ColorRouteState createState() => _ColorRouteState();
+  State<ColorRoute> createState() => _ColorRouteState();
 }
 
 class _ColorRouteState extends State<ColorRoute> {

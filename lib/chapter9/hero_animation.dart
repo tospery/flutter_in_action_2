@@ -82,7 +82,7 @@ class CustomHeroAnimation extends StatefulWidget {
   const CustomHeroAnimation({super.key});
 
   @override
-  _CustomHeroAnimationState createState() => _CustomHeroAnimationState();
+  State<CustomHeroAnimation> createState() => _CustomHeroAnimationState();
 }
 
 class _CustomHeroAnimationState extends State<CustomHeroAnimation>

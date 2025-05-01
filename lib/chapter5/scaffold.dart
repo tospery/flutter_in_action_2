@@ -4,7 +4,7 @@ class ScaffoldRoute extends StatefulWidget {
   const ScaffoldRoute({super.key});
 
   @override
-  _ScaffoldRouteState createState() => _ScaffoldRouteState();
+  State<ScaffoldRoute> createState() => _ScaffoldRouteState();
 }
 
 class _ScaffoldRouteState extends State<ScaffoldRoute>

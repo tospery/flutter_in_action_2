@@ -5,7 +5,7 @@ class TurnBoxRoute extends StatefulWidget {
   const TurnBoxRoute({super.key});
 
   @override
-  _TurnBoxRouteState createState() => _TurnBoxRouteState();
+  State<TurnBoxRoute> createState() => _TurnBoxRouteState();
 }
 
 class _TurnBoxRouteState extends State<TurnBoxRoute> {

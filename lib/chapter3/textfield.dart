@@ -4,7 +4,7 @@ class FocusTestRoute extends StatefulWidget {
   const FocusTestRoute({super.key});
 
   @override
-  _FocusTestRouteState createState() => _FocusTestRouteState();
+  State<FocusTestRoute> createState() => _FocusTestRouteState();
 }
 
 class _FocusTestRouteState extends State<FocusTestRoute> {

@@ -4,7 +4,7 @@ class ScaleAnimationRoute2 extends StatefulWidget {
   const ScaleAnimationRoute2({super.key});
 
   @override
-  _ScaleAnimationRouteState createState() => _ScaleAnimationRouteState();
+  State<ScaleAnimationRoute2> createState() => _ScaleAnimationRouteState();
 }
 
 class _ScaleAnimationRouteState extends State<ScaleAnimationRoute2>

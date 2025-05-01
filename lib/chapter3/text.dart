@@ -5,7 +5,7 @@ class TextRoute extends StatefulWidget {
   const TextRoute({super.key});
 
   @override
-  _TextRouteState createState() => _TextRouteState();
+  State<TextRoute> createState() => _TextRouteState();
 }
 
 class _TextRouteState extends State<TextRoute> {

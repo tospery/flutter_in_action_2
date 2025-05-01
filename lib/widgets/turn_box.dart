@@ -21,7 +21,7 @@ class TurnBox extends StatefulWidget {
   final Widget child;
 
   @override
-  _TurnBoxState createState() => _TurnBoxState();
+  State<TurnBox> createState() => _TurnBoxState();
 }
 
 class _TurnBoxState extends State<TurnBox> with SingleTickerProviderStateMixin {

@@ -6,7 +6,7 @@ class ProviderRoute extends StatefulWidget {
   const ProviderRoute({super.key});
 
   @override
-  _ProviderRouteState createState() => _ProviderRouteState();
+  State<ProviderRoute> createState() => _ProviderRouteState();
 }
 
 class _ProviderRouteState extends State<ProviderRoute> {

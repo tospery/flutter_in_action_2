@@ -5,7 +5,7 @@ class InfiniteListView extends StatefulWidget {
   const InfiniteListView({super.key});
 
   @override
-  _InfiniteListViewState createState() => _InfiniteListViewState();
+  State<InfiniteListView> createState() => _InfiniteListViewState();
 }
 
 class _InfiniteListViewState extends State<InfiniteListView> {

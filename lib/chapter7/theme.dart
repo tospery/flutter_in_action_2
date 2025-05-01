@@ -4,7 +4,7 @@ class ThemeTestRoute extends StatefulWidget {
   const ThemeTestRoute({super.key});
 
   @override
-  _ThemeTestRouteState createState() => _ThemeTestRouteState();
+  State<ThemeTestRoute> createState() => _ThemeTestRouteState();
 }
 
 class _ThemeTestRouteState extends State<ThemeTestRoute> {

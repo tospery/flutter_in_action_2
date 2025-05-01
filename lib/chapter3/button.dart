@@ -4,7 +4,7 @@ class ButtonRoute extends StatefulWidget {
   const ButtonRoute({super.key});
 
   @override
-  _ButtonRouteState createState() => _ButtonRouteState();
+  State<ButtonRoute> createState() => _ButtonRouteState();
 }
 
 class _ButtonRouteState extends State<ButtonRoute> {

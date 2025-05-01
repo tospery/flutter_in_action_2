@@ -4,7 +4,7 @@ class InheritedWidgetTestRoute extends StatefulWidget {
   const InheritedWidgetTestRoute({super.key});
 
   @override
-  _InheritedWidgetTestRouteState createState() =>
+  State<InheritedWidgetTestRoute> createState() =>
       _InheritedWidgetTestRouteState();
 }
 

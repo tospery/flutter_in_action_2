@@ -28,7 +28,7 @@ class GrowTransitionRoute extends StatefulWidget {
   const GrowTransitionRoute({super.key});
 
   @override
-  _GrowTransitionRouteState createState() => _GrowTransitionRouteState();
+  State<GrowTransitionRoute> createState() => _GrowTransitionRouteState();
 }
 
 //需要继承TickerProvider，如果有多个AnimationController，则应该使用TickerProviderStateMixin。

@@ -4,7 +4,7 @@ class RepaintBoundaryTest extends StatefulWidget {
   const RepaintBoundaryTest({super.key});
 
   @override
-  _RepaintBoundaryTestState createState() => _RepaintBoundaryTestState();
+  State<RepaintBoundaryTest> createState() => _RepaintBoundaryTestState();
 }
 
 class _RepaintBoundaryTestState extends State<RepaintBoundaryTest> {

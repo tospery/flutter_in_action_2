@@ -14,7 +14,7 @@ class PointerMoveIndicator extends StatefulWidget {
   const PointerMoveIndicator({super.key});
 
   @override
-  _PointerMoveIndicatorState createState() => _PointerMoveIndicatorState();
+  State<PointerMoveIndicator> createState() => _PointerMoveIndicatorState();
 }
 
 class _PointerMoveIndicatorState extends State<PointerMoveIndicator> {

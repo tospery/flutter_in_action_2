@@ -4,7 +4,7 @@ class AnimatedListRoute extends StatefulWidget {
   const AnimatedListRoute({super.key});
 
   @override
-  _AnimatedListRouteState createState() => _AnimatedListRouteState();
+  State<AnimatedListRoute> createState() => _AnimatedListRouteState();
 }
 
 class _AnimatedListRouteState extends State<AnimatedListRoute> {

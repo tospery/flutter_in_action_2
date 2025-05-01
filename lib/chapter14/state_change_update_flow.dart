@@ -5,7 +5,7 @@ class StateChangeTest extends StatefulWidget {
   const StateChangeTest({super.key});
 
   @override
-  _StateChangeTestState createState() => _StateChangeTestState();
+  State<StateChangeTest> createState() => _StateChangeTestState();
 }
 
 class _StateChangeTestState extends State<StateChangeTest> {

@@ -4,7 +4,7 @@ class ScrollViewConfiguration extends StatefulWidget {
   const ScrollViewConfiguration({super.key});
 
   @override
-  _ScrollViewConfigurationState createState() =>
+  State<ScrollViewConfiguration> createState() =>
       _ScrollViewConfigurationState();
 }
 

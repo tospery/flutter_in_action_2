@@ -4,7 +4,7 @@ class ScrollNotificationTestRoute extends StatefulWidget {
   const ScrollNotificationTestRoute({super.key});
 
   @override
-  _ScrollNotificationTestRouteState createState() =>
+  State<ScrollNotificationTestRoute> createState() =>
       _ScrollNotificationTestRouteState();
 }
 

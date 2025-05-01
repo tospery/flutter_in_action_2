@@ -23,7 +23,7 @@ class MyImage extends StatefulWidget {
   final ImageProvider imageProvider;
 
   @override
-  _MyImageState createState() => _MyImageState();
+  State<MyImage> createState() => _MyImageState();
 }
 
 class _MyImageState extends State<MyImage> {

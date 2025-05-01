@@ -7,7 +7,7 @@ class HttpTestRoute extends StatefulWidget {
   const HttpTestRoute({super.key});
 
   @override
-  _HttpTestRouteState createState() => _HttpTestRouteState();
+  State<HttpTestRoute> createState() => _HttpTestRouteState();
 }
 
 class _HttpTestRouteState extends State<HttpTestRoute> {

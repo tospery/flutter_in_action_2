@@ -4,7 +4,7 @@ class ProgressRoute extends StatefulWidget {
   const ProgressRoute({super.key});
 
   @override
-  _ProgressRouteState createState() => _ProgressRouteState();
+  State<ProgressRoute> createState() => _ProgressRouteState();
 }
 
 class _ProgressRouteState extends State<ProgressRoute>

@@ -6,7 +6,7 @@ class MarkdownRoute extends StatefulWidget {
   const MarkdownRoute({super.key});
 
   @override
-  _MarkdownRouteState createState() => _MarkdownRouteState();
+  State<MarkdownRoute> createState() => _MarkdownRouteState();
 }
 
 class _MarkdownRouteState extends State<MarkdownRoute> {
