@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class StateLifecycleTest extends StatelessWidget {
-  const StateLifecycleTest({Key? key}) : super(key: key);
+  const StateLifecycleTest({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +10,7 @@ class StateLifecycleTest extends StatelessWidget {
 }
 
 class CounterWidget extends StatefulWidget {
-  const CounterWidget({Key? key, this.initValue = 0}) : super(key: key);
+  const CounterWidget({super.key, this.initValue = 0});
 
   final int initValue;
 
@@ -37,9 +37,7 @@ class _CounterWidgetState extends State<CounterWidget> {
         child: TextButton(
           child: Text('$_counter'),
           //点击后计数器自增
-          onPressed: () => setState(
-            () => ++_counter,
-          ),
+          onPressed: () => setState(() => ++_counter),
         ),
       ),
     );

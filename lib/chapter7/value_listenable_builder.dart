@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ValueListenableRoute extends StatefulWidget {
-  const ValueListenableRoute({Key? key}) : super(key: key);
+  const ValueListenableRoute({super.key});
 
   @override
   State<ValueListenableRoute> createState() => _ValueListenableState();
@@ -26,7 +26,7 @@ class _ValueListenableState extends State<ValueListenableRoute> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 child!,
-                Text('$value 次',textScaleFactor: textScaleFactor),
+                Text('$value 次', textScaleFactor: textScaleFactor),
               ],
             );
           },

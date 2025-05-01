@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_in_action_2/widgets/index.dart';
 
 class GradientCircularProgressRoute extends StatefulWidget {
-  const GradientCircularProgressRoute({Key? key}) : super(key: key);
+  const GradientCircularProgressRoute({super.key});
 
   @override
   GradientCircularProgressRouteState createState() {

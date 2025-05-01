@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class GradientButton extends StatelessWidget {
   const GradientButton({
-    Key? key,
+    super.key,
     this.colors,
     required this.onPressed,
     required this.child,
@@ -13,7 +13,7 @@ class GradientButton extends StatelessWidget {
     this.disabledColor,
     this.disabledTextColor,
     this.onHighlightChanged,
-  }) : super(key: key);
+  });
 
   // 渐变色数组
   final List<Color>? colors;
@@ -61,9 +61,10 @@ class GradientButton extends StatelessWidget {
                 child: Center(
                   child: DefaultTextStyle(
                     style: theme.textTheme.labelMedium!.copyWith(
-                      color: disabled
-                          ? disabledTextColor ?? Colors.black38
-                          : textColor ?? Colors.white,
+                      color:
+                          disabled
+                              ? disabledTextColor ?? Colors.black38
+                              : textColor ?? Colors.white,
                     ),
                     child: child,
                   ),
@@ -81,7 +82,7 @@ class GradientButton extends StatelessWidget {
 
 class ElevatedGradientButton extends StatefulWidget {
   const ElevatedGradientButton({
-    Key? key,
+    super.key,
     this.colors,
     this.onPressed,
     this.padding,
@@ -93,7 +94,7 @@ class ElevatedGradientButton extends StatefulWidget {
     this.onHighlightChanged,
     this.shadowColor,
     required this.child,
-  }) : super(key: key);
+  });
 
   // 渐变色数组
   final List<Color>? colors;
@@ -124,23 +125,24 @@ class _ElevatedGradientButtonState extends State<ElevatedGradientButton> {
       duration: const Duration(milliseconds: 100),
       decoration: BoxDecoration(
         borderRadius: widget.borderRadius,
-        boxShadow: disabled
-            ? null
-            : [
-                _tapDown
-                    ? BoxShadow(
+        boxShadow:
+            disabled
+                ? null
+                : [
+                  _tapDown
+                      ? BoxShadow(
                         offset: const Offset(2, 6),
                         spreadRadius: -2,
                         blurRadius: 9,
                         color: widget.shadowColor ?? Colors.black54,
                       )
-                    : BoxShadow(
+                      : BoxShadow(
                         offset: const Offset(0, 2),
                         spreadRadius: -2,
                         blurRadius: 3,
                         color: widget.shadowColor ?? Colors.black87,
-                      )
-              ],
+                      ),
+                ],
       ),
       child: GradientButton(
         colors: widget.colors,

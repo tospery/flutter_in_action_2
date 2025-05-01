@@ -4,7 +4,7 @@ import 'package:hi_case/hi_case.dart';
 import '../common.dart';
 
 class NestedScrollViewRoute extends StatelessWidget {
-  const NestedScrollViewRoute({Key? key}) : super(key: key);
+  const NestedScrollViewRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class NestedScrollViewRoute extends StatelessWidget {
 }
 
 class NestedListView extends StatelessWidget {
-  const NestedListView({Key? key}) : super(key: key);
+  const NestedListView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +63,7 @@ class NestedListView extends StatelessWidget {
 }
 
 class SnapAppBarWithBug extends StatelessWidget {
-  const SnapAppBarWithBug({Key? key}) : super(key: key);
+  const SnapAppBarWithBug({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +93,7 @@ class SnapAppBarWithBug extends StatelessWidget {
 }
 
 class SnapAppBar2 extends StatefulWidget {
-  const SnapAppBar2({Key? key}) : super(key: key);
+  const SnapAppBar2({super.key});
 
   @override
   State<SnapAppBar2> createState() => _SnapAppBar2State();
@@ -154,7 +154,7 @@ class _SnapAppBar2State extends State<SnapAppBar2> {
 }
 
 class NestedTabBarView1 extends StatelessWidget {
-  const NestedTabBarView1({Key? key}) : super(key: key);
+  const NestedTabBarView1({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -221,7 +221,7 @@ class NestedTabBarView1 extends StatelessWidget {
 }
 
 class NestedTabBarView2 extends StatelessWidget {
-  const NestedTabBarView2({Key? key}) : super(key: key);
+  const NestedTabBarView2({super.key});
 
   @override
   Widget build(BuildContext context) {

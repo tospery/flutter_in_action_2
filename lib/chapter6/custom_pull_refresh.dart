@@ -3,7 +3,7 @@ import 'package:flutter_in_action_2/widgets/pull_refresh.dart';
 import '../common.dart';
 
 class PullRefreshBoxRoute extends StatefulWidget {
-  const PullRefreshBoxRoute({Key? key}) : super(key: key);
+  const PullRefreshBoxRoute({super.key});
 
   @override
   State<PullRefreshBoxRoute> createState() => _PullRefreshBoxRouteState();

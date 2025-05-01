@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
 class GrowTransition extends StatelessWidget {
-  const GrowTransition({Key? key,
-    required this.animation,
-    this.child,
-  }) : super(key: key);
+  const GrowTransition({super.key, required this.animation, this.child});
 
   final Widget? child;
   final Animation<double> animation;
@@ -28,7 +25,7 @@ class GrowTransition extends StatelessWidget {
 }
 
 class GrowTransitionRoute extends StatefulWidget {
-  const GrowTransitionRoute({Key? key}) : super(key: key);
+  const GrowTransitionRoute({super.key});
 
   @override
   _GrowTransitionRouteState createState() => _GrowTransitionRouteState();
@@ -43,8 +40,10 @@ class _GrowTransitionRouteState extends State<GrowTransitionRoute>
   @override
   initState() {
     super.initState();
-    controller =
-        AnimationController(duration: const Duration(seconds: 2), vsync: this);
+    controller = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    );
     animation = Tween(begin: 0.0, end: 300.0).animate(controller);
     controller.forward();
   }

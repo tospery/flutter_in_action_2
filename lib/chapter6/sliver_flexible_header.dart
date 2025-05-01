@@ -3,7 +3,7 @@ import 'package:flutter_in_action_2/widgets/index.dart';
 import '../common.dart';
 
 class SliverFlexibleHeaderRoute extends StatefulWidget {
-  const SliverFlexibleHeaderRoute({Key? key}) : super(key: key);
+  const SliverFlexibleHeaderRoute({super.key});
 
   @override
   State<SliverFlexibleHeaderRoute> createState() =>

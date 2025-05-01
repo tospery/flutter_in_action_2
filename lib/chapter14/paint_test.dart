@@ -4,7 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_in_action_2/common.dart';
 
 class PaintTest extends StatefulWidget {
-  const PaintTest({Key? key}) : super(key: key);
+  const PaintTest({super.key});
 
   @override
   State<PaintTest> createState() => _PaintTestState();
@@ -31,7 +31,7 @@ class _PaintTestState extends State<PaintTest> {
 }
 
 class ChessWidget extends LeafRenderObjectWidget {
-  const ChessWidget({Key? key}) : super(key: key);
+  const ChessWidget({super.key});
 
   @override
   RenderObject createRenderObject(BuildContext context) {

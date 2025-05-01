@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hi_case/hi_case.dart';
 
 class ResponsiveColumn extends StatelessWidget {
-  const ResponsiveColumn({Key? key, required this.children}) : super(key: key);
+  const ResponsiveColumn({super.key, required this.children});
 
   final List<Widget> children;
 
@@ -34,7 +34,7 @@ class ResponsiveColumn extends StatelessWidget {
 }
 
 class LayoutBuilderRoute extends StatelessWidget {
-  const LayoutBuilderRoute({Key? key}) : super(key: key);
+  const LayoutBuilderRoute({super.key});
 
   @override
   Widget build(BuildContext context) {

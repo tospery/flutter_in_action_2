@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PaddingTestRoute extends StatelessWidget {
-  const PaddingTestRoute({Key? key}) : super(key: key);
+  const PaddingTestRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class PaddingTestRoute extends StatelessWidget {
             // 分别指定四个方向的补白
             padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
             child: Text("Your friend"),
-          )
+          ),
         ],
       ),
     );

@@ -2,25 +2,16 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'extra_info_constraints.dart';
 
-typedef SliverPersistentHeaderToBoxBuilder = Widget Function(
-  BuildContext context,
-  double maxExtent,
-  bool fixed,
-);
+typedef SliverPersistentHeaderToBoxBuilder =
+    Widget Function(BuildContext context, double maxExtent, bool fixed);
 
 /// A sliver like [SliverPersistentHeader], the difference is [SliverPersistentHeaderToBox]
 /// can contain a box widget and use the height of its child directly.
 class SliverPersistentHeaderToBox extends StatelessWidget {
-  SliverPersistentHeaderToBox({
-    Key? key,
-    required Widget child,
-  })  : builder = ((a, b, c) => child),
-        super(key: key);
+  SliverPersistentHeaderToBox({super.key, required Widget child})
+    : builder = ((a, b, c) => child);
 
-  const SliverPersistentHeaderToBox.builder({
-    Key? key,
-    required this.builder,
-  }) : super(key: key);
+  const SliverPersistentHeaderToBox.builder({super.key, required this.builder});
 
   final SliverPersistentHeaderToBoxBuilder builder;
 
@@ -41,10 +32,7 @@ class SliverPersistentHeaderToBox extends StatelessWidget {
 }
 
 class _SliverPersistentHeaderToBox extends SingleChildRenderObjectWidget {
-  const _SliverPersistentHeaderToBox({
-    Key? key,
-    Widget? child,
-  }) : super(key: key, child: child);
+  const _SliverPersistentHeaderToBox({super.child});
 
   @override
   RenderObject createRenderObject(BuildContext context) {

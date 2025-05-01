@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'dart:math' as math;
 
 class ScrollViewConfiguration extends StatefulWidget {
-  const ScrollViewConfiguration({Key? key}) : super(key: key);
+  const ScrollViewConfiguration({super.key});
 
   @override
   _ScrollViewConfigurationState createState() =>
@@ -26,15 +26,12 @@ class _ScrollViewConfigurationState extends State<ScrollViewConfiguration> {
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Center(child: Text('$index',textScaleFactor: 2,)),
+          child: Center(child: Text('$index', textScaleFactor: 2)),
         );
       },
     );
 
-    return Column(children: [
-      Expanded(child: list),
-      wConfigurationPanel(),
-    ]);
+    return Column(children: [Expanded(child: list), wConfigurationPanel()]);
   }
 
   Widget wConfigurationPanel() {
@@ -55,6 +52,3 @@ class _ScrollViewConfigurationState extends State<ScrollViewConfiguration> {
     );
   }
 }
-
-
-

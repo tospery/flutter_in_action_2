@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class StackRoute extends StatelessWidget {
-  const StackRoute({Key? key}) : super(key: key);
+  const StackRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +18,8 @@ class StackRoute extends StatelessWidget {
             ),
             color: Colors.red,
           ),
-          const Positioned(
-            left: 18.0,
-            child: Text("I am Jack"),
-          ),
-          const Positioned(
-            top: 18.0,
-            child: Text("Your friend"),
-          )
+          const Positioned(left: 18.0, child: Text("I am Jack")),
+          const Positioned(top: 18.0, child: Text("Your friend")),
         ],
       ),
     );

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart' hide Page;
 import 'package:hi_case/hi_case.dart';
 
 class GestureRoute extends StatelessWidget {
-  const GestureRoute({Key? key}) : super(key: key);
+  const GestureRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class GestureRoute extends StatelessWidget {
 }
 
 class GestureTest extends StatefulWidget {
-  const GestureTest({Key? key}) : super(key: key);
+  const GestureTest({super.key});
 
   @override
   _GestureTestState createState() => _GestureTestState();
@@ -127,7 +127,7 @@ class _DragVerticalState extends State<_DragVertical> {
 }
 
 class _Scale extends StatefulWidget {
-  const _Scale({Key? key}) : super(key: key);
+  const _Scale();
 
   @override
   _ScaleState createState() => _ScaleState();
@@ -154,7 +154,7 @@ class _ScaleState extends State<_Scale> {
 }
 
 class _GestureRecognizer extends StatefulWidget {
-  const _GestureRecognizer({Key? key}) : super(key: key);
+  const _GestureRecognizer();
 
   @override
   _GestureRecognizerState createState() => _GestureRecognizerState();

@@ -4,7 +4,7 @@ import 'package:hi_case/hi_case.dart';
 import '../common.dart';
 
 class WatermarkRoute extends StatelessWidget {
-  const WatermarkRoute({Key? key}) : super(key: key);
+  const WatermarkRoute({super.key});
 
   @override
   Widget build(BuildContext context) {

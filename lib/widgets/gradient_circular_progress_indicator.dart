@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 /// A circular progress indicator with gradient effect.
 class GradientCircularProgressIndicator extends StatelessWidget {
   const GradientCircularProgressIndicator({
-    Key? key,
+    super.key,
     required this.radius,
     this.stokeWidth = 2.0,
     this.colors,
@@ -16,7 +16,7 @@ class GradientCircularProgressIndicator extends StatelessWidget {
     this.totalAngle = 2 * pi,
     this.fullColor,
     this.value,
-  }) : super(key: key);
+  });
 
   /// The width of the line used to draw the circle.
   final double stokeWidth;
@@ -137,14 +137,16 @@ class _GradientCircularProgressPainter extends CustomPainter {
       _start = asin(stokeWidth / (size.width - stokeWidth));
     }
 
-    Rect rect = Offset(_offset, _offset) &
+    Rect rect =
+        Offset(_offset, _offset) &
         Size(size.width - stokeWidth, size.height - stokeWidth);
 
-    var paint = Paint()
-      ..strokeCap = strokeCapRound ? StrokeCap.round : StrokeCap.butt
-      ..style = PaintingStyle.stroke
-      ..isAntiAlias = true
-      ..strokeWidth = stokeWidth;
+    var paint =
+        Paint()
+          ..strokeCap = strokeCapRound ? StrokeCap.round : StrokeCap.butt
+          ..style = PaintingStyle.stroke
+          ..isAntiAlias = true
+          ..strokeWidth = stokeWidth;
 
     // draw background arc
     if (backgroundColor != Colors.transparent) {

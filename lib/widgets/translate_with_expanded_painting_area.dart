@@ -6,11 +6,11 @@ import 'package:flutter/widgets.dart';
 ///  - apply translate to its child (specified by [offset]).
 class TranslateWithExpandedPaintingArea extends StatelessWidget {
   const TranslateWithExpandedPaintingArea({
-    Key? key,
+    super.key,
     required this.offset,
     this.clipBehavior = Clip.none,
     this.child,
-  }) : super(key: key);
+  });
   final Widget? child;
   final Offset offset;
   final Clip clipBehavior;

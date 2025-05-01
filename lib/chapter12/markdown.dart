@@ -3,7 +3,7 @@ import 'package:flutter_in_action_2/widgets/index.dart';
 import 'package:hi_case/hi_case.dart';
 
 class MarkdownRoute extends StatefulWidget {
-  const MarkdownRoute({Key? key}) : super(key: key);
+  const MarkdownRoute({super.key});
 
   @override
   _MarkdownRouteState createState() => _MarkdownRouteState();

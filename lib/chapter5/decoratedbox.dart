@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DecoratedBoxRoute extends StatelessWidget {
-  const DecoratedBoxRoute({Key? key}) : super(key: key);
+  const DecoratedBoxRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,27 +10,24 @@ class DecoratedBoxRoute extends StatelessWidget {
       children: <Widget>[
         DecoratedBox(
           decoration: BoxDecoration(
-              gradient:
-                  LinearGradient(colors: [Colors.red, Colors.orange.shade700]),
-              //背景渐变
-              borderRadius: BorderRadius.circular(3.0),
-              //3像素圆角
-              boxShadow: const [
-                //阴影
-                BoxShadow(
-                    color: Colors.black54,
-                    offset: Offset(2.0, 2.0),
-                    blurRadius: 4.0)
-              ]),
+            gradient: LinearGradient(
+              colors: [Colors.red, Colors.orange.shade700],
+            ),
+            //背景渐变
+            borderRadius: BorderRadius.circular(3.0),
+            //3像素圆角
+            boxShadow: const [
+              //阴影
+              BoxShadow(
+                color: Colors.black54,
+                offset: Offset(2.0, 2.0),
+                blurRadius: 4.0,
+              ),
+            ],
+          ),
           child: const Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 80.0,
-              vertical: 18.0,
-            ),
-            child: Text(
-              "Login",
-              style: TextStyle(color: Colors.white),
-            ),
+            padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 18.0),
+            child: Text("Login", style: TextStyle(color: Colors.white)),
           ),
         ),
         SizedBox(
@@ -45,7 +42,7 @@ class DecoratedBoxRoute extends StatelessWidget {
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }

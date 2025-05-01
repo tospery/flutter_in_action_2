@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AnimatedSwitcherRoute extends StatefulWidget {
-  const AnimatedSwitcherRoute({Key? key}) : super(key: key);
+  const AnimatedSwitcherRoute({super.key});
 
   @override
   _AnimatedSwitcherRouteState createState() => _AnimatedSwitcherRouteState();
@@ -54,9 +54,7 @@ class _AnimatedSwitcherRouteState extends State<AnimatedSwitcherRoute> {
             ),
           ),
           ElevatedButton(
-            child: const Text(
-              'Increment',
-            ),
+            child: const Text('Increment'),
             onPressed: () {
               setState(() {
                 _count += 1;
@@ -78,22 +76,18 @@ class _AnimatedSwitcherRouteState extends State<AnimatedSwitcherRoute> {
           position: animation,
         );
       },
-      child: Text(
-        "$_count",
-        key: ValueKey<int>(_count),
-        textScaleFactor: 3,
-      ),
+      child: Text("$_count", key: ValueKey<int>(_count), textScaleFactor: 3),
     );
   }
 }
 
 class MySlideTransition extends AnimatedWidget {
   const MySlideTransition({
-    Key? key,
+    super.key,
     required Animation<Offset> position,
     this.transformHitTests = true,
     required this.child,
-  }) : super(key: key, listenable: position);
+  }) : super(listenable: position);
 
   final bool transformHitTests;
 
@@ -116,12 +110,12 @@ class MySlideTransition extends AnimatedWidget {
 
 class SlideTransitionX extends AnimatedWidget {
   SlideTransitionX({
-    Key? key,
+    super.key,
     required Animation<double> position,
     this.transformHitTests = true,
     this.direction = AxisDirection.down,
     required this.child,
-  }) : super(key: key, listenable: position) {
+  }) : super(listenable: position) {
     switch (direction) {
       case AxisDirection.up:
         _tween = Tween(begin: const Offset(0, 1), end: const Offset(0, 0));

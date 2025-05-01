@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_in_action_2/widgets/index.dart';
 
 class GradientButtonRoute extends StatefulWidget {
-  const GradientButtonRoute({Key? key}) : super(key: key);
+  const GradientButtonRoute({super.key});
 
   @override
   _GradientButtonRouteState createState() => _GradientButtonRouteState();

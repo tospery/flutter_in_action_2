@@ -3,13 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PullRefreshTestRoute extends StatelessWidget {
-  const PullRefreshTestRoute({Key? key}) : super(key: key);
+  const PullRefreshTestRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      physics:
-          const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      physics: const BouncingScrollPhysics(
+        parent: AlwaysScrollableScrollPhysics(),
+      ),
       slivers: [
         CupertinoSliverRefreshControl(
           builder: builder,
@@ -17,11 +18,9 @@ class PullRefreshTestRoute extends StatelessWidget {
         ),
         SliverList(
           delegate: SliverChildBuilderDelegate(
-            (_, int index) => ListTile(
-              title: Text('$index'),
-            ),
+            (_, int index) => ListTile(title: Text('$index')),
           ),
-        )
+        ),
       ],
     );
   }
@@ -44,10 +43,7 @@ class PullRefreshTestRoute extends StatelessWidget {
     } else {
       widget = Transform.rotate(
         angle: pulledExtent / 80 * 6.28,
-        child: const CircularProgressIndicator(
-          value: .85,
-          strokeWidth: 2,
-        ),
+        child: const CircularProgressIndicator(value: .85, strokeWidth: 2),
       );
     }
     return Center(

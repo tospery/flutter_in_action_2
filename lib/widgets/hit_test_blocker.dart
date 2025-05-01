@@ -4,12 +4,12 @@ import 'package:flutter/widgets.dart';
 /// A blocker by which we can intercept hit test flow.
 class HitTestBlocker extends SingleChildRenderObjectWidget {
   const HitTestBlocker({
-    Key? key,
+    super.key,
     this.up = true,
     this.down = false,
     this.self = false,
-    Widget? child,
-  }) : super(key: key, child: child);
+    super.child,
+  });
 
   /// Block hit test up. if true , `hitTest()` always return false.
   final bool up;
@@ -27,7 +27,9 @@ class HitTestBlocker extends SingleChildRenderObjectWidget {
 
   @override
   void updateRenderObject(
-      BuildContext context, RenderHitTestBlocker renderObject) {
+    BuildContext context,
+    RenderHitTestBlocker renderObject,
+  ) {
     renderObject
       ..up = up
       ..down = down

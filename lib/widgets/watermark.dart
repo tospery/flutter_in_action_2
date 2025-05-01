@@ -5,10 +5,10 @@ import 'dart:math' as math;
 /// A widget that paints watermark.
 class WaterMark extends StatefulWidget {
   const WaterMark({
-    Key? key,
+    super.key,
     this.repeat = ImageRepeat.repeat,
     required this.painter,
-  }) : super(key: key);
+  });
 
   /// 单元水印画笔
   final WaterMarkPainter painter;
@@ -110,21 +110,19 @@ abstract class WaterMarkPainter {
 
 /// 文本水印画笔
 class TextWaterMarkPainter extends WaterMarkPainter {
-  TextWaterMarkPainter(
-      {Key? key,
-      double? rotate,
-      EdgeInsets? padding,
-      TextStyle? textStyle,
-      required this.text,
-      this.textDirection = TextDirection.ltr})
-      : assert(rotate == null || rotate >= -90 && rotate <= 90),
-        rotate = rotate ?? 0,
-        padding = padding ?? const EdgeInsets.all(10.0),
-        textStyle = textStyle ??
-            const TextStyle(
-              color: Color.fromARGB(30, 0, 0, 0),
-              fontSize: 14,
-            );
+  TextWaterMarkPainter({
+    Key? key,
+    double? rotate,
+    EdgeInsets? padding,
+    TextStyle? textStyle,
+    required this.text,
+    this.textDirection = TextDirection.ltr,
+  }) : assert(rotate == null || rotate >= -90 && rotate <= 90),
+       rotate = rotate ?? 0,
+       padding = padding ?? const EdgeInsets.all(10.0),
+       textStyle =
+           textStyle ??
+           const TextStyle(color: Color.fromARGB(30, 0, 0, 0), fontSize: 14);
 
   double rotate; // 文本旋转的度数，是角度不是弧度
   TextStyle textStyle; // 文本样式
@@ -228,15 +226,9 @@ class TextWaterMarkPainter extends WaterMarkPainter {
     final adjustHeight = textHeight * cos;
 
     if (orgSin >= 0) {
-      canvas.translate(
-        adjustWidth + _padding.left,
-        _padding.top,
-      );
+      canvas.translate(adjustWidth + _padding.left, _padding.top);
     } else {
-      canvas.translate(
-        _padding.left,
-        height + _padding.top,
-      );
+      canvas.translate(_padding.left, height + _padding.top);
     }
     canvas.rotate(radians);
     // 绘制文本

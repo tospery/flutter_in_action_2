@@ -3,8 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 
 class CustomCenter1 extends SingleChildRenderObjectWidget {
-  const CustomCenter1({Key? key, required Widget child})
-      : super(key: key, child: child);
+  const CustomCenter1({super.key, required Widget super.child});
 
   @override
   RenderObject createRenderObject(BuildContext context) {
@@ -23,14 +22,16 @@ class RenderCustomCenter1 extends RenderBox
       parentUsesSize: true, // 因为我们接下来要使用child的size,所以不能为false
     );
 
-    size = constraints.constrain(Size(
-      constraints.maxWidth == double.infinity
-          ? child!.size.width
-          : double.infinity,
-      constraints.maxHeight == double.infinity
-          ? child!.size.height
-          : double.infinity,
-    ));
+    size = constraints.constrain(
+      Size(
+        constraints.maxWidth == double.infinity
+            ? child!.size.width
+            : double.infinity,
+        constraints.maxHeight == double.infinity
+            ? child!.size.height
+            : double.infinity,
+      ),
+    );
 
     BoxParentData parentData = child!.parentData as BoxParentData;
     // 居中显示
@@ -58,8 +59,7 @@ class RenderCustomCenter1 extends RenderBox
 }
 
 class CustomCenter2 extends SingleChildRenderObjectWidget {
-  const CustomCenter2({Key? key, required Widget child})
-      : super(key: key, child: child);
+  const CustomCenter2({super.key, required Widget super.child});
 
   @override
   RenderObject createRenderObject(BuildContext context) {
@@ -78,14 +78,16 @@ class RenderCustomCenter2 extends RenderShiftedBox {
       parentUsesSize: true, // 因为我们接下来要使用child的size,所以不能为false
     );
     // 防止size宽高无穷大
-    size = constraints.constrain(Size(
-      constraints.maxWidth == double.infinity
-          ? child!.size.width
-          : double.infinity,
-      constraints.maxHeight == double.infinity
-          ? child!.size.height
-          : double.infinity,
-    ));
+    size = constraints.constrain(
+      Size(
+        constraints.maxWidth == double.infinity
+            ? child!.size.width
+            : double.infinity,
+        constraints.maxHeight == double.infinity
+            ? child!.size.height
+            : double.infinity,
+      ),
+    );
 
     BoxParentData parentData = child!.parentData as BoxParentData;
     // 居中显示
@@ -96,7 +98,7 @@ class RenderCustomCenter2 extends RenderShiftedBox {
 /// 思考题：能否使用CustomSingleChildLayout 来实现Center呢
 
 class MyCenterRoute extends StatefulWidget {
-  const MyCenterRoute({Key? key}) : super(key: key);
+  const MyCenterRoute({super.key});
 
   @override
   State<MyCenterRoute> createState() => _MyCenterRouteState();

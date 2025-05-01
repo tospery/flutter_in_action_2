@@ -29,14 +29,14 @@ import 'package:hi_case/hi_case.dart';
 ///
 class ScaleView extends StatefulWidget {
   const ScaleView({
-    Key? key,
+    super.key,
     this.minScale = 1.0,
     this.maxScale = 10.0,
     this.doubleClickScale = 3.0,
     this.alignment = Alignment.center,
     this.parentScrollableAxis = Axis.horizontal,
     required this.child,
-  }) : super(key: key);
+  });
 
   /// Minimum scale multiplier
   final double minScale;

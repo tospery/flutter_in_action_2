@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+
 class ProgressRoute extends StatefulWidget {
-  const ProgressRoute({Key? key}) : super(key: key);
+  const ProgressRoute({super.key});
 
   @override
   _ProgressRouteState createState() => _ProgressRouteState();
@@ -12,8 +13,10 @@ class _ProgressRouteState extends State<ProgressRoute>
 
   @override
   void initState() {
-    _animationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 3));
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+    );
     _animationController.forward();
     _animationController.addListener(() => setState(() => {}));
 
@@ -30,61 +33,65 @@ class _ProgressRouteState extends State<ProgressRoute>
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
-        children: <Widget>[
-          LinearProgressIndicator(
-            backgroundColor: Colors.grey[200],
-            valueColor: const AlwaysStoppedAnimation(Colors.blue),
-          ),
-          LinearProgressIndicator(
-            backgroundColor: Colors.grey[200],
-            valueColor: const AlwaysStoppedAnimation(Colors.blue),
-            value: .5,
-          ),
-          SizedBox(
-            height: 3,
-            child: LinearProgressIndicator(
-              backgroundColor: Colors.grey[200],
-              valueColor: const AlwaysStoppedAnimation(Colors.blue),
-              value: .5,
-            ),
-          ),
-          SizedBox(
-            height: 100,
-            width: 130,
-            child: CircularProgressIndicator(
-              backgroundColor: Colors.grey[200],
-              valueColor: const AlwaysStoppedAnimation(Colors.blue),
-              value: .7,
-            ),
-          ),
-          CircularProgressIndicator(
-            backgroundColor: Colors.grey[200],
-            valueColor: const AlwaysStoppedAnimation(Colors.blue),
-            value: .5,
-          ),
-          LinearProgressIndicator(
-            backgroundColor: Colors.grey[200],
-            valueColor: ColorTween(begin: Colors.grey, end: Colors.blue)
-                .animate(_animationController),
-            value: _animationController.value,
-          ),
-          CircularProgressIndicator(
-            backgroundColor: Colors.grey[200],
-            valueColor: ColorTween(begin: Colors.grey, end: Colors.blue)
-                .animate(_animationController),
-            value: _animationController.value,
-          ),
-          CircularProgressIndicator(
-            backgroundColor: Colors.grey[200],
-            valueColor: ColorTween(begin: Colors.grey, end: Colors.blue)
-                .animate(_animationController),
-          )
-        ].map((e) {
-          return Padding(
-            padding: const EdgeInsets.all(16),
-            child: e,
-          );
-        }).toList(),
+        children:
+            <Widget>[
+              LinearProgressIndicator(
+                backgroundColor: Colors.grey[200],
+                valueColor: const AlwaysStoppedAnimation(Colors.blue),
+              ),
+              LinearProgressIndicator(
+                backgroundColor: Colors.grey[200],
+                valueColor: const AlwaysStoppedAnimation(Colors.blue),
+                value: .5,
+              ),
+              SizedBox(
+                height: 3,
+                child: LinearProgressIndicator(
+                  backgroundColor: Colors.grey[200],
+                  valueColor: const AlwaysStoppedAnimation(Colors.blue),
+                  value: .5,
+                ),
+              ),
+              SizedBox(
+                height: 100,
+                width: 130,
+                child: CircularProgressIndicator(
+                  backgroundColor: Colors.grey[200],
+                  valueColor: const AlwaysStoppedAnimation(Colors.blue),
+                  value: .7,
+                ),
+              ),
+              CircularProgressIndicator(
+                backgroundColor: Colors.grey[200],
+                valueColor: const AlwaysStoppedAnimation(Colors.blue),
+                value: .5,
+              ),
+              LinearProgressIndicator(
+                backgroundColor: Colors.grey[200],
+                valueColor: ColorTween(
+                  begin: Colors.grey,
+                  end: Colors.blue,
+                ).animate(_animationController),
+                value: _animationController.value,
+              ),
+              CircularProgressIndicator(
+                backgroundColor: Colors.grey[200],
+                valueColor: ColorTween(
+                  begin: Colors.grey,
+                  end: Colors.blue,
+                ).animate(_animationController),
+                value: _animationController.value,
+              ),
+              CircularProgressIndicator(
+                backgroundColor: Colors.grey[200],
+                valueColor: ColorTween(
+                  begin: Colors.grey,
+                  end: Colors.blue,
+                ).animate(_animationController),
+              ),
+            ].map((e) {
+              return Padding(padding: const EdgeInsets.all(16), child: e);
+            }).toList(),
       ),
     );
   }

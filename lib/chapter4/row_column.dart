@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CenterColumnRoute extends StatelessWidget {
-  const CenterColumnRoute({Key? key}) : super(key: key);
+  const CenterColumnRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,10 +10,7 @@ class CenterColumnRoute extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
-        children: const <Widget>[
-          Text("hi"),
-          Text("world"),
-        ],
+        children: const <Widget>[Text("hi"), Text("world")],
       ),
     );
   }

@@ -4,7 +4,7 @@ import 'custom_checkbox.dart';
 import 'custom_checkbox_2.dart';
 
 class CustomCheckboxTest extends StatefulWidget {
-  const CustomCheckboxTest({Key? key}) : super(key: key);
+  const CustomCheckboxTest({super.key});
 
   @override
   State<CustomCheckboxTest> createState() => _CustomCheckboxTestState();
@@ -16,12 +16,10 @@ class _CustomCheckboxTestState extends State<CustomCheckboxTest> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(mainAxisAlignment: MainAxisAlignment.center,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CustomCheckbox2(
-            value: _checked,
-            onChanged: _onChange,
-          ),
+          CustomCheckbox2(value: _checked, onChanged: _onChange),
           Padding(
             padding: const EdgeInsets.all(18.0),
             child: SizedBox(

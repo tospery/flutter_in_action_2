@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DialogTestRoute extends StatefulWidget {
-  const DialogTestRoute({Key? key}) : super(key: key);
+  const DialogTestRoute({super.key});
 
   @override
   _DialogTestRouteState createState() => _DialogTestRouteState();
@@ -153,32 +153,33 @@ class _DialogTestRouteState extends State<DialogTestRoute> {
 
   Future<void> changeLanguage() async {
     int? i = await showDialog<int>(
-        context: context,
-        builder: (BuildContext context) {
-          return SimpleDialog(
-            title: const Text('请选择语言'),
-            children: <Widget>[
-              SimpleDialogOption(
-                onPressed: () {
-                  Navigator.pop(context, 1);
-                },
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 6),
-                  child: Text('中文简体'),
-                ),
+      context: context,
+      builder: (BuildContext context) {
+        return SimpleDialog(
+          title: const Text('请选择语言'),
+          children: <Widget>[
+            SimpleDialogOption(
+              onPressed: () {
+                Navigator.pop(context, 1);
+              },
+              child: const Padding(
+                padding: EdgeInsets.symmetric(vertical: 6),
+                child: Text('中文简体'),
               ),
-              SimpleDialogOption(
-                onPressed: () {
-                  Navigator.pop(context, 2);
-                },
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 6),
-                  child: Text('美国英语'),
-                ),
+            ),
+            SimpleDialogOption(
+              onPressed: () {
+                Navigator.pop(context, 2);
+              },
+              child: const Padding(
+                padding: EdgeInsets.symmetric(vertical: 6),
+                child: Text('美国英语'),
               ),
-            ],
-          );
-        });
+            ),
+          ],
+        );
+      },
+    );
 
     if (i != null) {
       print("选择了：${i == 1 ? "中文简体" : "美国英语"}");
@@ -193,15 +194,16 @@ class _DialogTestRouteState extends State<DialogTestRoute> {
           children: <Widget>[
             const ListTile(title: Text("请选择")),
             Expanded(
-                child: ListView.builder(
-              itemCount: 30,
-              itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  title: Text("$index"),
-                  onTap: () => Navigator.of(context).pop(index),
-                );
-              },
-            )),
+              child: ListView.builder(
+                itemCount: 30,
+                itemBuilder: (BuildContext context, int index) {
+                  return ListTile(
+                    title: Text("$index"),
+                    onTap: () => Navigator.of(context).pop(index),
+                  );
+                },
+              ),
+            ),
           ],
         );
         //使用AlertDialog会报错
@@ -461,7 +463,7 @@ class _DialogTestRouteState extends State<DialogTestRoute> {
                   Padding(
                     padding: EdgeInsets.only(top: 26.0),
                     child: Text("正在加载，请稍后..."),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -477,9 +479,7 @@ class _DialogTestRouteState extends State<DialogTestRoute> {
       context: context,
       initialDate: date,
       firstDate: date,
-      lastDate: date.add(
-        const Duration(days: 30),
-      ),
+      lastDate: date.add(const Duration(days: 30)),
     );
   }
 
@@ -493,9 +493,7 @@ class _DialogTestRouteState extends State<DialogTestRoute> {
           child: CupertinoDatePicker(
             mode: CupertinoDatePickerMode.dateAndTime,
             minimumDate: date,
-            maximumDate: date.add(
-              const Duration(days: 30),
-            ),
+            maximumDate: date.add(const Duration(days: 30)),
             maximumYear: date.year + 1,
             onDateTimeChanged: (DateTime value) {
               print(value);
@@ -514,13 +512,18 @@ class _DialogTestRouteState extends State<DialogTestRoute> {
   }) {
     return showGeneralDialog<T>(
       context: context,
-      pageBuilder: (BuildContext buildContext, Animation<double> animation,
-          Animation<double> secondaryAnimation) {
+      pageBuilder: (
+        BuildContext buildContext,
+        Animation<double> animation,
+        Animation<double> secondaryAnimation,
+      ) {
         final Widget pageChild = Builder(builder: builder);
         return SafeArea(
-          child: Builder(builder: (BuildContext context) {
-            return Theme(data: theme ?? Theme.of(context), child: pageChild);
-          }),
+          child: Builder(
+            builder: (BuildContext context) {
+              return Theme(data: theme ?? Theme.of(context), child: pageChild);
+            },
+          ),
         );
       },
       barrierDismissible: barrierDismissible,
@@ -532,15 +535,13 @@ class _DialogTestRouteState extends State<DialogTestRoute> {
   }
 
   Widget _buildMaterialDialogTransitions(
-      BuildContext context,
-      Animation<double> animation,
-      Animation<double> secondaryAnimation,
-      Widget child) {
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  ) {
     return ScaleTransition(
-      scale: CurvedAnimation(
-        parent: animation,
-        curve: Curves.easeOut,
-      ),
+      scale: CurvedAnimation(parent: animation, curve: Curves.easeOut),
       child: child,
     );
   }
@@ -548,11 +549,7 @@ class _DialogTestRouteState extends State<DialogTestRoute> {
 
 // 单独封装一个内部管理选中状态的复选框组件
 class DialogCheckbox extends StatefulWidget {
-  const DialogCheckbox({
-    Key? key,
-    this.value,
-    required this.onChanged,
-  }):super(key:key);
+  const DialogCheckbox({super.key, this.value, required this.onChanged});
 
   final ValueChanged<bool?> onChanged;
   final bool? value;

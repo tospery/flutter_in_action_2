@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class EventConflictTest extends StatelessWidget {
-  const EventConflictTest({Key? key}) : super(key: key);
+  const EventConflictTest({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +34,7 @@ class EventConflictTest extends StatelessWidget {
         alignment: Alignment.center,
         child: GestureDetector(
           onTap: () => print("1"),
-          child: Container(
-            width: 50,
-            height: 50,
-            color: Colors.grey,
-          ),
+          child: Container(width: 50, height: 50, color: Colors.grey),
         ),
       ),
     );
@@ -73,7 +69,6 @@ class CustomTapGestureRecognizer extends TapGestureRecognizer {
   }
 }
 
-
 RawGestureDetector customGestureDetector({
   GestureTapCallback? onTap,
   GestureTapDownCallback? onTapDown,
@@ -84,14 +79,12 @@ RawGestureDetector customGestureDetector({
     gestures: {
       CustomTapGestureRecognizer:
           GestureRecognizerFactoryWithHandlers<CustomTapGestureRecognizer>(
-        () => CustomTapGestureRecognizer(),
-        (detector) {
-          detector.onTap = onTap;
-          detector.onTapDown = onTapDown;
-        },
-      )
+            () => CustomTapGestureRecognizer(),
+            (detector) {
+              detector.onTap = onTap;
+              detector.onTapDown = onTapDown;
+            },
+          ),
     },
   );
 }
-
-

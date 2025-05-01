@@ -2,7 +2,7 @@ import 'package:flutter/material.dart' hide Page;
 import 'package:hi_case/hi_case.dart';
 
 class HeroAnimationRoute extends StatelessWidget {
-  const HeroAnimationRoute({Key? key}) : super(key: key);
+  const HeroAnimationRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class HeroAnimationRoute extends StatelessWidget {
 
 // 路由A
 class HeroAnimationRouteA extends StatelessWidget {
-  const HeroAnimationRouteA({Key? key}) : super(key: key);
+  const HeroAnimationRouteA({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +65,7 @@ class HeroAnimationRouteA extends StatelessWidget {
 }
 
 class HeroAnimationRouteB extends StatelessWidget {
-  const HeroAnimationRouteB({Key? key}) : super(key: key);
+  const HeroAnimationRouteB({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +79,7 @@ class HeroAnimationRouteB extends StatelessWidget {
 }
 
 class CustomHeroAnimation extends StatefulWidget {
-  const CustomHeroAnimation({Key? key}) : super(key: key);
+  const CustomHeroAnimation({super.key});
 
   @override
   _CustomHeroAnimationState createState() => _CustomHeroAnimationState();

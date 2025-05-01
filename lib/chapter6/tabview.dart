@@ -3,7 +3,7 @@ import 'package:flutter_in_action_2/widgets/index.dart';
 import 'package:hi_case/hi_case.dart';
 
 class TabViewRoute extends StatelessWidget {
-  const TabViewRoute({Key? key}) : super(key: key);
+  const TabViewRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class TabViewRoute extends StatelessWidget {
 }
 
 class TabViewRoute1 extends StatefulWidget {
-  const TabViewRoute1({Key? key}) : super(key: key);
+  const TabViewRoute1({super.key});
 
   @override
   _TabViewRoute1State createState() => _TabViewRoute1State();
@@ -73,7 +73,7 @@ class _TabViewRoute1State extends State<TabViewRoute1>
 }
 
 class TabViewRoute2 extends StatelessWidget {
-  const TabViewRoute2({Key? key}) : super(key: key);
+  const TabViewRoute2({super.key});
 
   @override
   Widget build(BuildContext context) {

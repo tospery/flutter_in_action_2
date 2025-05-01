@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ClipRoute extends StatelessWidget {
-  const ClipRoute({Key? key}) : super(key: key);
+  const ClipRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +17,7 @@ class ClipRoute extends StatelessWidget {
           borderRadius: BorderRadius.circular(5.0),
           child: avatar,
         ),
-        ClipPath(
-          child: avatar,
-        ),
+        ClipPath(child: avatar),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -28,10 +26,7 @@ class ClipRoute extends StatelessWidget {
               widthFactor: .5, //宽度设为原来宽度一半，另一半会溢出,但会显示
               child: avatar,
             ),
-            const Text(
-              "你好世界",
-              style: TextStyle(color: Colors.green),
-            )
+            const Text("你好世界", style: TextStyle(color: Colors.green)),
           ],
         ),
         Row(
@@ -45,7 +40,7 @@ class ClipRoute extends StatelessWidget {
                 child: avatar,
               ),
             ),
-            const Text("你好世界", style: TextStyle(color: Colors.green))
+            const Text("你好世界", style: TextStyle(color: Colors.green)),
           ],
         ),
         DecoratedBox(
@@ -57,10 +52,8 @@ class ClipRoute extends StatelessWidget {
         ),
         DecoratedBox(
           decoration: const BoxDecoration(color: Colors.red),
-          child: MyClipRect(
-            child: avatar,
-          ),
-        )
+          child: MyClipRect(child: avatar),
+        ),
       ],
     );
   }
@@ -75,10 +68,7 @@ class MyClipper extends CustomClipper<Rect> {
 }
 
 class MyClipRect extends StatelessWidget {
-  const MyClipRect({
-    Key? key,
-    required this.child,
-  }) : super(key: key);
+  const MyClipRect({super.key, required this.child});
 
   final Widget child;
 
