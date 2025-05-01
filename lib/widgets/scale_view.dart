@@ -272,12 +272,12 @@ class _ScaleViewState extends State<ScaleView>
                 ..translate(_offset.dx, _offset.dy)
                 ..scale(_scale),
           child: Builder(
-            builder: (_context) {
+            builder: (mycontext) {
               return AfterLayout(
                 callback: (ral) {
                   // fit 为 BoxFit.contain 时，FittedBox 的大小等于最终图片在屏幕上的显示大小。
                   // 每次布局发生变化时都要更新
-                  _childSize = _context.size!;
+                  _childSize = mycontext.size!;
                   _origin = Offset(
                     _childSize.width / 2.0,
                     _childSize.height / 2.0,

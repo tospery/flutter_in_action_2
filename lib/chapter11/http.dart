@@ -23,7 +23,7 @@ class _HttpTestRouteState extends State<HttpTestRoute> {
             onPressed: _loading ? null : request,
             child: Text("获取百度首页"),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width - 50.0,
             child: Text(_text.replaceAll(RegExp(r"\s"), "")),
           ),
