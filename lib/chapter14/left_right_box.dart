@@ -22,8 +22,9 @@ class RenderLeftRight extends RenderBox
         RenderBoxContainerDefaultsMixin<RenderBox, LeftRightParentData> {
   @override
   void setupParentData(RenderBox child) {
-    if (child.parentData is! LeftRightParentData)
+    if (child.parentData is! LeftRightParentData) {
       child.parentData = LeftRightParentData();
+    }
   }
 
   @override
