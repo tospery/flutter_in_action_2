@@ -141,7 +141,7 @@ class _ScaleState extends State<_Scale> {
     return Center(
       child: GestureDetector(
         //指定宽度，高度自适应
-        child: Image.asset("./imgs/sea.png", width: _width),
+        child: Image.asset("res/images/sea.png", width: _width),
         onScaleUpdate: (ScaleUpdateDetails details) {
           setState(() {
             //缩放倍数在0.8到10倍之间
