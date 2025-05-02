@@ -1,8 +1,9 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/widgets.dart';
 import 'dart:ui' as ui;
 import 'dart:math' as math;
 
-/// A widget that paints watermark.
 class WaterMark extends StatefulWidget {
   const WaterMark({
     super.key,
@@ -77,7 +78,7 @@ class _WaterMarkState extends State<WaterMark> {
     // 绘制单元水印并获取其大小
     final size = widget.painter.paintUnit(
       canvas,
-      MediaQueryData.fromView(View.of(context)).devicePixelRatio,
+      MediaQueryData.fromWindow(ui.window).devicePixelRatio,
     );
     final picture = recorder.endRecording();
     //将单元水印导为图片并缓存起来
@@ -122,7 +123,7 @@ class TextWaterMarkPainter extends WaterMarkPainter {
        padding = padding ?? const EdgeInsets.all(10.0),
        textStyle =
            textStyle ??
-           const TextStyle(color: Color.fromARGB(30, 0, 0, 0), fontSize: 14);
+           TextStyle(color: Color.fromARGB(20, 0, 0, 0), fontSize: 14);
 
   double rotate; // 文本旋转的度数，是角度不是弧度
   TextStyle textStyle; // 文本样式
@@ -194,16 +195,16 @@ class TextWaterMarkPainter extends WaterMarkPainter {
   @override
   Size paintUnit(Canvas canvas, double devicePixelRatio) {
     //根据屏幕 devicePixelRatio 对文本样式中长度相关的一些值乘以devicePixelRatio
-    final textStyle = _handleTextStyle(devicePixelRatio);
+    final mytextStyle = _handleTextStyle(devicePixelRatio);
     final mypadding = padding * devicePixelRatio;
 
     //构建文本画笔
     TextPainter painter = TextPainter(
       textDirection: TextDirection.ltr,
-      textScaler: TextScaler.linear(devicePixelRatio),
+      textScaleFactor: devicePixelRatio,
     );
     //添加文本和样式
-    painter.text = TextSpan(text: text, style: textStyle);
+    painter.text = TextSpan(text: text, style: mytextStyle);
     //对文本进行布局
     painter.layout();
 
@@ -242,12 +243,12 @@ class TextWaterMarkPainter extends WaterMarkPainter {
 
   TextStyle _handleTextStyle(double devicePixelRatio) {
     var style = textStyle;
-    double scale(attr) => attr == null ? 1.0 : devicePixelRatio;
+    double myscale(attr) => attr == null ? 1.0 : devicePixelRatio;
     return style.apply(
-      decorationThicknessFactor: scale(style.decorationThickness),
-      letterSpacingFactor: scale(style.letterSpacing),
-      wordSpacingFactor: scale(style.wordSpacing),
-      heightFactor: scale(style.height),
+      decorationThicknessFactor: myscale(style.decorationThickness),
+      letterSpacingFactor: myscale(style.letterSpacing),
+      wordSpacingFactor: myscale(style.wordSpacing),
+      heightFactor: myscale(style.height),
     );
   }
 
