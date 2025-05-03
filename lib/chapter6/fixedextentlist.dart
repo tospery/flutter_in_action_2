@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_in_action_2/logs/layout_log_print.dart';
 import 'package:flutter_in_action_2/routes.dart';
 
 class FixedExtentList extends StatelessWidget {

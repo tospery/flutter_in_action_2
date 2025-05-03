@@ -1,7 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart' hide Page;
-import 'package:flutter_in_action_2/logs/log_panel.dart';
-import 'package:flutter_in_action_2/logs/page_scaffold.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'common.dart';
 import 'routes.dart';

@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_in_action_2/logs/page_scaffold.dart';
 import '../routes.dart';
 import 'dart:math' as math;
 

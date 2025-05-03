@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart' hide Page;
-import 'package:flutter_in_action_2/logs/page_scaffold.dart';
-import 'package:flutter_in_action_2/widgets/scale_view.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import '../common.dart';
 
