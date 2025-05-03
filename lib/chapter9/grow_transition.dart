@@ -52,7 +52,7 @@ class _GrowTransitionRouteState extends State<GrowTransitionRoute>
   Widget build(BuildContext context) {
     return GrowTransition(
       animation: animation,
-      child: Image.asset("imgs/avatar.png"),
+      child: Image.asset("res/images/avatar.png"),
     );
   }
 

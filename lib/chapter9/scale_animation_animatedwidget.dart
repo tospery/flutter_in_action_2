@@ -9,7 +9,7 @@ class AnimatedImage extends AnimatedWidget {
     final animation = listenable as Animation<double>;
     return Center(
       child: Image.asset(
-        "imgs/avatar.png",
+        "res/images/avatar.png",
         width: animation.value,
         height: animation.value,
       ),

@@ -29,7 +29,7 @@ class HeroAnimationRouteA extends StatelessWidget {
             child: Hero(
               tag: "avatar", //唯一标记，前后两个路由页Hero的tag必须相同
               child: ClipOval(
-                child: Image.asset("imgs/avatar.png", width: 50.0),
+                child: Image.asset("res/images/avatar.png", width: 50.0),
               ),
             ),
             onTap: () {
@@ -72,7 +72,7 @@ class HeroAnimationRouteB extends StatelessWidget {
     return Center(
       child: Hero(
         tag: "avatar", //唯一标记，前后两个路由页Hero的tag必须相同
-        child: Image.asset("imgs/avatar.png"),
+        child: Image.asset("res/images/avatar.png"),
       ),
     );
   }
@@ -205,7 +205,7 @@ class _CustomHeroAnimationState extends State<CustomHeroAnimation>
       },
       child: SizedBox(
         width: 50,
-        child: ClipOval(child: Image.asset("imgs/avatar.png")),
+        child: ClipOval(child: Image.asset("res/images/avatar.png")),
       ),
     );
   }
@@ -219,7 +219,7 @@ class _CustomHeroAnimationState extends State<CustomHeroAnimation>
           _controller.reverse();
         });
       },
-      child: Image.asset("imgs/avatar.png", width: 400),
+      child: Image.asset("res/images/avatar.png", width: 400),
     );
   }
 

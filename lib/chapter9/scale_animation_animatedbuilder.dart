@@ -29,7 +29,7 @@ class _ScaleAnimationRouteState extends State<ScaleAnimationRoute2>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: animation,
-      child: Image.asset("imgs/avatar.png"),
+      child: Image.asset("res/images/avatar.png"),
       builder: (BuildContext ctx, child) {
         return Center(
           child: SizedBox(
