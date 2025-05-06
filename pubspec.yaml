@@ -17,8 +17,7 @@ dependencies:
   path_provider: ^2.0.2
   web_socket_channel: ^2.1.0
   webview_flutter: ^4.11.0
-  # flukit:
-  #   path: ../flukit/package_src
+  hi_case: ^1.0.2
 
 dev_dependencies:
   flutter_test:

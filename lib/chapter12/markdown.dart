@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart' hide Page;
+import 'package:hi_case/hi_case.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import '../common.dart';
 

@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:hi_case/hi_case.dart';
 import '../routes.dart';
 import 'dart:math' as math;
 

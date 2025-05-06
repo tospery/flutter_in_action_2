@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart' hide Page;
+import 'package:hi_case/hi_case.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'common.dart';
 import 'routes.dart';
@@ -7,6 +8,7 @@ import 'chapter14/draw_main.dart' as custom;
 
 void main() {
   // custom.main();
+  final logEmitter = getGlobalLogEmitter();
   runZoned(
     () => runApp(const MyApp()),
     zoneSpecification: ZoneSpecification(

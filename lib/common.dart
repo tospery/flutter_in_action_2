@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'routes.dart';
 export 'widgets/index.dart';
 
-final logEmitter = ValueNotifier<LogInfo?>(null);
+// final logEmitter = ValueNotifier<LogInfo?>(null);
 
 void drawChessboard(Canvas canvas, Rect rect) {
   //棋盘背景
