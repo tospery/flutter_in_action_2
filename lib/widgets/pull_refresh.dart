@@ -1,11 +1,12 @@
+import 'dart:async';
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide RefreshCallback;
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/widgets.dart';
-import '../common.dart';
+import 'sliver_flexible_header.dart';
 
+/// A widget provides pull refresh scope. Typically, the child is a [CustomScrollView].
 class PullRefreshScope extends StatefulWidget {
   const PullRefreshScope({Key? key, this.child}) : super(key: key);
 
@@ -29,8 +30,9 @@ class _PullRefreshScopeState extends State<PullRefreshScope> {
   }
 }
 
+/// A indicator for PullRefreshScope.
 class SliverPullRefreshIndicator extends StatefulWidget {
-  /// Create a new refresh control for inserting into a list of slivers.
+  /// Create a new refresh indicator for inserting into a list of slivers.
   ///
   /// The [refreshTriggerPullDistance] and [refreshIndicatorExtent] arguments
   /// must not be null and must be >= 0.
@@ -48,14 +50,14 @@ class SliverPullRefreshIndicator extends StatefulWidget {
     this.duration = const Duration(milliseconds: 200),
     this.builder = buildRefreshIndicator,
     this.onRefresh,
-  })  : assert(refreshTriggerPullDistance > 0.0),
-        assert(refreshIndicatorExtent >= 0.0),
-        assert(
-          refreshTriggerPullDistance >= refreshIndicatorExtent,
-          'The refresh indicator cannot take more space in its final state '
-          'than the amount initially created by overscrolling.',
-        ),
-        super(key: key);
+  }) : assert(refreshTriggerPullDistance > 0.0),
+       assert(refreshIndicatorExtent >= 0.0),
+       assert(
+         refreshTriggerPullDistance >= refreshIndicatorExtent,
+         'The refresh indicator cannot take more space in its final state '
+         'than the amount initially created by overscrolling.',
+       ),
+       super(key: key);
 
   /// duration for up to header
   final Duration duration;
@@ -111,17 +113,14 @@ class SliverPullRefreshIndicator extends StatefulWidget {
     double width = min(22, pulledExtent);
     if (refreshState == RefreshIndicatorMode.refresh) {
       widget = SizedBox(
-        child: CircularProgressIndicator(strokeWidth: 2),
+        child: const CircularProgressIndicator(strokeWidth: 2),
         width: width,
         height: width,
       );
     } else {
       widget = Transform.rotate(
         angle: pulledExtent / 80 * 6.28,
-        child: CircularProgressIndicator(
-          value: .85,
-          strokeWidth: 2,
-        ),
+        child: const CircularProgressIndicator(value: .85, strokeWidth: 2),
       );
     }
     return Center(
@@ -145,8 +144,8 @@ class SliverPullRefreshIndicatorState
   bool _refreshing = false;
   bool _pointerUp = false;
   bool _needAnimate = false;
-
-  bool get _visible => _height > 0;
+  bool _visible = true;
+  bool _done = false;
 
   @override
   void initState() {
@@ -156,7 +155,7 @@ class SliverPullRefreshIndicatorState
       state != null,
       'PullRefreshBox missed for SliverPullRefreshIndicator',
     );
-    state!._pointerStateSetter = (value) {
+    state!._pointerStateSetter = (bool value) {
       _pointerUp = value;
       if (_pointerUp && _needAnimate) {
         _needAnimate = false;
@@ -169,12 +168,14 @@ class SliverPullRefreshIndicatorState
   double get _visibleExtent => _height;
 
   set _visibleExtent(double value) {
+    if (value == _height) return;
     _height = value;
     // build/layout 过程中不能调用 setState
     SchedulerBinding.instance.addPostFrameCallback((_) => setState(() => {}));
   }
 
   void goBack() {
+    _done = true;
     if (!mounted) return;
     if (!_visible) {
       _refreshing = false;
@@ -195,15 +196,12 @@ class SliverPullRefreshIndicatorState
   Widget build(BuildContext context) {
     return SliverFlexibleHeader(
       visibleExtent: _visibleExtent,
-      builder: (
-        BuildContext context,
-        double availableExtent,
-        ScrollDirection direction,
-      ) {
-        _height = availableExtent;
+      builder: (_, double availableExtent, ScrollDirection direction) {
+        _visible = availableExtent > 0;
         if (!_visible) {
           refreshState = RefreshIndicatorMode.inactive;
           _visibleExtent = 0;
+          _done = false;
         } else {
           if (direction == ScrollDirection.reverse &&
               !_refreshing &&
@@ -213,10 +211,10 @@ class SliverPullRefreshIndicatorState
             _visibleExtent = widget.refreshIndicatorExtent;
             widget.onRefresh?.call().whenComplete(goBack);
           }
-          if (_needAnimate) {
-            refreshState = RefreshIndicatorMode.done;
-          } else if (_refreshing) {
+          if (_refreshing) {
             refreshState = RefreshIndicatorMode.refresh;
+          } else if (_done) {
+            refreshState = RefreshIndicatorMode.done;
           } else if (availableExtent > widget.refreshTriggerPullDistance) {
             refreshState = RefreshIndicatorMode.armed;
           } else {

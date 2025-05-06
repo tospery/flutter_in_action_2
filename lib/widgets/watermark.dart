@@ -1,11 +1,10 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:ui' as ui;
 import 'dart:math' as math;
 
+/// A widget that paints watermark.
 class WaterMark extends StatefulWidget {
-  WaterMark({
+  const WaterMark({
     Key? key,
     this.repeat = ImageRepeat.repeat,
     required this.painter,
@@ -78,7 +77,7 @@ class _WaterMarkState extends State<WaterMark> {
     // 绘制单元水印并获取其大小
     final size = widget.painter.paintUnit(
       canvas,
-      MediaQueryData.fromWindow(ui.window).devicePixelRatio,
+      MediaQueryData.fromView(View.of(context)).devicePixelRatio,
     );
     final picture = recorder.endRecording();
     //将单元水印导为图片并缓存起来
@@ -111,21 +110,19 @@ abstract class WaterMarkPainter {
 
 /// 文本水印画笔
 class TextWaterMarkPainter extends WaterMarkPainter {
-  TextWaterMarkPainter(
-      {Key? key,
-      double? rotate,
-      EdgeInsets? padding,
-      TextStyle? textStyle,
-      required this.text,
-      this.textDirection = TextDirection.ltr})
-      : assert(rotate == null || rotate >= -90 && rotate <= 90),
-        rotate = rotate ?? 0,
-        padding = padding ?? const EdgeInsets.all(10.0),
-        textStyle = textStyle ??
-            TextStyle(
-              color: Color.fromARGB(20, 0, 0, 0),
-              fontSize: 14,
-            );
+  TextWaterMarkPainter({
+    Key? key,
+    double? rotate,
+    EdgeInsets? padding,
+    TextStyle? textStyle,
+    required this.text,
+    this.textDirection = TextDirection.ltr,
+  }) : assert(rotate == null || rotate >= -90 && rotate <= 90),
+       rotate = rotate ?? 0,
+       padding = padding ?? const EdgeInsets.all(10.0),
+       textStyle =
+           textStyle ??
+           const TextStyle(color: Color.fromARGB(30, 0, 0, 0), fontSize: 14);
 
   double rotate; // 文本旋转的度数，是角度不是弧度
   TextStyle textStyle; // 文本样式
@@ -203,7 +200,7 @@ class TextWaterMarkPainter extends WaterMarkPainter {
     //构建文本画笔
     TextPainter painter = TextPainter(
       textDirection: TextDirection.ltr,
-      textScaleFactor: devicePixelRatio,
+      textScaler: TextScaler.linear(devicePixelRatio),
     );
     //添加文本和样式
     painter.text = TextSpan(text: text, style: _textStyle);
@@ -229,15 +226,9 @@ class TextWaterMarkPainter extends WaterMarkPainter {
     final adjustHeight = textHeight * cos;
 
     if (orgSin >= 0) {
-      canvas.translate(
-        adjustWidth + _padding.left,
-        _padding.top,
-      );
+      canvas.translate(adjustWidth + _padding.left, _padding.top);
     } else {
-      canvas.translate(
-        _padding.left,
-        height + _padding.top,
-      );
+      canvas.translate(_padding.left, height + _padding.top);
     }
     canvas.rotate(radians);
     // 绘制文本

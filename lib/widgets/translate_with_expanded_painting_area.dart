@@ -1,5 +1,9 @@
 import 'package:flutter/widgets.dart';
 
+/// A widget that:
+///  - imposes different constraints on its child than it gets from
+///    its parent, possibly allowing the child to overflow the parent.
+///  - apply translate to its child (specified by [offset]).
 class TranslateWithExpandedPaintingArea extends StatelessWidget {
   const TranslateWithExpandedPaintingArea({
     Key? key,
@@ -17,7 +21,6 @@ class TranslateWithExpandedPaintingArea extends StatelessWidget {
       builder: (context, constraints) {
         final dx = offset.dx.abs();
         final dy = offset.dy.abs();
-
         Widget widget = OverflowBox(
           //平移多少，则子组件相应轴的长度增加多少
           minWidth: constraints.minWidth + dx,

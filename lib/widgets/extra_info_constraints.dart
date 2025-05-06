@@ -1,5 +1,10 @@
 import 'package:flutter/widgets.dart';
 
+/// A box constraints with extra information.
+///
+/// See also:
+///   * [SliverFlexibleHeader], which use [ExtraInfoBoxConstraints].
+///   * [SliverPersistentHeaderToBox], which use [ExtraInfoBoxConstraints].
 class ExtraInfoBoxConstraints<T> extends BoxConstraints {
   ExtraInfoBoxConstraints(this.extra, BoxConstraints constraints)
     : super(
@@ -9,25 +14,22 @@ class ExtraInfoBoxConstraints<T> extends BoxConstraints {
         maxHeight: constraints.maxHeight,
       );
 
-  //滑动方向
+  /// extra information
   final T extra;
+
+  BoxConstraints asBoxConstraints() => copyWith();
 
   @override
   bool operator ==(Object other) {
-    assert(debugAssertIsValid());
     if (identical(this, other)) return true;
-    if (other.runtimeType != runtimeType) return false;
     return other is ExtraInfoBoxConstraints &&
-        other.minWidth == minWidth &&
-        other.maxWidth == maxWidth &&
-        other.minHeight == minHeight &&
-        other.maxHeight == maxHeight &&
+        super == other &&
         other.extra == extra;
   }
 
   @override
   int get hashCode {
-    assert(debugAssertIsValid());
-    return Object.hash(minWidth, maxWidth, minHeight, maxHeight, extra);
+    // ignore: deprecated_member_use
+    return Object.hash(super.hashCode, extra);
   }
 }
