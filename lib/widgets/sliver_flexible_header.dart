@@ -3,15 +3,12 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'extra_info_constraints.dart';
 
-typedef SliverFlexibleHeaderBuilder =
-    Widget Function(
-      BuildContext context,
-      double maxExtent,
-      ScrollDirection direction,
-    );
+typedef SliverFlexibleHeaderBuilder = Widget Function(
+  BuildContext context,
+  double maxExtent,
+  ScrollDirection direction,
+);
 
-/// A sliver to provide a flexible header that its height can expand when user continue
-/// dragging over scroll . Typically as the first child  of [CustomScrollView].
 class SliverFlexibleHeader extends StatelessWidget {
   const SliverFlexibleHeader({
     Key? key,
@@ -54,14 +51,15 @@ class _SliverFlexibleHeader extends SingleChildRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(context, _FlexibleHeaderRenderSliver renderObject) {
+  void updateRenderObject(
+      BuildContext context, _FlexibleHeaderRenderSliver renderObject) {
     renderObject.visibleExtent = visibleExtent;
   }
 }
 
 class _FlexibleHeaderRenderSliver extends RenderSliverSingleBoxAdapter {
   _FlexibleHeaderRenderSliver(double visibleExtent)
-    : _visibleExtent = visibleExtent;
+      : _visibleExtent = visibleExtent;
   double _lastOverScroll = 0;
   double _lastScrollOffset = 0;
   double _visibleExtent = 0;
@@ -135,10 +133,9 @@ class _FlexibleHeaderRenderSliver extends RenderSliverSingleBoxAdapter {
     // 根据前后的overScroll值之差确定列表滑动方向。注意，不能直接使用 constraints.userScrollDirection，
     // 这是因为该参数只表示用户滑动操作的方向。比如当我们下拉超出边界时，然后松手，此时列表会弹回，即列表滚动
     // 方向是向上，而此时用户操作已经结束，ScrollDirection 的方向是上一次的用户滑动方向(向下)，这时便有问题。
-    var distance =
-        overScroll > 0
-            ? overScroll - _lastOverScroll
-            : _lastScrollOffset - scrollOffset;
+    var distance = overScroll > 0
+        ? overScroll - _lastOverScroll
+        : _lastScrollOffset - scrollOffset;
     _lastOverScroll = overScroll;
     _lastScrollOffset = scrollOffset;
 

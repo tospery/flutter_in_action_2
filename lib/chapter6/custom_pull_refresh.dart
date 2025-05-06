@@ -16,7 +16,8 @@ class _PullRefreshBoxRouteState extends State<PullRefreshBoxRoute> {
     return PullRefreshScope(
       child: CustomScrollView(
         physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics()),
+          parent: AlwaysScrollableScrollPhysics(),
+        ),
         slivers: <Widget>[
           SliverPullRefreshIndicator(
             refreshTriggerPullDistance: 100.0,
@@ -28,13 +29,9 @@ class _PullRefreshBoxRouteState extends State<PullRefreshBoxRoute> {
           ),
           SliverFixedExtentList(
             itemExtent: 50,
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                return ListTile(
-                    title: Text('$index'), onTap: () => print(index));
-              },
-              childCount: _itemCount,
-            ),
+            delegate: SliverChildBuilderDelegate((context, index) {
+              return ListTile(title: Text('$index'), onTap: () => print(index));
+            }, childCount: _itemCount),
           ),
         ],
       ),

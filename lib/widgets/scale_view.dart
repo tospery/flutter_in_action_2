@@ -84,17 +84,18 @@ class _ScaleViewState extends State<ScaleView>
   @override
   void initState() {
     super.initState();
-    _controller =
-        AnimationController(
-            vsync: this,
-            duration: const Duration(milliseconds: 150),
-          )
-          ..addListener(_handleFlingAnimation)
-          ..addStatusListener((status) {
-            if (_doubleClick && status == AnimationStatus.completed) {
-              _doubleClick = false;
-            }
-          });
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 150),
+    )
+      ..addListener(_handleFlingAnimation)
+      ..addStatusListener(
+        (status) {
+          if (_doubleClick && status == AnimationStatus.completed) {
+            _doubleClick = false;
+          }
+        },
+      );
   }
 
   @override
@@ -148,10 +149,8 @@ class _ScaleViewState extends State<ScaleView>
       //放大或缩小
       if (details.scale != 1.0) {
         //放大倍数在widget.minScale-maxScale倍之间。
-        _scale = (_previousScale * details.scale).clamp(
-          widget.minScale,
-          widget.maxScale,
-        );
+        _scale = (_previousScale * details.scale)
+            .clamp(widget.minScale, widget.maxScale);
         _offset = _origin - _normalizedOffset * _scale;
       } else {
         //垂直方向拖动
@@ -194,14 +193,10 @@ class _ScaleViewState extends State<ScaleView>
     Size size = _childSize;
     // 已经处于缩放状态，则恢复原始大小
     if (_scale != 1.0) {
-      _flingAnimation = Tween<Offset>(
-        begin: _offset,
-        end: Offset.zero,
-      ).animate(_controller);
-      _scaleAnimation = Tween<double>(
-        begin: _scale,
-        end: 1.0,
-      ).animate(_controller);
+      _flingAnimation =
+          Tween<Offset>(begin: _offset, end: Offset.zero).animate(_controller);
+      _scaleAnimation =
+          Tween<double>(begin: _scale, end: 1.0).animate(_controller);
       _controller.forward();
     } else {
       // 未处于缩放状态，则放大。
@@ -267,41 +262,35 @@ class _ScaleViewState extends State<ScaleView>
       child: Align(
         alignment: widget.alignment,
         child: Transform(
-          transform:
-              Matrix4.identity()
-                ..translate(_offset.dx, _offset.dy)
-                ..scale(_scale),
-          child: Builder(
-            builder: (_context) {
-              return AfterLayout(
-                callback: (ral) {
-                  // fit 为 BoxFit.contain 时，FittedBox 的大小等于最终图片在屏幕上的显示大小。
-                  // 每次布局发生变化时都要更新
-                  _childSize = _context.size!;
-                  _origin = Offset(
-                    _childSize.width / 2.0,
-                    _childSize.height / 2.0,
-                  );
-                  final offset = ral.localToGlobal(
-                    Offset.zero,
-                    ancestor: context.findRenderObject(),
-                  );
-                  _childRect = offset & ral.size;
-                },
-                child: FittedBox(
-                  fit: BoxFit.contain,
-                  child: ConstrainedBox(
-                    //至少size(1,1)，防止context.size为null
-                    constraints: const BoxConstraints(
-                      minWidth: 1,
-                      minHeight: 1,
-                    ),
-                    child: widget.child,
-                  ),
+          transform: Matrix4.identity()
+            ..translate(_offset.dx, _offset.dy)
+            ..scale(_scale),
+          child: Builder(builder: (_context) {
+            return AfterLayout(
+              callback: (ral) {
+                // fit 为 BoxFit.contain 时，FittedBox 的大小等于最终图片在屏幕上的显示大小。
+                // 每次布局发生变化时都要更新
+                _childSize = _context.size!;
+                _origin = Offset(
+                  _childSize.width / 2.0,
+                  _childSize.height / 2.0,
+                );
+                final offset = ral.localToGlobal(
+                  Offset.zero,
+                  ancestor: context.findRenderObject(),
+                );
+                _childRect = offset & ral.size;
+              },
+              child: FittedBox(
+                fit: BoxFit.contain,
+                child: ConstrainedBox(
+                  //至少size(1,1)，防止context.size为null
+                  constraints: const BoxConstraints(minWidth: 1, minHeight: 1),
+                  child: widget.child,
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          }),
         ),
       ),
     );

@@ -16,15 +16,18 @@ class _GradientButtonRouteState extends State<GradientButtonRoute> {
       children: <Widget>[
         GradientButton(
           colors: const [Colors.orange, Colors.red],
+          height: 50.0,
           child: const Text("Submit"),
           onPressed: onTap,
         ),
         GradientButton(
+          height: 50.0,
           colors: [Colors.lightGreen, Colors.green.shade700],
           child: const Text("Submit"),
           onPressed: onTap,
         ),
         GradientButton(
+          height: 50.0,
           //borderRadius: const BorderRadius.all(Radius.circular(5)),
           colors: [Colors.lightBlue.shade300, Colors.blueAccent],
           child: const Text("Submit"),
@@ -33,7 +36,6 @@ class _GradientButtonRouteState extends State<GradientButtonRoute> {
       ],
     );
   }
-
   onTap() {
     print("button click");
   }

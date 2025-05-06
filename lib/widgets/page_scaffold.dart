@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../common.dart';
 
 import 'log_panel.dart';
 
@@ -70,7 +71,7 @@ class Page {
     Widget child, {
     this.withScaffold = true,
     this.padding = true,
-    this.showLog = false,
+    this.showLog = true,
   }) : builder = ((_) => child);
 
   Page.builder(
@@ -78,7 +79,7 @@ class Page {
     this.builder, {
     this.withScaffold = true,
     this.padding = true,
-    this.showLog = false,
+    this.showLog = true,
   });
 
   String title;
@@ -87,31 +88,26 @@ class Page {
   bool padding;
   bool showLog;
 
-  Widget build(BuildContext context) {
-    Widget widget = builder(context);
-    if (withScaffold) {
-      widget = PageScaffold(
-        title: title,
-        padding: padding,
-        showLog: showLog,
-        body: widget,
-      );
-      widget = LogListenerScope(
-        child: widget,
-        logEmitter: getGlobalLogEmitter(),
-      );
-    } else if (showLog) {
-      widget = VerticalLogPanel(child: widget);
-      widget = LogListenerScope(
-        child: widget,
-        logEmitter: getGlobalLogEmitter(),
-      );
-    }
-    return widget;
-  }
-
   Future<T?> openPage<T>(BuildContext context) {
-    return Navigator.push<T>(context, MaterialPageRoute<T>(builder: build));
+    return Navigator.push<T>(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          Widget widget = builder(context);
+          if (withScaffold) {
+            widget = PageScaffold(
+              title: title,
+              padding: padding,
+              showLog: showLog,
+              body: widget,
+            );
+          } else if (showLog) {
+            widget = VerticalLogPanel(child: widget);
+          }
+          return LogListenerScope(child: widget, logEmitter: logEmitter);
+        },
+      ),
+    );
   }
 }
 

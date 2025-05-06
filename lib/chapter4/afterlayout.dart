@@ -38,24 +38,26 @@ class _AfterLayoutRouteState extends State<AfterLayoutRoute> {
           },
           child: const Text('Text2：flutter@wendux'),
         ),
-        Builder(builder: (context) {
-          return Container(
-            color: Colors.grey.shade200,
-            alignment: Alignment.center,
-            width: 100,
-            height: 100,
-            child: AfterLayout(
-              callback: (RenderAfterLayout ral) {
-                Offset offset = ral.localToGlobal(
-                  Offset.zero,
-                  ancestor: context.findRenderObject(),
-                );
-                print('A 在 Container 中占用的空间范围为：${offset & ral.size}');
-              },
-              child: const Text('A'),
-            ),
-          );
-        }),
+        Builder(
+          builder: (context) {
+            return Container(
+              color: Colors.grey.shade200,
+              alignment: Alignment.center,
+              width: 100,
+              height: 100,
+              child: AfterLayout(
+                callback: (RenderAfterLayout ral) {
+                  Offset offset = ral.localToGlobal(
+                    Offset.zero,
+                    ancestor: context.findRenderObject(),
+                  );
+                  print('A 在 Container 中占用的空间范围为：${offset & ral.size}');
+                },
+                child: const Text('A'),
+              ),
+            );
+          },
+        ),
         const Divider(),
         AfterLayout(
           child: Text(_text),

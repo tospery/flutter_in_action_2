@@ -20,6 +20,7 @@ class PointerMoveIndicator extends StatefulWidget {
 class _PointerMoveIndicatorState extends State<PointerMoveIndicator> {
   PointerEvent? _event;
 
+
   @override
   Widget build(BuildContext context) {
     return Listener(
