@@ -6,7 +6,7 @@ class CustomScrollViewTestRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CaseList(
+    return ListCase(
       children: [
         Case('两个ListView', buildTwoListView()),
         Case('合并两个list', buildTwoSliverList()),

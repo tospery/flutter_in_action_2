@@ -6,7 +6,7 @@ class PersistentHeaderRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CaseList(
+    return ListCase(
       children: [
         Case('SliverPersistentHeader示例1', wSample1(), padding: false),
         Case(

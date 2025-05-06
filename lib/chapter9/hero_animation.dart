@@ -6,7 +6,7 @@ class HeroAnimationRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CaseList(
+    return ListCase(
       children: [
         Case('自实现Hero动画', const CustomHeroAnimation()),
         Case('Flutter Hero动画', const HeroAnimationRouteA()),

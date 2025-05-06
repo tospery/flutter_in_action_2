@@ -6,7 +6,7 @@ class TabViewRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CaseList(
+    return ListCase(
       children: [
         Case('TabBarView', const TabViewRoute1(), withScaffold: false),
         Case(

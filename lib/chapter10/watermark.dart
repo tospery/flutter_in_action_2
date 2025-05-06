@@ -6,7 +6,7 @@ class WatermarkRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CaseList(
+    return ListCase(
       children: [
         Case('测量文本宽高', wTextPainterTest(), showLog: true),
         Case('文本水印', wTextWaterMark(context), padding: false),

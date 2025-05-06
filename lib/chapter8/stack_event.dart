@@ -6,7 +6,7 @@ class StackEventTest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CaseList(
+    return ListCase(
       children: [
         Case('事件共享', const StickerTest()),
         Case('水印', const _WaterMarkTest(), padding: false),

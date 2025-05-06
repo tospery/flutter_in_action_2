@@ -111,8 +111,8 @@ class Case {
   }
 }
 
-class CaseList extends StatelessWidget {
-  const CaseList({Key? key, required this.children}) : super(key: key);
+class ListCase extends StatelessWidget {
+  const ListCase({Key? key, required this.children}) : super(key: key);
 
   final List<Case> children;
 

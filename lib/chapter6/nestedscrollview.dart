@@ -6,7 +6,7 @@ class NestedScrollViewRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CaseList(
+    return ListCase(
       children: [
         Case('嵌套 ListView', const NestedListView(), withScaffold: false),
         Case(

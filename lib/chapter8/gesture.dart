@@ -7,7 +7,7 @@ class GestureRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CaseList(
+    return ListCase(
       children: [
         Case('点击、双击、长按', const GestureTest()),
         Case('拖动、滑动', _Drag()),
