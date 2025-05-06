@@ -6,10 +6,16 @@ class TabViewRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListPage(children: [
-      Page('TabBarView', const TabViewRoute1(), withScaffold: false),
-      Page('DefaultTabController', const TabViewRoute2(), withScaffold: false),
-    ]);
+    return CaseList(
+      children: [
+        Case('TabBarView', const TabViewRoute1(), withScaffold: false),
+        Case(
+          'DefaultTabController',
+          const TabViewRoute2(),
+          withScaffold: false,
+        ),
+      ],
+    );
   }
 }
 
@@ -44,14 +50,15 @@ class _TabViewRoute1State extends State<TabViewRoute1>
       body: TabBarView(
         //构建
         controller: _tabController,
-        children: tabs.map((e) {
-          return KeepAliveWrapper(
-            child: Container(
-              alignment: Alignment.center,
-              child: Text(e, textScaleFactor: 5),
-            ),
-          );
-        }).toList(),
+        children:
+            tabs.map((e) {
+              return KeepAliveWrapper(
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Text(e, textScaleFactor: 5),
+                ),
+              );
+            }).toList(),
       ),
     );
   }
@@ -75,20 +82,19 @@ class TabViewRoute2 extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text("App Name"),
-          bottom: TabBar(
-            tabs: tabs.map((e) => Tab(text: e)).toList(),
-          ),
+          bottom: TabBar(tabs: tabs.map((e) => Tab(text: e)).toList()),
         ),
         body: TabBarView(
           //构建
-          children: tabs.map((e) {
-            return KeepAliveWrapper(
-              child: Container(
-                alignment: Alignment.center,
-                child: Text(e, textScaleFactor: 5),
-              ),
-            );
-          }).toList(),
+          children:
+              tabs.map((e) {
+                return KeepAliveWrapper(
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Text(e, textScaleFactor: 5),
+                  ),
+                );
+              }).toList(),
         ),
       ),
     );

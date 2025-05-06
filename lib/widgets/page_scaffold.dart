@@ -3,8 +3,8 @@ import '../common.dart';
 
 import 'log_panel.dart';
 
-class PageScaffold extends StatefulWidget {
-  const PageScaffold({
+class CasePage extends StatefulWidget {
+  const CasePage({
     Key? key,
     required this.title,
     required this.body,
@@ -18,10 +18,10 @@ class PageScaffold extends StatefulWidget {
   final bool showLog;
 
   @override
-  State<PageScaffold> createState() => _PageScaffoldState();
+  State<CasePage> createState() => _CasePageState();
 }
 
-class _PageScaffoldState extends State<PageScaffold> {
+class _CasePageState extends State<CasePage> {
   late bool _showLog;
 
   @override
@@ -31,7 +31,7 @@ class _PageScaffoldState extends State<PageScaffold> {
   }
 
   @override
-  void didUpdateWidget(covariant PageScaffold oldWidget) {
+  void didUpdateWidget(covariant CasePage oldWidget) {
     if (oldWidget.showLog != widget.showLog) {
       _showLog = widget.showLog;
     }
@@ -65,8 +65,8 @@ class _PageScaffoldState extends State<PageScaffold> {
   }
 }
 
-class Page {
-  Page(
+class Case {
+  Case(
     this.title,
     Widget child, {
     this.withScaffold = true,
@@ -74,7 +74,7 @@ class Page {
     this.showLog = true,
   }) : builder = ((_) => child);
 
-  Page.builder(
+  Case.builder(
     this.title,
     this.builder, {
     this.withScaffold = true,
@@ -88,14 +88,14 @@ class Page {
   bool padding;
   bool showLog;
 
-  Future<T?> openPage<T>(BuildContext context) {
+  Future<T?> openCase<T>(BuildContext context) {
     return Navigator.push<T>(
       context,
       MaterialPageRoute(
         builder: (context) {
           Widget widget = builder(context);
           if (withScaffold) {
-            widget = PageScaffold(
+            widget = CasePage(
               title: title,
               padding: padding,
               showLog: showLog,
@@ -111,10 +111,10 @@ class Page {
   }
 }
 
-class ListPage extends StatelessWidget {
-  const ListPage({Key? key, required this.children}) : super(key: key);
+class CaseList extends StatelessWidget {
+  const CaseList({Key? key, required this.children}) : super(key: key);
 
-  final List<Page> children;
+  final List<Case> children;
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +126,7 @@ class ListPage extends StatelessWidget {
       return ListTile(
         title: Text(page.title),
         trailing: const Icon(Icons.keyboard_arrow_right),
-        onTap: () => page.openPage(context),
+        onTap: () => page.openCase(context),
       );
     }).toList();
   }

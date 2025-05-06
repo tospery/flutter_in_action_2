@@ -85,11 +85,11 @@ class _MarkdownRouteState extends State<MarkdownRoute> {
   }
 
   viewImage(context, String url) {
-    Page(
+    Case(
       '查看图片',
       ScaleView(child: Image.network(url), parentScrollableAxis: null),
       showLog: false,
       padding: false,
-    ).openPage(context);
+    ).openCase(context);
   }
 }

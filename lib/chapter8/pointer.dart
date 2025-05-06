@@ -6,7 +6,7 @@ class PointerRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListPage(children: [Page('显示移动偏移', const PointerMoveIndicator())]);
+    return CaseList(children: [Case('显示移动偏移', const PointerMoveIndicator())]);
   }
 }
 
@@ -19,7 +19,6 @@ class PointerMoveIndicator extends StatefulWidget {
 
 class _PointerMoveIndicatorState extends State<PointerMoveIndicator> {
   PointerEvent? _event;
-
 
   @override
   Widget build(BuildContext context) {

@@ -141,13 +141,17 @@ class _PageViewTestState extends State<PageViewTest> {
                 ElevatedButton(
                   child: const Text("打开新路由页"),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return PageScaffold(
-                        title: 'xx',
-                        body: const Center(child: Text('xx')),
-                      );
-                    }));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return CasePage(
+                            title: 'xx',
+                            body: const Center(child: Text('xx')),
+                          );
+                        },
+                      ),
+                    );
                   },
                 ),
               ],
@@ -230,11 +234,8 @@ class _PageViewTestState extends State<PageViewTest> {
 }
 
 class Page extends StatefulWidget {
-  const Page({
-    Key? key,
-    required this.text,
-    required this.buildType,
-  }) : super(key: key);
+  const Page({Key? key, required this.text, required this.buildType})
+    : super(key: key);
 
   final String text;
   final int buildType;
@@ -265,16 +266,14 @@ class _PageState extends State<Page> {
   Widget buildNumber() {
     return Center(child: Text(widget.text, textScaleFactor: 5));
   }
-//
-// @override
-// bool get wantKeepAlive => true;
+
+  //
+  // @override
+  // bool get wantKeepAlive => true;
 }
 
 class Page1 extends StatefulWidget {
-  const Page1({
-    Key? key,
-    required this.pageController,
-  }) : super(key: key);
+  const Page1({Key? key, required this.pageController}) : super(key: key);
   final PageController pageController;
 
   @override
@@ -295,12 +294,14 @@ class _Page1State extends State<Page1> {
 
     var children = <Widget>[];
     for (int i = 0; i < 6; i++) {
-      children.add(Container(
-        height: 60,
-        padding: const EdgeInsets.symmetric(horizontal: 5),
-        alignment: Alignment.center,
-        child: img,
-      ));
+      children.add(
+        Container(
+          height: 60,
+          padding: const EdgeInsets.symmetric(horizontal: 5),
+          alignment: Alignment.center,
+          child: img,
+        ),
+      );
     }
     Widget list = Padding(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -324,7 +325,7 @@ class _Page1State extends State<Page1> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Text("xxx" * 3000),
-          )
+          ),
         ],
       ),
     );
@@ -334,8 +335,10 @@ class _Page1State extends State<Page1> {
 //BouncingScrollPhysics b;
 
 class ObserveOverscrollPhysics extends AlwaysScrollableScrollPhysics {
-  const ObserveOverscrollPhysics(this.onOverscrollChanged, {ScrollPhysics? parent})
-      : super(parent: parent);
+  const ObserveOverscrollPhysics(
+    this.onOverscrollChanged, {
+    ScrollPhysics? parent,
+  }) : super(parent: parent);
 
   final ValueChanged<double> onOverscrollChanged;
 
@@ -356,12 +359,18 @@ class ObserveOverscrollPhysics extends AlwaysScrollableScrollPhysics {
 
   @override
   double applyPhysicsToUserOffset(ScrollMetrics position, double offset) {
-    final double overscrollPastStart =
-        math.max(position.minScrollExtent - position.pixels, 0.0);
-    final double overscrollPastEnd =
-        math.max(position.pixels - position.maxScrollExtent, 0.0);
-    final double overscrollPast =
-        math.max(overscrollPastStart, overscrollPastEnd);
+    final double overscrollPastStart = math.max(
+      position.minScrollExtent - position.pixels,
+      0.0,
+    );
+    final double overscrollPastEnd = math.max(
+      position.pixels - position.maxScrollExtent,
+      0.0,
+    );
+    final double overscrollPast = math.max(
+      overscrollPastStart,
+      overscrollPastEnd,
+    );
 
     print(overscrollPast);
 

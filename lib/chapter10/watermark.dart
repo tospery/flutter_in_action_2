@@ -6,25 +6,37 @@ class WatermarkRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListPage(children: [
-      Page('测量文本宽高', wTextPainterTest(), showLog: true),
-      Page('文本水印', wTextWaterMark(context), padding: false),
-      Page('交错文本水印', wStaggerTextWaterMark(), padding: false),
-      Page('水印指定偏移', wTextWaterMarkWithOffset(), padding: false),
-      Page('UnconstrainedBox,水印偏移后会溢出', wTextWaterMarkWithUnconstrainedBox(),
-          padding: false),
-      Page('水印偏移-FittedBox', wTextWaterMarkWithFittedBox(), padding: false),
-      Page('水印指定-OverflowBox', wTextWaterMarkWithOverflowBox(), padding: false),
-    ]);
+    return CaseList(
+      children: [
+        Case('测量文本宽高', wTextPainterTest(), showLog: true),
+        Case('文本水印', wTextWaterMark(context), padding: false),
+        Case('交错文本水印', wStaggerTextWaterMark(), padding: false),
+        Case('水印指定偏移', wTextWaterMarkWithOffset(), padding: false),
+        Case(
+          'UnconstrainedBox,水印偏移后会溢出',
+          wTextWaterMarkWithUnconstrainedBox(),
+          padding: false,
+        ),
+        Case('水印偏移-FittedBox', wTextWaterMarkWithFittedBox(), padding: false),
+        Case(
+          '水印指定-OverflowBox',
+          wTextWaterMarkWithOverflowBox(),
+          padding: false,
+        ),
+      ],
+    );
   }
 
   Widget wTextPainterTest() {
     // 我们想提前知道 Text 组件的大小
-    Text text = const Text('flutter@wendux', style: const TextStyle(fontSize: 18));
+    Text text = const Text(
+      'flutter@wendux',
+      style: const TextStyle(fontSize: 18),
+    );
     // 使用 TextPainter 来测量
-    TextPainter painter =TextPainter(textDirection: TextDirection.ltr);
+    TextPainter painter = TextPainter(textDirection: TextDirection.ltr);
     // 将 Text 组件文本和样式透传给TextPainter
-    painter.text = TextSpan(text: text.data,style:text.style);
+    painter.text = TextSpan(text: text.data, style: text.style);
     // 开始布局测量，调用 layout 后就能获取文本大小了
     painter.layout();
     // 自定义组件 AfterLayout 可以在布局结束后获取子组件的大小，我们用它来验证一下
@@ -49,9 +61,7 @@ class WatermarkRoute extends StatelessWidget {
             painter: TextWaterMarkPainter(
               text: 'Flutter 中国 @wendux',
               padding: const EdgeInsets.only(top: 18),
-              textStyle: const TextStyle(
-                color: Colors.black,
-              ),
+              textStyle: const TextStyle(color: Colors.black),
               //rotate: -20,
             ),
           ),
@@ -69,10 +79,7 @@ class WatermarkRoute extends StatelessWidget {
             painter: StaggerTextWaterMarkPainter(
               text: '《Flutter实战》',
               text2: 'wendux',
-              textStyle: const TextStyle(
-                fontSize: 14,
-                color: Colors.black38,
-              ),
+              textStyle: const TextStyle(fontSize: 14, color: Colors.black38),
               padding2: const EdgeInsets.only(left: 40),
               rotate: -10,
             ),
@@ -87,37 +94,39 @@ class WatermarkRoute extends StatelessWidget {
       children: [
         wPage(),
         IgnorePointer(
-          child: LayoutBuilder(builder: (context, constraints) {
-            print(constraints);
-            return SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Transform.translate(
-                offset: const Offset(-30, 0),
-                child: SizedBox(
-                  // constraints.maxWidth 为屏幕宽度，+30 像素
-                  width: constraints.maxWidth + 30,
-                  height: constraints.maxHeight,
-                  child: WaterMark(
-                    painter: TextWaterMarkPainter(
-                      text: 'Flutter 中国 @wendux',
-                      textStyle: const TextStyle(
-                        fontSize: 14,
-                        color: Colors.black38,
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              print(constraints);
+              return SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Transform.translate(
+                  offset: const Offset(-30, 0),
+                  child: SizedBox(
+                    // constraints.maxWidth 为屏幕宽度，+30 像素
+                    width: constraints.maxWidth + 30,
+                    height: constraints.maxHeight,
+                    child: WaterMark(
+                      painter: TextWaterMarkPainter(
+                        text: 'Flutter 中国 @wendux',
+                        textStyle: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.black38,
+                        ),
+                        rotate: -20,
                       ),
-                      rotate: -20,
                     ),
                   ),
                 ),
-              ),
-            );
-          }),
+              );
+            },
+          ),
         ),
       ],
     );
   }
 
   Widget wTextWaterMarkWithOverflowBox() {
-    Future.delayed(const Duration(milliseconds: 200),()=>print('dd'));
+    Future.delayed(const Duration(milliseconds: 200), () => print('dd'));
     return Stack(
       children: [
         wPage(),
@@ -127,10 +136,7 @@ class WatermarkRoute extends StatelessWidget {
             child: WaterMark(
               painter: TextWaterMarkPainter(
                 text: 'Flutter 中国 @wendux',
-                textStyle: const TextStyle(
-                  fontSize: 14,
-                  color: Colors.black38,
-                ),
+                textStyle: const TextStyle(fontSize: 14, color: Colors.black38),
                 rotate: -20,
               ),
             ),

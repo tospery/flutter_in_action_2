@@ -7,14 +7,16 @@ class GestureRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListPage(children: [
-      Page('点击、双击、长按', const GestureTest()),
-      Page('拖动、滑动', _Drag()),
-      Page('单一方向拖动', _DragVertical()),
-      Page('缩放', const _Scale()),
-      Page('GestureRecognizer', const _GestureRecognizer()),
-      Page('手势冲突', _BothDirectionTest()),
-    ]);
+    return CaseList(
+      children: [
+        Case('点击、双击、长按', const GestureTest()),
+        Case('拖动、滑动', _Drag()),
+        Case('单一方向拖动', _DragVertical()),
+        Case('缩放', const _Scale()),
+        Case('GestureRecognizer', const _GestureRecognizer()),
+        Case('手势冲突', _BothDirectionTest()),
+      ],
+    );
   }
 }
 
@@ -36,10 +38,7 @@ class _GestureTestState extends State<GestureTest> {
           color: Colors.blue,
           width: 200.0,
           height: 100.0,
-          child: Text(
-            _operation,
-            style: const TextStyle(color: Colors.white),
-          ),
+          child: Text(_operation, style: const TextStyle(color: Colors.white)),
         ),
         onTap: () => updateText("Tap"), //点击
         onDoubleTap: () => updateText("DoubleTap"), //双击
@@ -92,7 +91,7 @@ class _DragState extends State<_Drag> with SingleTickerProviderStateMixin {
               print(e.velocity);
             },
           ),
-        )
+        ),
       ],
     );
   }
@@ -121,7 +120,7 @@ class _DragVerticalState extends State<_DragVertical> {
               });
             },
           ),
-        )
+        ),
       ],
     );
   }
@@ -185,12 +184,13 @@ class _GestureRecognizerState extends State<_GestureRecognizer> {
                 fontSize: 30.0,
                 color: _toggle ? Colors.blue : Colors.red,
               ),
-              recognizer: _tapGestureRecognizer
-                ..onTap = () {
-                  setState(() {
-                    _toggle = !_toggle;
-                  });
-                },
+              recognizer:
+                  _tapGestureRecognizer
+                    ..onTap = () {
+                      setState(() {
+                        _toggle = !_toggle;
+                      });
+                    },
             ),
             const TextSpan(text: "你好世界"),
           ],
@@ -230,7 +230,7 @@ class _BothDirectionTestState extends State<_BothDirectionTest> {
               });
             },
           ),
-        )
+        ),
       ],
     );
   }

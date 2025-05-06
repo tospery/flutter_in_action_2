@@ -6,10 +6,16 @@ class PersistentHeaderRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListPage(children: [
-      Page('SliverPersistentHeader示例1', wSample1(), padding: false),
-      Page('SliverPersistentHeader示例2', wSample2(context), withScaffold: false),
-    ]);
+    return CaseList(
+      children: [
+        Case('SliverPersistentHeader示例1', wSample1(), padding: false),
+        Case(
+          'SliverPersistentHeader示例2',
+          wSample2(context),
+          withScaffold: false,
+        ),
+      ],
+    );
   }
 
   Widget wSample1() {

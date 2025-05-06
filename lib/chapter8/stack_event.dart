@@ -6,13 +6,19 @@ class StackEventTest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListPage(children: [
-      Page('事件共享', const StickerTest()),
-      Page('水印', const _WaterMarkTest(), padding: false),
-      Page('HitTestBehaviorTest', const HitTestBehaviorTest(),padding: false),
-      Page('所有子节点都可以响应事件', const AllChildrenCanResponseEvent()),
-      Page('手势', const GestureHitTestBlockerTest()),
-    ]);
+    return CaseList(
+      children: [
+        Case('事件共享', const StickerTest()),
+        Case('水印', const _WaterMarkTest(), padding: false),
+        Case(
+          'HitTestBehaviorTest',
+          const HitTestBehaviorTest(),
+          padding: false,
+        ),
+        Case('所有子节点都可以响应事件', const AllChildrenCanResponseEvent()),
+        Case('手势', const GestureHitTestBlockerTest()),
+      ],
+    );
   }
 }
 
@@ -22,12 +28,7 @@ class HitTestBehaviorTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print('点击屏幕空白区域');
-    return Stack(
-      children: [
-        wChild(1),
-        wChild(2),
-      ],
-    );
+    return Stack(children: [wChild(1), wChild(2)]);
   }
 
   Widget wChild(int index) {
@@ -58,11 +59,7 @@ class AllChildrenCanResponseEvent extends StatelessWidget {
   Widget wChild(int index, double size) {
     return Listener(
       onPointerDown: (e) => print(index),
-      child: Container(
-        width: size,
-        height: size,
-        color: Colors.grey,
-      ),
+      child: Container(width: size, height: size, color: Colors.grey),
     );
   }
 }
@@ -87,11 +84,7 @@ class _WaterMarkTest extends StatelessWidget {
   Widget wChild(int index, color, double size) {
     return Listener(
       onPointerDown: (e) => print(index),
-      child: Container(
-        width: size,
-        height: size,
-        color: Colors.grey,
-      ),
+      child: Container(width: size, height: size, color: Colors.grey),
     );
   }
 }
@@ -112,11 +105,7 @@ class StickerTest extends StatelessWidget {
   Widget wChild(int index, color, double size) {
     return Listener(
       onPointerDown: (e) => print('$index'),
-      child: Container(
-        width: size,
-        height: size,
-        color: color,
-      ),
+      child: Container(width: size, height: size, color: color),
     );
   }
 }
@@ -137,12 +126,7 @@ class GestureHitTestBlockerTest extends StatelessWidget {
   Widget wChild(int index, double size) {
     return GestureDetector(
       onTap: () => print('$index'),
-      child: Container(
-        width: size,
-        height: size,
-        color: Colors.grey,
-      ),
+      child: Container(width: size, height: size, color: Colors.grey),
     );
   }
 }
-
