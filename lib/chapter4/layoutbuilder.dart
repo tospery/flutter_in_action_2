@@ -16,10 +16,12 @@ class ResponsiveColumn extends StatelessWidget {
           var _children = <Widget>[];
           for (var i = 0; i < children.length; i += 2) {
             if (i + 1 < children.length) {
-              _children.add(Row(
-                children: [children[i], children[i + 1]],
-                mainAxisSize: MainAxisSize.min,
-              ));
+              _children.add(
+                Row(
+                  children: [children[i], children[i + 1]],
+                  mainAxisSize: MainAxisSize.min,
+                ),
+              );
             } else {
               _children.add(children[i]);
             }
@@ -44,7 +46,7 @@ class LayoutBuilderRoute extends StatelessWidget {
       children: [
         SizedBox(width: 190, child: ResponsiveColumn(children: _children)),
         ResponsiveColumn(children: _children),
-        const LayoutLogPrint(child: Text("flutter@wendux")),
+        LayoutLogPrint(child: Text("flutter@wendux")),
         //CustomSingleChildLayout
       ],
     );
