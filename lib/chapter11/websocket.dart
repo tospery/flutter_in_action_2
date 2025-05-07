@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 class WebSocketRoute extends StatefulWidget {
   @override
-  _WebSocketRouteState createState() => _WebSocketRouteState();
+  State<WebSocketRoute> createState() => _WebSocketRouteState();
 }
 
 class _WebSocketRouteState extends State<WebSocketRoute> {
@@ -22,9 +21,7 @@ class _WebSocketRouteState extends State<WebSocketRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('WebSocket(内容回显)'),
-      ),
+      appBar: AppBar(title: Text('WebSocket(内容回显)')),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -52,7 +49,7 @@ class _WebSocketRouteState extends State<WebSocketRoute> {
                   child: Text(_text),
                 );
               },
-            )
+            ),
           ],
         ),
       ),

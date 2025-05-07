@@ -5,7 +5,7 @@ class TurnBoxRoute extends StatefulWidget {
   const TurnBoxRoute({Key? key}) : super(key: key);
 
   @override
-  _TurnBoxRouteState createState() => _TurnBoxRouteState();
+  State<TurnBoxRoute> createState() => _TurnBoxRouteState();
 }
 
 class _TurnBoxRouteState extends State<TurnBoxRoute> {
@@ -20,18 +20,12 @@ class _TurnBoxRouteState extends State<TurnBoxRoute> {
           TurnBox(
             turns: _turns,
             speed: 500,
-            child: const Icon(
-              Icons.refresh,
-              size: 50,
-            ),
+            child: const Icon(Icons.refresh, size: 50),
           ),
           TurnBox(
             turns: _turns,
             speed: 1000,
-            child: const Icon(
-              Icons.refresh,
-              size: 150.0,
-            ),
+            child: const Icon(Icons.refresh, size: 150.0),
           ),
           ElevatedButton(
             child: const Text("顺时针旋转1/5圈"),
@@ -48,7 +42,7 @@ class _TurnBoxRouteState extends State<TurnBoxRoute> {
                 _turns -= .2;
               });
             },
-          )
+          ),
         ],
       ),
     );

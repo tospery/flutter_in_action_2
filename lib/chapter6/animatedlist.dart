@@ -4,7 +4,7 @@ class AnimatedListRoute extends StatefulWidget {
   const AnimatedListRoute({Key? key}) : super(key: key);
 
   @override
-  _AnimatedListRouteState createState() => _AnimatedListRouteState();
+  State<AnimatedListRoute> createState() => _AnimatedListRouteState();
 }
 
 class _AnimatedListRouteState extends State<AnimatedListRoute> {
@@ -76,28 +76,24 @@ class _AnimatedListRouteState extends State<AnimatedListRoute> {
 
   void onDelete(context, index) {
     setState(() {
-      globalKey.currentState!.removeItem(
-        index,
-        (context, animation) {
-          // 删除过程执行的是反向动画，animation.value 会从1变为0
-          var item = buildItem(context, index);
-          print('删除 ${data[index]}');
-          data.removeAt(index);
-          //让透明度变化的更快一些
-          return FadeTransition(
-            opacity: CurvedAnimation(
-              parent: animation,
-              curve: const Interval(0.5, 1.0),
-            ),
-            child: SizeTransition(
-              sizeFactor: animation,
-              axisAlignment: 0.0,
-              child: item,
-            ),
-          );
-        },
-        duration: const Duration(milliseconds: 200),
-      );
+      globalKey.currentState!.removeItem(index, (context, animation) {
+        // 删除过程执行的是反向动画，animation.value 会从1变为0
+        var item = buildItem(context, index);
+        print('删除 ${data[index]}');
+        data.removeAt(index);
+        //让透明度变化的更快一些
+        return FadeTransition(
+          opacity: CurvedAnimation(
+            parent: animation,
+            curve: const Interval(0.5, 1.0),
+          ),
+          child: SizeTransition(
+            sizeFactor: animation,
+            axisAlignment: 0.0,
+            child: item,
+          ),
+        );
+      }, duration: const Duration(milliseconds: 200));
     });
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hi_case/hi_case.dart';
-import '../common.dart';
 
 class ResponsiveColumn extends StatelessWidget {
   const ResponsiveColumn({Key? key, required this.children}) : super(key: key);

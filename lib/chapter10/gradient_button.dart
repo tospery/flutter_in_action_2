@@ -5,7 +5,7 @@ class GradientButtonRoute extends StatefulWidget {
   const GradientButtonRoute({Key? key}) : super(key: key);
 
   @override
-  _GradientButtonRouteState createState() => _GradientButtonRouteState();
+  State<GradientButtonRoute> createState() => _GradientButtonRouteState();
 }
 
 class _GradientButtonRouteState extends State<GradientButtonRoute> {

@@ -5,7 +5,7 @@ class InfiniteListView extends StatefulWidget {
   const InfiniteListView({Key? key}) : super(key: key);
 
   @override
-  _InfiniteListViewState createState() => _InfiniteListViewState();
+  State<InfiniteListView> createState() => _InfiniteListViewState();
 }
 
 class _InfiniteListViewState extends State<InfiniteListView> {
@@ -44,10 +44,7 @@ class _InfiniteListViewState extends State<InfiniteListView> {
             return Container(
               alignment: Alignment.center,
               padding: const EdgeInsets.all(16.0),
-              child: const Text(
-                "没有更多了",
-                style: TextStyle(color: Colors.grey),
-              ),
+              child: const Text("没有更多了", style: TextStyle(color: Colors.grey)),
             );
           }
         }

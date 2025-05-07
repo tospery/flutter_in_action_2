@@ -48,7 +48,7 @@ class ListItem extends StatefulWidget {
   final int index;
 
   @override
-  _ListItemState createState() => _ListItemState();
+  State<ListItem> createState() => _ListItemState();
 }
 
 class _ListItemState extends State<ListItem> {

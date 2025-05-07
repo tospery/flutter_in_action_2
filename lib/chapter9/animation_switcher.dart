@@ -4,7 +4,7 @@ class AnimatedSwitcherRoute extends StatefulWidget {
   const AnimatedSwitcherRoute({Key? key}) : super(key: key);
 
   @override
-  _AnimatedSwitcherRouteState createState() => _AnimatedSwitcherRouteState();
+  State<AnimatedSwitcherRoute> createState() => _AnimatedSwitcherRouteState();
 }
 
 class _AnimatedSwitcherRouteState extends State<AnimatedSwitcherRoute> {
@@ -54,9 +54,7 @@ class _AnimatedSwitcherRouteState extends State<AnimatedSwitcherRoute> {
             ),
           ),
           ElevatedButton(
-            child: const Text(
-              'Increment',
-            ),
+            child: const Text('Increment'),
             onPressed: () {
               setState(() {
                 _count += 1;
@@ -78,11 +76,7 @@ class _AnimatedSwitcherRouteState extends State<AnimatedSwitcherRoute> {
           position: animation,
         );
       },
-      child: Text(
-        "$_count",
-        key: ValueKey<int>(_count),
-        textScaleFactor: 3,
-      ),
+      child: Text("$_count", key: ValueKey<int>(_count), textScaleFactor: 3),
     );
   }
 }

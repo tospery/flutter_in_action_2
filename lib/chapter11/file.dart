@@ -7,7 +7,7 @@ class FileOperationRoute extends StatefulWidget {
   FileOperationRoute({Key? key}) : super(key: key);
 
   @override
-  _FileOperationRouteState createState() => _FileOperationRouteState();
+  State<FileOperationRoute> createState() => _FileOperationRouteState();
 }
 
 class _FileOperationRouteState extends State<FileOperationRoute> {
@@ -53,9 +53,7 @@ class _FileOperationRouteState extends State<FileOperationRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('文件操作')),
-      body: Center(
-        child: Text('点击了 $_counter 次'),
-      ),
+      body: Center(child: Text('点击了 $_counter 次')),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',

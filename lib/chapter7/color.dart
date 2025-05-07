@@ -4,7 +4,7 @@ class ColorRoute extends StatefulWidget {
   const ColorRoute({Key? key}) : super(key: key);
 
   @override
-  _ColorRouteState createState() => _ColorRouteState();
+  State<ColorRoute> createState() => _ColorRouteState();
 }
 
 class _ColorRouteState extends State<ColorRoute> {
@@ -34,16 +34,16 @@ class _ColorRouteState extends State<ColorRoute> {
         primarySwatch: Colors.blue, //使用白色主题
       ),
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text("颜色"),
+        appBar: AppBar(title: const Text("颜色")),
+        body: Column(
+          children: const <Widget>[
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              child: NavBar(color: Colors.blue, title: "标题"),
+            ),
+            NavBar(color: Colors.white, title: "标题"),
+          ],
         ),
-        body: Column(children: const <Widget>[
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 10),
-            child: NavBar(color: Colors.blue, title: "标题"),
-          ),
-          NavBar(color: Colors.white, title: "标题"),
-        ]),
       ),
     );
   }
@@ -53,11 +53,8 @@ class NavBar extends StatelessWidget {
   final String title;
   final Color color;
 
-  const NavBar({
-    Key? key,
-    required this.color,
-    required this.title,
-  }) : super(key: key);
+  const NavBar({Key? key, required this.color, required this.title})
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -70,11 +67,7 @@ class NavBar extends StatelessWidget {
         color: color,
         boxShadow: const [
           //阴影
-          BoxShadow(
-            color: Colors.black26,
-            offset: Offset(0, 3),
-            blurRadius: 3,
-          ),
+          BoxShadow(color: Colors.black26, offset: Offset(0, 3), blurRadius: 3),
         ],
       ),
       child: Text(

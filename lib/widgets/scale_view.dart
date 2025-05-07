@@ -60,7 +60,7 @@ class ScaleView extends StatefulWidget {
   final Widget child;
 
   @override
-  _ScaleViewState createState() => _ScaleViewState();
+  State<ScaleView> createState() => _ScaleViewState();
 }
 
 const double _kMinFlingVelocity = 800.0;

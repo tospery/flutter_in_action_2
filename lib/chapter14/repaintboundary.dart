@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import '../common.dart';
 
 class RepaintBoundaryTest extends StatefulWidget {
   const RepaintBoundaryTest({Key? key}) : super(key: key);
 
   @override
-  _RepaintBoundaryTestState createState() => _RepaintBoundaryTestState();
+  State<RepaintBoundaryTest> createState() => _RepaintBoundaryTestState();
 }
 
 class _RepaintBoundaryTestState extends State<RepaintBoundaryTest> {
@@ -22,7 +21,7 @@ class _RepaintBoundaryTestState extends State<RepaintBoundaryTest> {
         ElevatedButton(
           onPressed: () => setState(() {}),
           child: const Text("setState"),
-        )
+        ),
       ],
     );
   }
@@ -32,10 +31,11 @@ class OutlinePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     print("paint");
-    var paint = Paint()
-      ..strokeWidth = 2
-      ..style = PaintingStyle.stroke
-      ..color = Colors.black;
+    var paint =
+        Paint()
+          ..strokeWidth = 2
+          ..style = PaintingStyle.stroke
+          ..color = Colors.black;
     canvas.drawRect(Offset.zero & size, paint);
   }
 

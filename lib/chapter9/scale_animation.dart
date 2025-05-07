@@ -4,7 +4,7 @@ class ScaleAnimationRoute extends StatefulWidget {
   const ScaleAnimationRoute({Key? key}) : super(key: key);
 
   @override
-  _ScaleAnimationRouteState createState() => _ScaleAnimationRouteState();
+  State<ScaleAnimationRoute> createState() => _ScaleAnimationRouteState();
 }
 
 //需要继承TickerProvider，如果有多个AnimationController，则应该使用TickerProviderStateMixin。
@@ -28,14 +28,14 @@ class _ScaleAnimationRouteState extends State<ScaleAnimationRoute>
         setState(() => {});
       });
 
-//    //使用弹性曲线
-//    animation=CurvedAnimation(parent: controller, curve: Curves.bounceIn);
-//    //图片宽高从0变到300
-//    animation =  Tween(begin: 0.0, end: 300.0).animate(animation)
-//      ..addListener(() {
-//        setState(() {
-//        });
-//      });
+    //    //使用弹性曲线
+    //    animation=CurvedAnimation(parent: controller, curve: Curves.bounceIn);
+    //    //图片宽高从0变到300
+    //    animation =  Tween(begin: 0.0, end: 300.0).animate(animation)
+    //      ..addListener(() {
+    //        setState(() {
+    //        });
+    //      });
 
     //启动动画(正向执行)
     controller.forward();
@@ -58,5 +58,4 @@ class _ScaleAnimationRouteState extends State<ScaleAnimationRoute>
     controller.dispose();
     super.dispose();
   }
-
 }

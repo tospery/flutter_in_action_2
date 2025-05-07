@@ -5,7 +5,7 @@ class FutureAndStreamBuilderRoute extends StatefulWidget {
   const FutureAndStreamBuilderRoute({Key? key}) : super(key: key);
 
   @override
-  _FutureAndStreamBuilderRouteState createState() =>
+  State<FutureAndStreamBuilderRoute> createState() =>
       _FutureAndStreamBuilderRouteState();
 }
 

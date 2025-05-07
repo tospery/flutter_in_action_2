@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart' hide Page;
 import 'package:hi_case/hi_case.dart';
-import '../common.dart';
 
 class GestureRoute extends StatelessWidget {
   const GestureRoute({Key? key}) : super(key: key);
@@ -25,7 +24,7 @@ class GestureTest extends StatefulWidget {
   const GestureTest({Key? key}) : super(key: key);
 
   @override
-  _GestureTestState createState() => _GestureTestState();
+  State<GestureTest> createState() => _GestureTestState();
 }
 
 class _GestureTestState extends State<GestureTest> {

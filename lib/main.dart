@@ -1,10 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart' hide Page;
 import 'package:hi_case/hi_case.dart';
-import 'package:webview_flutter/webview_flutter.dart';
-import 'common.dart';
 import 'routes.dart';
-import 'chapter14/draw_main.dart' as custom;
 
 void main() {
   // custom.main();
@@ -61,7 +58,7 @@ class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {

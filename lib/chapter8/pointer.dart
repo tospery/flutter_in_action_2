@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart' hide Page;
 import 'package:hi_case/hi_case.dart';
-import '../common.dart';
 
 class PointerRoute extends StatelessWidget {
   const PointerRoute({Key? key}) : super(key: key);
@@ -15,7 +14,7 @@ class PointerMoveIndicator extends StatefulWidget {
   const PointerMoveIndicator({Key? key}) : super(key: key);
 
   @override
-  _PointerMoveIndicatorState createState() => _PointerMoveIndicatorState();
+  State<PointerMoveIndicator> createState() => _PointerMoveIndicatorState();
 }
 
 class _PointerMoveIndicatorState extends State<PointerMoveIndicator> {

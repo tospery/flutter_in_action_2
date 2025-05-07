@@ -16,20 +16,17 @@ class ImageInternalTestRoute extends StatelessWidget {
 }
 
 class MyImage extends StatefulWidget {
-  const MyImage({
-    Key? key,
-    required this.imageProvider,
-  })  :super(key: key);
+  const MyImage({Key? key, required this.imageProvider}) : super(key: key);
 
   final ImageProvider imageProvider;
 
   @override
-  _MyImageState createState() => _MyImageState();
+  State<MyImage> createState() => _MyImageState();
 }
 
 class _MyImageState extends State<MyImage> {
-   ImageStream? _imageStream;
-   ImageInfo? _imageInfo;
+  ImageStream? _imageStream;
+  ImageInfo? _imageInfo;
 
   @override
   void didChangeDependencies() {
@@ -48,8 +45,9 @@ class _MyImageState extends State<MyImage> {
 
   void _getImage() {
     var oldImageStream = _imageStream;
-    _imageStream =
-        widget.imageProvider.resolve(createLocalImageConfiguration(context));
+    _imageStream = widget.imageProvider.resolve(
+      createLocalImageConfiguration(context),
+    );
     if (_imageStream!.key != oldImageStream?.key) {
       // If the keys are the same, then we got the same image back, and so we don't
       // need to update the listeners. If the key changed, though, we must make sure

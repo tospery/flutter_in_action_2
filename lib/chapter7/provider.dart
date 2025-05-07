@@ -12,16 +12,20 @@ class ChangeNotifierProvider<T extends ChangeNotifier> extends StatefulWidget {
 
   //定义一个便捷方法，方便子树中的widget获取共享数据
   static T? of<T>(BuildContext context, {bool listen = true}) {
-    final provider = listen
-        ? context.dependOnInheritedWidgetOfExactType<InheritedProvider<T>>()
-        : context
-            .getElementForInheritedWidgetOfExactType<InheritedProvider<T>>()
-            ?.widget as InheritedProvider<T>;
+    final provider =
+        listen
+            ? context.dependOnInheritedWidgetOfExactType<InheritedProvider<T>>()
+            : context
+                    .getElementForInheritedWidgetOfExactType<
+                      InheritedProvider<T>
+                    >()
+                    ?.widget
+                as InheritedProvider<T>;
     return provider?.data;
   }
 
   @override
-  _ChangeNotifierProviderState<T> createState() =>
+  State<ChangeNotifierProvider<T>> createState() =>
       _ChangeNotifierProviderState<T>();
 }
 
@@ -58,20 +62,14 @@ class _ChangeNotifierProviderState<T extends ChangeNotifier>
 
   @override
   Widget build(BuildContext context) {
-    return InheritedProvider<T>(
-      data: widget.data,
-      child: widget.child,
-    );
+    return InheritedProvider<T>(data: widget.data, child: widget.child);
   }
 }
 
 // 一个通用的InheritedWidget，保存需要跨组件共享的状态
 class InheritedProvider<T> extends InheritedWidget {
-  const InheritedProvider({
-    Key? key,
-    required this.data,
-    required Widget child,
-  }) : super(key: key, child: child);
+  const InheritedProvider({Key? key, required this.data, required Widget child})
+    : super(key: key, child: child);
 
   final T data;
 
@@ -84,18 +82,12 @@ class InheritedProvider<T> extends InheritedWidget {
 
 // 这是一个便捷类，会获得当前context和指定数据类型的Provider
 class Consumer<T> extends StatelessWidget {
-  const Consumer({
-    Key? key,
-    required this.builder,
-  }) : super(key: key);
+  const Consumer({Key? key, required this.builder}) : super(key: key);
 
   final Widget Function(BuildContext context, T? value) builder;
 
   @override
   Widget build(BuildContext context) {
-    return builder(
-      context,
-      ChangeNotifierProvider.of<T>(context),
-    );
+    return builder(context, ChangeNotifierProvider.of<T>(context));
   }
 }

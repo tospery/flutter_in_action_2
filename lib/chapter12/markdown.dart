@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart' hide Page;
 import 'package:hi_case/hi_case.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 import '../common.dart';
 
 class MarkdownRoute extends StatefulWidget {
   const MarkdownRoute({Key? key}) : super(key: key);
 
   @override
-  _MarkdownRouteState createState() => _MarkdownRouteState();
+  State<MarkdownRoute> createState() => _MarkdownRouteState();
 }
 
 class _MarkdownRouteState extends State<MarkdownRoute> {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart' hide Page;
 import 'package:hi_case/hi_case.dart';
-import '../common.dart';
 
 class HeroAnimationRoute extends StatelessWidget {
   const HeroAnimationRoute({Key? key}) : super(key: key);
@@ -83,7 +82,7 @@ class CustomHeroAnimation extends StatefulWidget {
   const CustomHeroAnimation({Key? key}) : super(key: key);
 
   @override
-  _CustomHeroAnimationState createState() => _CustomHeroAnimationState();
+  State<CustomHeroAnimation> createState() => _CustomHeroAnimationState();
 }
 
 class _CustomHeroAnimationState extends State<CustomHeroAnimation>

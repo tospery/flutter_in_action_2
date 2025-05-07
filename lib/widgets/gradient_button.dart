@@ -112,7 +112,7 @@ class ElevatedGradientButton extends StatefulWidget {
   final ValueChanged<bool>? onHighlightChanged;
 
   @override
-  _ElevatedGradientButtonState createState() => _ElevatedGradientButtonState();
+  State<ElevatedGradientButton> createState() => _ElevatedGradientButtonState();
 }
 
 class _ElevatedGradientButtonState extends State<ElevatedGradientButton> {

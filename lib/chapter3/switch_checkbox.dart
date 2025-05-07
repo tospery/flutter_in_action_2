@@ -4,8 +4,7 @@ class SwitchAndCheckBoxRoute extends StatefulWidget {
   const SwitchAndCheckBoxRoute({Key? key}) : super(key: key);
 
   @override
-  _SwitchAndCheckBoxRouteState createState() =>
-       _SwitchAndCheckBoxRouteState();
+  State<SwitchAndCheckBoxRoute> createState() => _SwitchAndCheckBoxRouteState();
 }
 
 class _SwitchAndCheckBoxRouteState extends State<SwitchAndCheckBoxRoute> {
@@ -53,7 +52,7 @@ class _SwitchAndCheckBoxRouteState extends State<SwitchAndCheckBoxRoute> {
             ),
             const Text("选中"),
           ],
-        )
+        ),
       ],
     );
   }

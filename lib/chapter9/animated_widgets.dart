@@ -4,7 +4,7 @@ class AnimatedWidgetsTest extends StatefulWidget {
   const AnimatedWidgetsTest({Key? key}) : super(key: key);
 
   @override
-  _AnimatedWidgetsTestState createState() => _AnimatedWidgetsTestState();
+  State<AnimatedWidgetsTest> createState() => _AnimatedWidgetsTestState();
 }
 
 class _AnimatedWidgetsTestState extends State<AnimatedWidgetsTest> {
@@ -22,130 +22,136 @@ class _AnimatedWidgetsTestState extends State<AnimatedWidgetsTest> {
     var duration = const Duration(milliseconds: 400);
     return SingleChildScrollView(
       child: Column(
-        children: <Widget>[
-          ElevatedButton(
-            onPressed: () {
-              setState(() {
-                _padding = 20;
-              });
-            },
-            child: AnimatedPadding(
-              duration: duration,
-              padding: EdgeInsets.all(_padding),
-              child: const Text("AnimatedPadding"),
-            ),
-          ),
-          SizedBox(
-            height: 50,
-            child: Stack(
-              children: <Widget>[
-                AnimatedPositioned(
+        children:
+            <Widget>[
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    _padding = 20;
+                  });
+                },
+                child: AnimatedPadding(
                   duration: duration,
-                  left: _left,
+                  padding: EdgeInsets.all(_padding),
+                  child: const Text("AnimatedPadding"),
+                ),
+              ),
+              SizedBox(
+                height: 50,
+                child: Stack(
+                  children: <Widget>[
+                    AnimatedPositioned(
+                      duration: duration,
+                      left: _left,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            _left = 100;
+                          });
+                        },
+                        child: const Text("AnimatedPositioned"),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                height: 100,
+                color: Colors.grey,
+                child: AnimatedAlign(
+                  duration: duration,
+                  alignment: _align,
                   child: ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        _left = 100;
+                        _align = Alignment.center;
                       });
                     },
-                    child: const Text("AnimatedPositioned"),
+                    child: const Text("AnimatedAlign"),
                   ),
-                )
-              ],
-            ),
-          ),
-          Container(
-            height: 100,
-            color: Colors.grey,
-            child: AnimatedAlign(
-              duration: duration,
-              alignment: _align,
-              child: ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    _align = Alignment.center;
-                  });
-                },
-                child: const Text("AnimatedAlign"),
-              ),
-            ),
-          ),
-          AnimatedContainer(
-            duration: duration,
-            height: _height,
-            color: _color,
-            child: TextButton(
-              onPressed: () {
-                setState(() {
-                  _height = 150;
-                  _color = Colors.blue;
-                });
-              },
-              child: const Text(
-                "AnimatedContainer",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ),
-          AnimatedDefaultTextStyle(
-            child: GestureDetector(
-              child: const Text("hello world"),
-              onTap: () {
-                setState(() {
-                  _style = const TextStyle(
-                    color: Colors.blue,
-                    decorationStyle: TextDecorationStyle.solid,
-                    decorationColor: Colors.blue,
-                  );
-                });
-              },
-            ),
-            style: _style,
-            duration: duration,
-          ),
-          AnimatedOpacity(
-            opacity: _opacity,
-            duration: duration,
-            child: TextButton(
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.blue)),
-              onPressed: () {
-                setState(() {
-                  _opacity = 0.2;
-                });
-              },
-              child: const Text(
-                "AnimatedOpacity",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ),
-          AnimatedDecoratedBox1(
-            duration: Duration(
-                milliseconds: _decorationColor == Colors.red ? 400 : 2000),
-            decoration: BoxDecoration(color: _decorationColor),
-            child: Builder(builder: (context) {
-              return TextButton(
-                onPressed: () {
-                  setState(() {
-                    _decorationColor = _decorationColor == Colors.blue
-                        ? Colors.red
-                        : Colors.blue;
-                  });
-                },
-                child: const Text(
-                  "AnimatedDecoratedBox toggle",
-                  style: TextStyle(color: Colors.white),
                 ),
+              ),
+              AnimatedContainer(
+                duration: duration,
+                height: _height,
+                color: _color,
+                child: TextButton(
+                  onPressed: () {
+                    setState(() {
+                      _height = 150;
+                      _color = Colors.blue;
+                    });
+                  },
+                  child: const Text(
+                    "AnimatedContainer",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+              AnimatedDefaultTextStyle(
+                child: GestureDetector(
+                  child: const Text("hello world"),
+                  onTap: () {
+                    setState(() {
+                      _style = const TextStyle(
+                        color: Colors.blue,
+                        decorationStyle: TextDecorationStyle.solid,
+                        decorationColor: Colors.blue,
+                      );
+                    });
+                  },
+                ),
+                style: _style,
+                duration: duration,
+              ),
+              AnimatedOpacity(
+                opacity: _opacity,
+                duration: duration,
+                child: TextButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.blue),
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _opacity = 0.2;
+                    });
+                  },
+                  child: const Text(
+                    "AnimatedOpacity",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+              AnimatedDecoratedBox1(
+                duration: Duration(
+                  milliseconds: _decorationColor == Colors.red ? 400 : 2000,
+                ),
+                decoration: BoxDecoration(color: _decorationColor),
+                child: Builder(
+                  builder: (context) {
+                    return TextButton(
+                      onPressed: () {
+                        setState(() {
+                          _decorationColor =
+                              _decorationColor == Colors.blue
+                                  ? Colors.red
+                                  : Colors.blue;
+                        });
+                      },
+                      child: const Text(
+                        "AnimatedDecoratedBox toggle",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ].map((e) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                child: e,
               );
-            }),
-          )
-        ].map((e) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            child: e,
-          );
-        }).toList(),
+            }).toList(),
       ),
     );
   }
@@ -168,7 +174,7 @@ class AnimatedDecoratedBox1 extends StatefulWidget {
   final Duration? reverseDuration;
 
   @override
-  _AnimatedDecoratedBox1State createState() => _AnimatedDecoratedBox1State();
+  State<AnimatedDecoratedBox1> createState() => _AnimatedDecoratedBox1State();
 }
 
 class _AnimatedDecoratedBox1State extends State<AnimatedDecoratedBox1>
@@ -244,16 +250,12 @@ class AnimatedDecoratedBox extends ImplicitlyAnimatedWidget {
     required this.child,
     Curve curve = Curves.linear,
     required Duration duration,
-  }) : super(
-          key: key,
-          curve: curve,
-          duration: duration,
-        );
+  }) : super(key: key, curve: curve, duration: duration);
   final BoxDecoration decoration;
   final Widget child;
 
   @override
-  _AnimatedDecoratedBoxState createState() {
+  AnimatedWidgetBaseState<AnimatedDecoratedBox> createState() {
     return _AnimatedDecoratedBoxState();
   }
 }
@@ -272,10 +274,12 @@ class _AnimatedDecoratedBoxState
 
   @override
   void forEachTween(TweenVisitor<dynamic> visitor) {
-    _decoration = visitor(
-      _decoration,
-      widget.decoration,
-      (value) => DecorationTween(begin: value),
-    ) as DecorationTween;
+    _decoration =
+        visitor(
+              _decoration,
+              widget.decoration,
+              (value) => DecorationTween(begin: value),
+            )
+            as DecorationTween;
   }
 }

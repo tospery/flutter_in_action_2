@@ -4,7 +4,7 @@ class ScrollNotificationTestRoute extends StatefulWidget {
   const ScrollNotificationTestRoute({Key? key}) : super(key: key);
 
   @override
-  _ScrollNotificationTestRouteState createState() =>
+  State<ScrollNotificationTestRoute> createState() =>
       _ScrollNotificationTestRouteState();
 }
 
@@ -19,7 +19,8 @@ class _ScrollNotificationTestRouteState
       // 监听滚动通知
       child: NotificationListener<ScrollNotification>(
         onNotification: (ScrollNotification notification) {
-          double progress = notification.metrics.pixels /
+          double progress =
+              notification.metrics.pixels /
               notification.metrics.maxScrollExtent;
           //重新构建
           setState(() {
@@ -42,7 +43,7 @@ class _ScrollNotificationTestRouteState
               radius: 30.0,
               child: Text(_progress),
               backgroundColor: Colors.black54,
-            )
+            ),
           ],
         ),
       ),

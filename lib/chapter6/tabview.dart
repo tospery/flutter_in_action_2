@@ -24,7 +24,7 @@ class TabViewRoute1 extends StatefulWidget {
   const TabViewRoute1({Key? key}) : super(key: key);
 
   @override
-  _TabViewRoute1State createState() => _TabViewRoute1State();
+  State<TabViewRoute1> createState() => _TabViewRoute1State();
 }
 
 class _TabViewRoute1State extends State<TabViewRoute1>

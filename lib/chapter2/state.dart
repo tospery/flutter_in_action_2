@@ -15,7 +15,7 @@ class CounterWidget extends StatefulWidget {
   final int initValue;
 
   @override
-  _CounterWidgetState createState() => _CounterWidgetState();
+  State<CounterWidget> createState() => _CounterWidgetState();
 }
 
 class _CounterWidgetState extends State<CounterWidget> {
@@ -37,9 +37,7 @@ class _CounterWidgetState extends State<CounterWidget> {
         child: TextButton(
           child: Text('$_counter'),
           //点击后计数器自增
-          onPressed: () => setState(
-            () => ++_counter,
-          ),
+          onPressed: () => setState(() => ++_counter),
         ),
       ),
     );
