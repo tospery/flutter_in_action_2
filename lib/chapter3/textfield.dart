@@ -20,6 +20,7 @@ class _FocusTestRouteState extends State<FocusTestRoute> {
           TextField(
             autofocus: true,
             focusNode: focusNode1, //关联focusNode1
+            // ignore: deprecated_member_use
             toolbarOptions: const ToolbarOptions(
               selectAll: true,
               copy: true,

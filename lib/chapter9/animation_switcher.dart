@@ -32,7 +32,7 @@ class _AnimatedSwitcherRouteState extends State<AnimatedSwitcherRoute> {
               child: Text(
                 "$_count",
                 key: ValueKey<int>(_count),
-                textScaleFactor: 3,
+                textScaler: TextScaler.linear(3),
               ),
             ),
           ),
@@ -76,7 +76,11 @@ class _AnimatedSwitcherRouteState extends State<AnimatedSwitcherRoute> {
           child: FadeTransition(opacity: animation, child: child),
         );
       },
-      child: Text("$_count", key: ValueKey<int>(_count), textScaleFactor: 3),
+      child: Text(
+        "$_count",
+        key: ValueKey<int>(_count),
+        textScaler: TextScaler.linear(3),
+      ),
     );
   }
 }

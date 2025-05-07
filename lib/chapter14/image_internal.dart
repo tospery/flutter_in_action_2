@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ImageInternalTestRoute extends StatelessWidget {
+  const ImageInternalTestRoute({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(

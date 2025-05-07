@@ -5,7 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 class LeftRightBox extends MultiChildRenderObjectWidget {
-  LeftRightBox({super.key, required super.children})
+  const LeftRightBox({super.key, required super.children})
     : assert(children.length == 2, "只能传两个children");
 
   @override

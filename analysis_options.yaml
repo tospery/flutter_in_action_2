@@ -10,11 +10,6 @@
 analyzer:
   errors:
     avoid_print: ignore
-    unnecessary_const: ignore
-    prefer_const_constructors_in_immutables: ignore
-    use_key_in_widget_constructors: ignore
-    sized_box_for_whitespace: ignore
-    deprecated_member_use: ignore
     unnecessary_import: ignore
     curly_braces_in_flow_control_structures: ignore
     avoid_returning_null_for_void: ignore

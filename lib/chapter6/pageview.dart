@@ -49,6 +49,7 @@ class _PageViewTestState extends State<PageViewTest> {
   }
 
   Widget buildConfigPage(context) {
+    // ignore: deprecated_member_use
     var size = MediaQueryData.fromWindow(window).size;
     // return LayoutBuilder(builder: (context,constraints){
     //   print(constraints);
@@ -264,7 +265,7 @@ class _PageState extends State<Page> {
   }
 
   Widget buildNumber() {
-    return Center(child: Text(widget.text, textScaleFactor: 5));
+    return Center(child: Text(widget.text, textScaler: TextScaler.linear(5)));
   }
 
   //

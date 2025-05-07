@@ -25,7 +25,9 @@ class _ScrollViewConfigurationState extends State<ScrollViewConfiguration> {
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Center(child: Text('$index', textScaleFactor: 2)),
+          child: Center(
+            child: Text('$index', textScaler: TextScaler.linear(2)),
+          ),
         );
       },
     );

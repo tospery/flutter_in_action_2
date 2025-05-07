@@ -50,7 +50,9 @@ class _StaggerRouteState extends State<StaggerRoute>
             width: 300.0,
             height: 300.0,
             decoration: BoxDecoration(
+              // ignore: deprecated_member_use
               color: Colors.black.withOpacity(0.1),
+              // ignore: deprecated_member_use
               border: Border.all(color: Colors.black.withOpacity(0.5)),
             ),
             //调用我们定义的交错动画Widget

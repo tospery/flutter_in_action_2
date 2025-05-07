@@ -39,7 +39,7 @@ class _ScaffoldRouteState extends State<ScaffoldRoute>
             tabs.map((e) {
               return Container(
                 alignment: Alignment.center,
-                child: Text(e, textScaleFactor: 5),
+                child: Text(e, textScaler: TextScaler.linear(5)),
               );
             }).toList(),
       ),
