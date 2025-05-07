@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 
 class CustomRotatedBoxTest extends StatelessWidget {
-  const CustomRotatedBoxTest({Key? key}) : super(key: key);
+  const CustomRotatedBoxTest({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +39,7 @@ class CustomRotatedBoxTest extends StatelessWidget {
 }
 
 class CustomRotatedBox extends SingleChildRenderObjectWidget {
-  const CustomRotatedBox({Key? key, Widget? child})
-    : super(key: key, child: child);
+  const CustomRotatedBox({super.key, super.child});
 
   @override
   RenderObject createRenderObject(BuildContext context) {

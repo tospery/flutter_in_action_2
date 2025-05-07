@@ -5,10 +5,10 @@ import 'dart:math' as math;
 /// A widget that paints watermark.
 class WaterMark extends StatefulWidget {
   const WaterMark({
-    Key? key,
+    super.key,
     this.repeat = ImageRepeat.repeat,
     required this.painter,
-  }) : super(key: key);
+  });
 
   /// 单元水印画笔
   final WaterMarkPainter painter;

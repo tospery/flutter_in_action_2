@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class StaggerRoute extends StatefulWidget {
-  const StaggerRoute({Key? key}) : super(key: key);
+  const StaggerRoute({super.key});
 
   @override
   State<StaggerRoute> createState() => _StaggerRouteState();
@@ -63,7 +63,7 @@ class _StaggerRouteState extends State<StaggerRoute>
 }
 
 class StaggerAnimation extends StatelessWidget {
-  StaggerAnimation({Key? key, required this.controller}) : super(key: key) {
+  StaggerAnimation({super.key, required this.controller}) {
     //高度动画
     height = Tween<double>(begin: .0, end: 300.0).animate(
       CurvedAnimation(

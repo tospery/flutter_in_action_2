@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-
 class FittedBoxRoute extends StatelessWidget {
-  const FittedBoxRoute({Key? key}) : super(key: key);
+  const FittedBoxRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +10,7 @@ class FittedBoxRoute extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 30.0),
-          child: Row(children: [Text('xx'*30)]),
+          child: Row(children: [Text('xx' * 30)]),
         ),
         // wContainer(BoxFit.none),
         // Text('Wendux'),
@@ -38,17 +37,19 @@ class FittedBoxRoute extends StatelessWidget {
 
   List<Widget> wRows() {
     return [
-      wRow(' 90000000000000000 '),
-      SingleLineFittedBox(child: wRow(' 90000000000000000 ')),
-      wRow(' 800 '),
-      SingleLineFittedBox(child: wRow(' 800 ')),
-      // LayoutLogPrint(tag: 1, child: wRow(' 800 ')),
-      // SingleLineFittedBox(child: LayoutLogPrint(tag: 2, child: wRow(' 800 '))),
-    ]
-        .map((e) => Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20),
-              child: e,
-            ))
+          wRow(' 90000000000000000 '),
+          SingleLineFittedBox(child: wRow(' 90000000000000000 ')),
+          wRow(' 800 '),
+          SingleLineFittedBox(child: wRow(' 800 ')),
+          // LayoutLogPrint(tag: 1, child: wRow(' 800 ')),
+          // SingleLineFittedBox(child: LayoutLogPrint(tag: 2, child: wRow(' 800 '))),
+        ]
+        .map(
+          (e) => Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: e,
+          ),
+        )
         .toList();
   }
 
@@ -88,8 +89,8 @@ class FittedBoxRoute extends StatelessWidget {
 }
 
 class SingleLineFittedBox extends StatelessWidget {
-  const SingleLineFittedBox({Key? key,this.child}) : super(key: key);
- final Widget? child;
+  const SingleLineFittedBox({super.key, this.child});
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
@@ -109,4 +110,3 @@ class SingleLineFittedBox extends StatelessWidget {
     );
   }
 }
-

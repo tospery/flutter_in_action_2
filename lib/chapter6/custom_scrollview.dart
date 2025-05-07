@@ -3,7 +3,7 @@ import 'package:hi_case/hi_case.dart';
 import '../common.dart';
 
 class CustomScrollViewTestRoute extends StatelessWidget {
-  const CustomScrollViewTestRoute({Key? key}) : super(key: key);
+  const CustomScrollViewTestRoute({super.key});
 
   @override
   Widget build(BuildContext context) {

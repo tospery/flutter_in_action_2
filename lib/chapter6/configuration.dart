@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class ScrollViewConfiguration extends StatefulWidget {
-  const ScrollViewConfiguration({Key? key}) : super(key: key);
+  const ScrollViewConfiguration({super.key});
 
   @override
   State<ScrollViewConfiguration> createState() =>

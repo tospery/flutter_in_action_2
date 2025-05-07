@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class GrowTransition extends StatelessWidget {
-  const GrowTransition({Key? key, required this.animation, this.child})
-    : super(key: key);
+  const GrowTransition({super.key, required this.animation, this.child});
 
   final Widget? child;
   final Animation<double> animation;
@@ -26,7 +25,7 @@ class GrowTransition extends StatelessWidget {
 }
 
 class GrowTransitionRoute extends StatefulWidget {
-  const GrowTransitionRoute({Key? key}) : super(key: key);
+  const GrowTransitionRoute({super.key});
 
   @override
   State<GrowTransitionRoute> createState() => _GrowTransitionRouteState();

@@ -5,11 +5,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 class LeftRightBox extends MultiChildRenderObjectWidget {
-  LeftRightBox({
-    Key? key,
-    required List<Widget> children,
-  })  : assert(children.length == 2, "只能传两个children"),
-        super(key: key, children: children);
+  LeftRightBox({super.key, required super.children})
+    : assert(children.length == 2, "只能传两个children");
 
   @override
   RenderObject createRenderObject(BuildContext context) {
@@ -81,13 +78,15 @@ class RenderLeftRight extends RenderBox
 }
 
 class LeftRightBoxTestRoute extends StatelessWidget {
-  const LeftRightBoxTestRoute({Key? key}) : super(key: key);
+  const LeftRightBoxTestRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return LeftRightBox(children: [
-      Text("国漫精选"),
-      GestureDetector(onTap: () => print("点击更多"), child: Text("更多》")),
-    ]);
+    return LeftRightBox(
+      children: [
+        Text("国漫精选"),
+        GestureDetector(onTap: () => print("点击更多"), child: Text("更多》")),
+      ],
+    );
   }
 }

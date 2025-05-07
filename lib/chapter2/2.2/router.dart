@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RouterTestRoute extends StatelessWidget {
-  const RouterTestRoute({Key? key}) : super(key: key);
+  const RouterTestRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +13,7 @@ class RouterTestRoute extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) {
-                return const TipRoute(
-                  text: "我是提示xxxx",
-                );
+                return const TipRoute(text: "我是提示xxxx");
               },
             ),
           );
@@ -28,17 +26,15 @@ class RouterTestRoute extends StatelessWidget {
 
 class TipRoute extends StatelessWidget {
   const TipRoute({
-    Key? key,
+    super.key,
     required this.text, // 接收一个text参数
-  }) : super(key: key);
+  });
   final String text;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("提示"),
-      ),
+      appBar: AppBar(title: const Text("提示")),
       body: Padding(
         padding: const EdgeInsets.all(18),
         child: Center(
@@ -48,7 +44,7 @@ class TipRoute extends StatelessWidget {
               ElevatedButton(
                 onPressed: () => Navigator.pop(context, "我是返回值"),
                 child: const Text("返回"),
-              )
+              ),
             ],
           ),
         ),

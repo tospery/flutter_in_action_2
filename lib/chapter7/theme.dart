@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ThemeTestRoute extends StatefulWidget {
-  const ThemeTestRoute({Key? key}) : super(key: key);
+  const ThemeTestRoute({super.key});
 
   @override
   State<ThemeTestRoute> createState() => _ThemeTestRouteState();

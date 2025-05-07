@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ColorRoute extends StatefulWidget {
-  const ColorRoute({Key? key}) : super(key: key);
+  const ColorRoute({super.key});
 
   @override
   State<ColorRoute> createState() => _ColorRouteState();
@@ -53,8 +53,7 @@ class NavBar extends StatelessWidget {
   final String title;
   final Color color;
 
-  const NavBar({Key? key, required this.color, required this.title})
-    : super(key: key);
+  const NavBar({super.key, required this.color, required this.title});
 
   @override
   Widget build(BuildContext context) {

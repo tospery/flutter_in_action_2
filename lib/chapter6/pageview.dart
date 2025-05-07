@@ -6,7 +6,7 @@ import '../routes.dart';
 import 'dart:math' as math;
 
 class PageViewTest extends StatefulWidget {
-  const PageViewTest({Key? key}) : super(key: key);
+  const PageViewTest({super.key});
 
   @override
   State<PageViewTest> createState() => _PageViewTestState();
@@ -235,8 +235,7 @@ class _PageViewTestState extends State<PageViewTest> {
 }
 
 class Page extends StatefulWidget {
-  const Page({Key? key, required this.text, required this.buildType})
-    : super(key: key);
+  const Page({super.key, required this.text, required this.buildType});
 
   final String text;
   final int buildType;
@@ -274,7 +273,7 @@ class _PageState extends State<Page> {
 }
 
 class Page1 extends StatefulWidget {
-  const Page1({Key? key, required this.pageController}) : super(key: key);
+  const Page1({super.key, required this.pageController});
   final PageController pageController;
 
   @override
@@ -336,10 +335,7 @@ class _Page1State extends State<Page1> {
 //BouncingScrollPhysics b;
 
 class ObserveOverscrollPhysics extends AlwaysScrollableScrollPhysics {
-  const ObserveOverscrollPhysics(
-    this.onOverscrollChanged, {
-    ScrollPhysics? parent,
-  }) : super(parent: parent);
+  const ObserveOverscrollPhysics(this.onOverscrollChanged, {super.parent});
 
   final ValueChanged<double> onOverscrollChanged;
 

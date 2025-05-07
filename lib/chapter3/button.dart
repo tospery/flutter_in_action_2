@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ButtonRoute extends StatefulWidget {
-  const ButtonRoute({Key? key}) : super(key: key);
+  const ButtonRoute({super.key});
 
   @override
   State<ButtonRoute> createState() => _ButtonRouteState();

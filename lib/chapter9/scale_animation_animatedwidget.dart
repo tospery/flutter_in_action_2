@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AnimatedImage extends AnimatedWidget {
-  const AnimatedImage({Key? key, required Animation<double> animation})
-    : super(key: key, listenable: animation);
+  const AnimatedImage({super.key, required Animation<double> animation})
+    : super(listenable: animation);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class AnimatedImage extends AnimatedWidget {
 }
 
 class ScaleAnimationRoute1 extends StatefulWidget {
-  const ScaleAnimationRoute1({Key? key}) : super(key: key);
+  const ScaleAnimationRoute1({super.key});
 
   @override
   State<ScaleAnimationRoute1> createState() => _ScaleAnimationRouteState();

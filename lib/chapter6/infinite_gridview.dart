@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class InfiniteGridView extends StatefulWidget {
-  const InfiniteGridView({Key? key}) : super(key: key);
+  const InfiniteGridView({super.key});
 
   @override
   State<InfiniteGridView> createState() => _InfiniteGridViewState();

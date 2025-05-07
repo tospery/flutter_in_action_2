@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class InheritedWidgetTestRoute extends StatefulWidget {
-  const InheritedWidgetTestRoute({Key? key}) : super(key: key);
+  const InheritedWidgetTestRoute({super.key});
 
   @override
   State<InheritedWidgetTestRoute> createState() =>
@@ -37,8 +37,7 @@ class _InheritedWidgetTestRouteState extends State<InheritedWidgetTestRoute> {
 }
 
 class ShareDataWidget extends InheritedWidget {
-  const ShareDataWidget({Key? key, required this.data, required Widget child})
-    : super(key: key, child: child);
+  const ShareDataWidget({super.key, required this.data, required super.child});
 
   final int data; //需要在子树中共享的数据，保存点击次数
 

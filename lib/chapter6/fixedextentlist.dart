@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hi_case/hi_case.dart';
 
 class FixedExtentList extends StatelessWidget {
-  const FixedExtentList({Key? key}) : super(key: key);
+  const FixedExtentList({super.key});
 
   @override
   Widget build(BuildContext context) {

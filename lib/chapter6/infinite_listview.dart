@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
 class InfiniteListView extends StatefulWidget {
-  const InfiniteListView({Key? key}) : super(key: key);
+  const InfiniteListView({super.key});
 
   @override
   State<InfiniteListView> createState() => _InfiniteListViewState();

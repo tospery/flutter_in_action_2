@@ -1,13 +1,14 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+
 class AccurateSizedBox extends SingleChildRenderObjectWidget {
   const AccurateSizedBox({
-    Key? key,
+    super.key,
     this.width = 0,
     this.height = 0,
-    required Widget child,
-  }) : super(key: key, child: child);
+    required Widget super.child,
+  });
 
   final double width;
   final double height;
@@ -35,7 +36,6 @@ class RenderAccurateSizedBox extends RenderProxyBoxWithHitTestBehavior {
   @override
   bool get sizedByParent => true;
 
-
   // performResize 中会调用
   @override
   Size computeDryLayout(BoxConstraints constraints) {
@@ -54,7 +54,8 @@ class RenderAccurateSizedBox extends RenderProxyBoxWithHitTestBehavior {
   void performLayout() {
     child!.layout(
       BoxConstraints.tight(
-          Size(min(size.width, width), min(size.height, height))),
+        Size(min(size.width, width), min(size.height, height)),
+      ),
       // 父容器是固定大小，子元素大小改变时不影响父元素
       // parentUseSize为false时，子组件的布局边界会是它自身，子组件布局发生变化后不会影响当前组件
       parentUsesSize: false,
@@ -63,7 +64,7 @@ class RenderAccurateSizedBox extends RenderProxyBoxWithHitTestBehavior {
 }
 
 class AccurateSizedBoxRoute extends StatelessWidget {
-  const AccurateSizedBoxRoute({Key? key}) : super(key: key);
+  const AccurateSizedBoxRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -75,21 +76,13 @@ class AccurateSizedBoxRoute extends StatelessWidget {
       children: [
         ConstrainedBox(
           constraints: BoxConstraints.tight(Size(100, 100)),
-          child: SizedBox(
-            width: 50,
-            height: 50,
-            child: child,
-          ),
+          child: SizedBox(width: 50, height: 50, child: child),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 8),
           child: ConstrainedBox(
             constraints: BoxConstraints.tight(Size(100, 100)),
-            child: AccurateSizedBox(
-              width: 50,
-              height: 50,
-              child: child,
-            ),
+            child: AccurateSizedBox(width: 50, height: 50, child: child),
           ),
         ),
       ],

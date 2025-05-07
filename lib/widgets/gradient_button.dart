@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class GradientButton extends StatelessWidget {
   const GradientButton({
-    Key? key,
+    super.key,
     this.colors,
     required this.onPressed,
     required this.child,
@@ -13,7 +13,7 @@ class GradientButton extends StatelessWidget {
     this.disabledColor,
     this.disabledTextColor,
     this.onHighlightChanged,
-  }) : super(key: key);
+  });
 
   // 渐变色数组
   final List<Color>? colors;
@@ -82,7 +82,7 @@ class GradientButton extends StatelessWidget {
 
 class ElevatedGradientButton extends StatefulWidget {
   const ElevatedGradientButton({
-    Key? key,
+    super.key,
     this.colors,
     this.onPressed,
     this.padding,
@@ -94,7 +94,7 @@ class ElevatedGradientButton extends StatefulWidget {
     this.onHighlightChanged,
     this.shadowColor,
     required this.child,
-  }) : super(key: key);
+  });
 
   // 渐变色数组
   final List<Color>? colors;

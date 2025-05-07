@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ScaleAnimationRoute2 extends StatefulWidget {
-  const ScaleAnimationRoute2({Key? key}) : super(key: key);
+  const ScaleAnimationRoute2({super.key});
 
   @override
   State<ScaleAnimationRoute2> createState() => _ScaleAnimationRouteState();

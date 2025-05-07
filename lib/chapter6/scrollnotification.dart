@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ScrollNotificationTestRoute extends StatefulWidget {
-  const ScrollNotificationTestRoute({Key? key}) : super(key: key);
+  const ScrollNotificationTestRoute({super.key});
 
   @override
   State<ScrollNotificationTestRoute> createState() =>

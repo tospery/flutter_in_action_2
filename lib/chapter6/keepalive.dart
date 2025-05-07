@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../common.dart';
 
 class KeepAliveTest extends StatefulWidget {
-  const KeepAliveTest({Key? key}) : super(key: key);
+  const KeepAliveTest({super.key});
 
   @override
   State<KeepAliveTest> createState() => _KeepAliveTestState();
@@ -44,7 +44,7 @@ class _KeepAliveTestState extends State<KeepAliveTest> {
 }
 
 class ListItem extends StatefulWidget {
-  const ListItem({Key? key, required this.index}) : super(key: key);
+  const ListItem({super.key, required this.index});
   final int index;
 
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AnimatedSwitcherCounterRoute extends StatefulWidget {
-  const AnimatedSwitcherCounterRoute({Key? key}) : super(key: key);
+  const AnimatedSwitcherCounterRoute({super.key});
 
   @override
   State<AnimatedSwitcherCounterRoute> createState() =>

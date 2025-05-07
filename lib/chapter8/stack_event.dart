@@ -3,7 +3,7 @@ import 'package:hi_case/hi_case.dart';
 import '../common.dart';
 
 class StackEventTest extends StatelessWidget {
-  const StackEventTest({Key? key}) : super(key: key);
+  const StackEventTest({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class StackEventTest extends StatelessWidget {
 }
 
 class HitTestBehaviorTest extends StatelessWidget {
-  const HitTestBehaviorTest({Key? key}) : super(key: key);
+  const HitTestBehaviorTest({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class HitTestBehaviorTest extends StatelessWidget {
 }
 
 class AllChildrenCanResponseEvent extends StatelessWidget {
-  const AllChildrenCanResponseEvent({Key? key}) : super(key: key);
+  const AllChildrenCanResponseEvent({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class AllChildrenCanResponseEvent extends StatelessWidget {
 }
 
 class _WaterMarkTest extends StatelessWidget {
-  const _WaterMarkTest({Key? key}) : super(key: key);
+  const _WaterMarkTest();
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +91,7 @@ class _WaterMarkTest extends StatelessWidget {
 }
 
 class StickerTest extends StatelessWidget {
-  const StickerTest({Key? key}) : super(key: key);
+  const StickerTest({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +112,7 @@ class StickerTest extends StatelessWidget {
 }
 
 class GestureHitTestBlockerTest extends StatelessWidget {
-  const GestureHitTestBlockerTest({Key? key}) : super(key: key);
+  const GestureHitTestBlockerTest({super.key});
 
   @override
   Widget build(BuildContext context) {

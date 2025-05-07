@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class TransformRoute extends StatelessWidget {
-  const TransformRoute({Key? key}) : super(key: key);
+  const TransformRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +55,7 @@ class TransformRoute extends StatelessWidget {
           const Text(
             "你好",
             style: TextStyle(color: Colors.green, fontSize: 18.0),
-          )
+          ),
         ],
       ),
       Row(
@@ -69,21 +69,19 @@ class TransformRoute extends StatelessWidget {
               child: Text("Hello world"),
             ),
           ),
-          Text(
-            "你好",
-            style: TextStyle(color: Colors.green, fontSize: 18.0),
-          )
+          Text("你好", style: TextStyle(color: Colors.green, fontSize: 18.0)),
         ],
       ),
     ];
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: children
-          .map((e) => Padding(
-                padding: const EdgeInsets.only(top: 30),
-                child: e,
-              ))
-          .toList(),
+      children:
+          children
+              .map(
+                (e) =>
+                    Padding(padding: const EdgeInsets.only(top: 30), child: e),
+              )
+              .toList(),
     );
   }
 }

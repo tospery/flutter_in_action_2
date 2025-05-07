@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/index.dart';
 
 class TurnBoxRoute extends StatefulWidget {
-  const TurnBoxRoute({Key? key}) : super(key: key);
+  const TurnBoxRoute({super.key});
 
   @override
   State<TurnBoxRoute> createState() => _TurnBoxRouteState();

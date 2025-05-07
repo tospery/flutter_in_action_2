@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../common.dart';
 
 class SliverFlexibleHeaderRoute extends StatefulWidget {
-  const SliverFlexibleHeaderRoute({Key? key}) : super(key: key);
+  const SliverFlexibleHeaderRoute({super.key});
 
   @override
   State<SliverFlexibleHeaderRoute> createState() =>
@@ -15,23 +15,26 @@ class _SliverFlexibleHeaderRouteState extends State<SliverFlexibleHeaderRoute> {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      physics:
-          const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      physics: const BouncingScrollPhysics(
+        parent: AlwaysScrollableScrollPhysics(),
+      ),
       slivers: [
         SliverFlexibleHeader(
           visibleExtent: _initHeight,
           builder: (context, availableHeight, direction) {
             return GestureDetector(
               onTap: () => print('tap'),
-              child: LayoutBuilder(builder: (context, cons) {
-                return Image(
-                  image: const AssetImage("imgs/avatar.png"),
-                  width: 50.0,
-                  height: availableHeight,
-                  alignment: Alignment.bottomCenter,
-                  fit: BoxFit.cover,
-                );
-              }),
+              child: LayoutBuilder(
+                builder: (context, cons) {
+                  return Image(
+                    image: const AssetImage("imgs/avatar.png"),
+                    width: 50.0,
+                    height: availableHeight,
+                    alignment: Alignment.bottomCenter,
+                    fit: BoxFit.cover,
+                  );
+                },
+              ),
             );
           },
         ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'provider.dart';
 
 class ProviderRoute extends StatefulWidget {
-  const ProviderRoute({Key? key}) : super(key: key);
+  const ProviderRoute({super.key});
 
   @override
   State<ProviderRoute> createState() => _ProviderRouteState();

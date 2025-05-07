@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../common.dart';
 
 class SliverPersistentHeaderToBoxRoute extends StatelessWidget {
-  const SliverPersistentHeaderToBoxRoute({Key? key}) : super(key: key);
+  const SliverPersistentHeaderToBoxRoute({super.key});
 
   @override
   Widget build(BuildContext context) {

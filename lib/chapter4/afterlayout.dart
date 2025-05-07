@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hi_case/hi_case.dart';
 
 class AfterLayoutRoute extends StatefulWidget {
-  const AfterLayoutRoute({Key? key}) : super(key: key);
+  const AfterLayoutRoute({super.key});
 
   @override
   State<AfterLayoutRoute> createState() => _AfterLayoutRouteState();

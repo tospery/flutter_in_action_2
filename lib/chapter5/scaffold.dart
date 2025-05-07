@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ScaffoldRoute extends StatefulWidget {
-  const ScaffoldRoute({Key? key}) : super(key: key);
+  const ScaffoldRoute({super.key});
 
   @override
   State<ScaffoldRoute> createState() => _ScaffoldRouteState();
@@ -85,7 +85,7 @@ class _ScaffoldRouteState extends State<ScaffoldRoute>
 }
 
 class MyDrawer extends StatelessWidget {
-  const MyDrawer({Key? key}) : super(key: key);
+  const MyDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {

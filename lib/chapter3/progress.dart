@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ProgressRoute extends StatefulWidget {
-  const ProgressRoute({Key? key}) : super(key: key);
+  const ProgressRoute({super.key});
 
   @override
   State<ProgressRoute> createState() => _ProgressRouteState();

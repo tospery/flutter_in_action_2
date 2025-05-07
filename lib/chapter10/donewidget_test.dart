@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'done_widget.dart';
 
 class DoneWidgetTestRoute extends StatefulWidget {
-  const DoneWidgetTestRoute({Key? key}) : super(key: key);
+  const DoneWidgetTestRoute({super.key});
 
   @override
   State<DoneWidgetTestRoute> createState() => _DoneWidgetTestRouteState();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CodeHighlightRoute extends StatefulWidget {
-  const CodeHighlightRoute({Key? key}) : super(key: key);
+  const CodeHighlightRoute({super.key});
 
   @override
   State<CodeHighlightRoute> createState() => _CodeHighlightRouteState();

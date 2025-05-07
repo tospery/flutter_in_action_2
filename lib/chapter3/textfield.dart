@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FocusTestRoute extends StatefulWidget {
-  const FocusTestRoute({Key? key}) : super(key: key);
+  const FocusTestRoute({super.key});
 
   @override
   State<FocusTestRoute> createState() => _FocusTestRouteState();

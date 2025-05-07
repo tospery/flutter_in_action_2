@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class NotificationRoute extends StatefulWidget {
-  const NotificationRoute({Key? key}) : super(key: key);
+  const NotificationRoute({super.key});
 
   @override
   NotificationRouteState createState() {
@@ -32,10 +32,10 @@ class NotificationRouteState extends State<NotificationRoute> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-//           ElevatedButton(
-//           onPressed: () => MyNotification("Hi").dispatch(context),
-//           child: Text("Send Notification"),
-//          ),
+              //           ElevatedButton(
+              //           onPressed: () => MyNotification("Hi").dispatch(context),
+              //           child: Text("Send Notification"),
+              //          ),
               Builder(
                 builder: (context) {
                   return ElevatedButton(
@@ -45,7 +45,7 @@ class NotificationRouteState extends State<NotificationRoute> {
                   );
                 },
               ),
-              Text(_msg)
+              Text(_msg),
             ],
           ),
         ),

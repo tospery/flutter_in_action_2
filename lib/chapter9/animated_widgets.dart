@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AnimatedWidgetsTest extends StatefulWidget {
-  const AnimatedWidgetsTest({Key? key}) : super(key: key);
+  const AnimatedWidgetsTest({super.key});
 
   @override
   State<AnimatedWidgetsTest> createState() => _AnimatedWidgetsTestState();
@@ -159,13 +159,13 @@ class _AnimatedWidgetsTestState extends State<AnimatedWidgetsTest> {
 
 class AnimatedDecoratedBox1 extends StatefulWidget {
   const AnimatedDecoratedBox1({
-    Key? key,
+    super.key,
     required this.decoration,
     required this.child,
     this.curve = Curves.linear,
     required this.duration,
     this.reverseDuration,
-  }) : super(key: key);
+  });
 
   final BoxDecoration decoration;
   final Widget child;
@@ -245,12 +245,12 @@ class _AnimatedDecoratedBox1State extends State<AnimatedDecoratedBox1>
 
 class AnimatedDecoratedBox extends ImplicitlyAnimatedWidget {
   const AnimatedDecoratedBox({
-    Key? key,
+    super.key,
     required this.decoration,
     required this.child,
-    Curve curve = Curves.linear,
-    required Duration duration,
-  }) : super(key: key, curve: curve, duration: duration);
+    super.curve,
+    required super.duration,
+  });
   final BoxDecoration decoration;
   final Widget child;
 

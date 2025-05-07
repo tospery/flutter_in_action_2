@@ -16,7 +16,7 @@ class ImageInternalTestRoute extends StatelessWidget {
 }
 
 class MyImage extends StatefulWidget {
-  const MyImage({Key? key, required this.imageProvider}) : super(key: key);
+  const MyImage({super.key, required this.imageProvider});
 
   final ImageProvider imageProvider;
 

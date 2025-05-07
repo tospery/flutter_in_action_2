@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class TextRoute extends StatefulWidget {
-  const TextRoute({Key? key}) : super(key: key);
+  const TextRoute({super.key});
 
   @override
   State<TextRoute> createState() => _TextRouteState();
