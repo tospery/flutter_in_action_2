@@ -20,7 +20,7 @@ class _PaintTestState extends State<PaintTest> {
           const ChessWidget(),
           ElevatedButton(
             onPressed: () {
-              setState(() => null);
+              setState(() {});
             },
             child: const Text("setState"),
           ),

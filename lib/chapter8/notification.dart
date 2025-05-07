@@ -24,7 +24,7 @@ class NotificationRouteState extends State<NotificationRoute> {
       child: NotificationListener<MyNotification>(
         onNotification: (notification) {
           setState(() {
-            _msg += notification.msg + "  ";
+            _msg += "${notification.msg}  ";
           });
           return false;
         },
