@@ -127,7 +127,7 @@ class RenderCustomCheckbox2 extends RenderBox with RenderObjectAnimationMixin {
       );
 
       // 我们只对第三个点的位置做插值
-      final _lastOffset =
+      final mylastOffset =
           Offset.lerp(
             secondOffset,
             lastOffset,
@@ -139,7 +139,7 @@ class RenderCustomCheckbox2 extends RenderBox with RenderObjectAnimationMixin {
           Path()
             ..moveTo(rect.left + rect.width / 7, rect.top + rect.height / 2)
             ..lineTo(secondOffset.dx, secondOffset.dy)
-            ..lineTo(_lastOffset.dx, _lastOffset.dy);
+            ..lineTo(mylastOffset.dx, mylastOffset.dy);
 
       final paint =
           Paint()

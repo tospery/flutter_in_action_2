@@ -8,19 +8,19 @@ class CodeHighlightRoute extends StatefulWidget {
 }
 
 class _CodeHighlightRouteState extends State<CodeHighlightRoute> {
-  late Future<String> _codeFuture;
+  // late Future<String> _codeFuture;
   bool _isLight = true;
   bool _showLineNumber = true;
 
-  Future<String> _loadCode() async {
-    return DefaultAssetBundle.of(
-      context,
-    ).loadString('assets/sliver_flexible_header.dart');
-  }
+  // Future<String> _loadCode() async {
+  //   return DefaultAssetBundle.of(
+  //     context,
+  //   ).loadString('assets/sliver_flexible_header.dart');
+  // }
 
   @override
   void initState() {
-    _codeFuture = _loadCode();
+    // _codeFuture = _loadCode();
     super.initState();
   }
 

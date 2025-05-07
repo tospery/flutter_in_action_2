@@ -10,17 +10,17 @@ class MarkdownRoute extends StatefulWidget {
 }
 
 class _MarkdownRouteState extends State<MarkdownRoute> {
-  late Future<String> _codeFuture;
+  // late Future<String> _codeFuture;
   bool _isLight = true;
   bool _showLineNumber = true;
 
-  Future<String> _loadCode() async {
-    return DefaultAssetBundle.of(context).loadString('assets/test.md');
-  }
+  // Future<String> _loadCode() async {
+  //   return DefaultAssetBundle.of(context).loadString('assets/test.md');
+  // }
 
   @override
   void initState() {
-    _codeFuture = _loadCode();
+    // _codeFuture = _loadCode();
     super.initState();
   }
 
@@ -87,7 +87,7 @@ class _MarkdownRouteState extends State<MarkdownRoute> {
   viewImage(context, String url) {
     Case(
       '查看图片',
-      ScaleView(child: Image.network(url), parentScrollableAxis: null),
+      ScaleView(parentScrollableAxis: null, child: Image.network(url)),
       showLog: false,
       padding: false,
     ).openCase(context);

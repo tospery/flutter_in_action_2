@@ -44,7 +44,7 @@ class _ButtonRouteState extends State<ButtonRoute> {
               ]
               .map(
                 (e) =>
-                    Padding(child: e, padding: const EdgeInsets.only(top: 20)),
+                    Padding(padding: const EdgeInsets.only(top: 20), child: e),
               )
               .toList(),
     );

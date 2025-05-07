@@ -25,8 +25,8 @@ class _AnimatedSwitcherRouteState extends State<AnimatedSwitcherRoute> {
                   end: const Offset(0, 0),
                 );
                 return MySlideTransition(
-                  child: child,
                   position: tween.animate(animation),
+                  child: child,
                 );
               },
               child: Text(
@@ -71,9 +71,9 @@ class _AnimatedSwitcherRouteState extends State<AnimatedSwitcherRoute> {
       duration: const Duration(milliseconds: 400),
       transitionBuilder: (Widget child, Animation<double> animation) {
         return SlideTransitionX(
-          child: FadeTransition(child: child, opacity: animation),
           direction: direction,
           position: animation,
+          child: FadeTransition(opacity: animation, child: child),
         );
       },
       child: Text("$_count", key: ValueKey<int>(_count), textScaleFactor: 3),

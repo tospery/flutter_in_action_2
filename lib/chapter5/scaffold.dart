@@ -9,7 +9,7 @@ class ScaffoldRoute extends StatefulWidget {
 
 class _ScaffoldRouteState extends State<ScaffoldRoute>
     with SingleTickerProviderStateMixin {
-  int _selectedIndex = 1;
+  // int _selectedIndex = 1;
   late TabController _tabController;
   List tabs = ["新闻", "历史", "图片"];
 
@@ -47,12 +47,12 @@ class _ScaffoldRouteState extends State<ScaffoldRoute>
         color: Colors.white,
         shape: const CircularNotchedRectangle(),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             IconButton(icon: const Icon(Icons.home), onPressed: () {}),
             const SizedBox(),
             IconButton(icon: const Icon(Icons.business), onPressed: () {}),
           ],
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
         ),
       ),
       //      bottomNavigationBar: BottomNavigationBar(
@@ -68,18 +68,18 @@ class _ScaffoldRouteState extends State<ScaffoldRoute>
       //        onTap: _onItemTapped,
       //      ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
         onPressed: _onAdd,
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  // void _onItemTapped(int index) {
+  //   setState(() {
+  //     // _selectedIndex = index;
+  //   });
+  // }
 
   void _onAdd() {}
 }

@@ -12,11 +12,11 @@ class StackRoute extends StatelessWidget {
         clipBehavior: Clip.hardEdge,
         children: <Widget>[
           Container(
+            color: Colors.red,
             child: const Text(
               "Hello world",
               style: TextStyle(color: Colors.white),
             ),
-            color: Colors.red,
           ),
           const Positioned(left: 18.0, child: Text("I am Jack")),
           const Positioned(top: 18.0, child: Text("Your friend")),
